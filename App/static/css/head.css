@@ -1,0 +1,59 @@
+body {
+    margin: 0 auto
+}
+
+.MuiTypography-root {
+    margin: 0;
+}
+
+.MuiTypography-colorPrimary {
+    /* color: #00AB55; */
+    color: rgb(156, 217, 185);
+}
+
+.MuiLink-underlineNone {
+    text-decoration: none;
+}
+
+.MuiLink-underlineHover {
+    text-decoration: none;
+}
+
+.MuiLink-underlineHover:hover {
+    text-decoration: underline;
+}
+
+.MuiLink-underlineAlways {
+    text-decoration: underline;
+}
+
+.jss9 {
+    height: 6.4rem;
+    margin: 0px 1rem;
+    display: inline-block;
+    line-height: 6.4rem;
+}
+
+.jss10 {
+    /* 导航栏字体颜色 */
+    color: white;
+    /* color: #212121; */
+    cursor: pointer;
+    /* font-size: 1.125rem; */
+    font-size: 2.2rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.jss10:hover {
+    /* color: #9e9e9e; */
+    color: rgb(156, 217, 185);
+    text-decoration: none;
+}
+
+.jss10.active {
+    /* color: #00AB55;
+      border-bottom: 4px solid #00AB55; */
+    color: rgb(156, 217, 185);
+    /* border-bottom: 4px solid rgb(156,217,185); */
+}

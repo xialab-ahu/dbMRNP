@@ -1,0 +1,204 @@
+ * Serving Flask app 'App'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5679
+ * Running on http://172.16.223.25:5679
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 135-981-653
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/js/automatic.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_picture_1.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_picture_2.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_picture_3.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_picture_4.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_picture_5.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_arrows-01.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:11] "GET /RadiationDB/images/home_picture_6.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:26] "GET /RadiationDB/images/2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:28] "GET /RadiationDB/images/1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:29] "GET /RadiationDB/images/3.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:30] "GET /RadiationDB/images/4.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:30] "GET /RadiationDB/images/home_middle.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:37] "GET /RadiationDB/images/5.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:37] "GET /RadiationDB/images/6.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:38] "GET /RadiationDB/images/8.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:38] "GET /RadiationDB/images/7.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:55:38] "GET /RadiationDB/images/ahu_logo.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:56:27] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 10:58:04] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/js/automatic.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/images/home_picture_1.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/images/home_picture_2.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/images/home_picture_3.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/images/home_picture_4.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/images/home_picture_5.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:05] "GET /RadiationDB/images/home_picture_6.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:23] "GET /RadiationDB/images/home_arrows-01.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:23] "GET /RadiationDB/images/2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:23] "GET /RadiationDB/images/1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:24] "GET /RadiationDB/images/3.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:24] "GET /RadiationDB/images/4.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:25] "GET /RadiationDB/images/home_middle.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:32] "GET /RadiationDB/dataMatrix HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:32] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:33] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:37] "GET /RadiationDB/search HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:37] "GET /RadiationDB/css/search.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:37] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:37] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:37] "GET /RadiationDB/css/all.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:37] "GET /RadiationDB/css/head.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:39] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+2022-12-18 10:58:39,860 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2022-12-18 10:58:39,860 INFO sqlalchemy.engine.Engine [raw sql] {}
+2022-12-18 10:58:39,860 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2022-12-18 10:58:39,860 INFO sqlalchemy.engine.Engine [raw sql] {}
+2022-12-18 10:58:39,861 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2022-12-18 10:58:39,861 INFO sqlalchemy.engine.Engine [raw sql] {}
+2022-12-18 10:58:39,862 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2022-12-18 10:58:39,864 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` = %(Factor_type_1)s AND final_data.`Factor_regulation_type` IN (%(Factor_regulation_type_1_1)s, %(Factor_regulation_type_1_2)s, %(Factor_regulation_type_1_3)s, %(Factor_regulation_type_1_4)s, %(Factor_regulation_type_1_5)s, %(Factor_regulation_type_1_6)s, %(Factor_regulation_type_1_7)s)
+2022-12-18 10:58:39,864 INFO sqlalchemy.engine.Engine [generated in 0.00050s] {'Factor_type_1': 'Gene', 'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer', 'Factor_regulation_type_1_1': 'Protein-coding gene expression', 'Factor_regulation_type_1_2': 'Protein-coding gene variation', 'Factor_regulation_type_1_3': 'Protein-coding gene methylation', 'Factor_regulation_type_1_4': 'miRNA expression', 'Factor_regulation_type_1_5': 'LncRNA expression', 'Factor_regulation_type_1_6': 'CircRNA expression', 'Factor_regulation_type_1_7': 'Pseudogene expression'}
+2022-12-18 10:58:39,990 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` IN (%(Factor_type_1_1)s, %(Factor_type_1_2)s)
+2022-12-18 10:58:39,990 INFO sqlalchemy.engine.Engine [generated in 0.00029s] {'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer', 'Factor_type_1_1': 'protein', 'Factor_type_1_2': 'Protein'}
+2022-12-18 10:58:39,998 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` = %(Factor_type_1)s
+2022-12-18 10:58:39,998 INFO sqlalchemy.engine.Engine [generated in 0.00028s] {'Factor_type_1': 'Radiosensitizer', 'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer'}
+2022-12-18 10:58:40,087 INFO sqlalchemy.engine.Engine ROLLBACK
+127.0.0.1 - - [18/Dec/2022 10:58:40] "POST /RadiationDB/searchAll HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:53] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 10:58:56] "GET /RadiationDB/download HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:56] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:56] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:56] "GET /RadiationDB/css/all.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:58:57] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:00] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/help HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/js/position.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/images/help1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/images/pict5.1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/images/pict5.2-1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/images/pict5.3.4.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:37] "GET /RadiationDB/images/pict5.3.3.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:39] "GET /RadiationDB/images/pict5.2-2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:43] "GET /RadiationDB/images/pict5.3.1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 10:59:49] "GET /RadiationDB/images/pict5.3.2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:15] "GET /RadiationDB/search HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:16] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:16] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:16] "GET /RadiationDB/css/all.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:16] "GET /RadiationDB/css/search.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:16] "GET /RadiationDB/css/head.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:19] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+2022-12-18 11:00:20,408 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2022-12-18 11:00:20,409 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` = %(Factor_type_1)s AND final_data.`Factor_regulation_type` IN (%(Factor_regulation_type_1_1)s, %(Factor_regulation_type_1_2)s, %(Factor_regulation_type_1_3)s, %(Factor_regulation_type_1_4)s, %(Factor_regulation_type_1_5)s, %(Factor_regulation_type_1_6)s, %(Factor_regulation_type_1_7)s)
+2022-12-18 11:00:20,409 INFO sqlalchemy.engine.Engine [cached since 100.5s ago] {'Factor_type_1': 'Gene', 'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer', 'Factor_regulation_type_1_1': 'Protein-coding gene expression', 'Factor_regulation_type_1_2': 'Protein-coding gene variation', 'Factor_regulation_type_1_3': 'Protein-coding gene methylation', 'Factor_regulation_type_1_4': 'miRNA expression', 'Factor_regulation_type_1_5': 'LncRNA expression', 'Factor_regulation_type_1_6': 'CircRNA expression', 'Factor_regulation_type_1_7': 'Pseudogene expression'}
+2022-12-18 11:00:20,461 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` IN (%(Factor_type_1_1)s, %(Factor_type_1_2)s)
+2022-12-18 11:00:20,461 INFO sqlalchemy.engine.Engine [cached since 100.5s ago] {'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer', 'Factor_type_1_1': 'protein', 'Factor_type_1_2': 'Protein'}
+2022-12-18 11:00:20,474 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` = %(Factor_type_1)s
+2022-12-18 11:00:20,474 INFO sqlalchemy.engine.Engine [cached since 100.5s ago] {'Factor_type_1': 'Radiosensitizer', 'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer'}
+2022-12-18 11:00:20,551 INFO sqlalchemy.engine.Engine ROLLBACK
+127.0.0.1 - - [18/Dec/2022 11:00:20] "POST /RadiationDB/searchAll HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:45] "GET /RadiationDB/dataMatrix HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:45] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:45] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/js/automatic.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/home_picture_1.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/home_picture_2.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/home_picture_3.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/home_picture_4.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:46] "GET /RadiationDB/images/6.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:47] "GET /RadiationDB/images/3.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:47] "GET /RadiationDB/images/8.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:00:47] "GET /RadiationDB/images/ahu_logo.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:38] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/js/automatic.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/images/home_picture_1.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/images/home_picture_2.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/images/home_picture_4.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/images/home_picture_3.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/images/home_picture_6.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:01:39] "GET /RadiationDB/images/home_picture_5.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:00] "GET /RadiationDB/dataMatrix HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:00] "GET /RadiationDB/images/2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:01] "GET /RadiationDB/images/8.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:01] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:01] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:06] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 11:02:07] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 11:02:08] "GET /RadiationDB/search HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:09] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:09] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:09] "GET /RadiationDB/css/all.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:09] "GET /RadiationDB/css/search.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:09] "GET /RadiationDB/css/head.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:11] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+2022-12-18 11:02:12,034 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2022-12-18 11:02:12,034 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` = %(Factor_type_1)s AND final_data.`Factor_regulation_type` IN (%(Factor_regulation_type_1_1)s, %(Factor_regulation_type_1_2)s, %(Factor_regulation_type_1_3)s, %(Factor_regulation_type_1_4)s, %(Factor_regulation_type_1_5)s, %(Factor_regulation_type_1_6)s, %(Factor_regulation_type_1_7)s)
+2022-12-18 11:02:12,034 INFO sqlalchemy.engine.Engine [cached since 212.2s ago] {'Factor_type_1': 'Gene', 'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer', 'Factor_regulation_type_1_1': 'Protein-coding gene expression', 'Factor_regulation_type_1_2': 'Protein-coding gene variation', 'Factor_regulation_type_1_3': 'Protein-coding gene methylation', 'Factor_regulation_type_1_4': 'miRNA expression', 'Factor_regulation_type_1_5': 'LncRNA expression', 'Factor_regulation_type_1_6': 'CircRNA expression', 'Factor_regulation_type_1_7': 'Pseudogene expression'}
+2022-12-18 11:02:12,086 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` IN (%(Factor_type_1_1)s, %(Factor_type_1_2)s)
+2022-12-18 11:02:12,086 INFO sqlalchemy.engine.Engine [cached since 212.1s ago] {'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer', 'Factor_type_1_1': 'protein', 'Factor_type_1_2': 'Protein'}
+2022-12-18 11:02:12,093 INFO sqlalchemy.engine.Engine SELECT final_data.`Order` AS `final_data_Order`, final_data.`Factor` AS `final_data_Factor`, final_data.`Factor_regulation_type` AS `final_data_Factor_regulation_type`, final_data.`Cancer_type` AS `final_data_Cancer_type`, final_data.`Factor_source` AS `final_data_Factor_source`, final_data.`Sensitivity_up` AS `final_data_Sensitivity_up`, final_data.`Resistance_up` AS `final_data_Resistance_up`, final_data.`Potential_type` AS `final_data_Potential_type`, final_data.`Radiation_type` AS `final_data_Radiation_type`, final_data.`PMID` AS `final_data_PMID` 
+FROM final_data 
+WHERE final_data.`Cancer_type` IN (%(Cancer_type_1_1)s, %(Cancer_type_1_2)s, %(Cancer_type_1_3)s, %(Cancer_type_1_4)s, %(Cancer_type_1_5)s, %(Cancer_type_1_6)s, %(Cancer_type_1_7)s, %(Cancer_type_1_8)s, %(Cancer_type_1_9)s, %(Cancer_type_1_10)s, %(Cancer_type_1_11)s, %(Cancer_type_1_12)s, %(Cancer_type_1_13)s, %(Cancer_type_1_14)s, %(Cancer_type_1_15)s, %(Cancer_type_1_16)s, %(Cancer_type_1_17)s, %(Cancer_type_1_18)s, %(Cancer_type_1_19)s, %(Cancer_type_1_20)s, %(Cancer_type_1_21)s, %(Cancer_type_1_22)s, %(Cancer_type_1_23)s, %(Cancer_type_1_24)s, %(Cancer_type_1_25)s, %(Cancer_type_1_26)s, %(Cancer_type_1_27)s, %(Cancer_type_1_28)s, %(Cancer_type_1_29)s, %(Cancer_type_1_30)s) AND final_data.`Factor_type` = %(Factor_type_1)s
+2022-12-18 11:02:12,093 INFO sqlalchemy.engine.Engine [cached since 212.1s ago] {'Factor_type_1': 'Radiosensitizer', 'Cancer_type_1_1': 'Adenoid cystic carcinoma', 'Cancer_type_1_2': 'Breast Neoplasms', 'Cancer_type_1_3': 'Cholangiocarcinoma', 'Cancer_type_1_4': 'Chordoma', 'Cancer_type_1_5': 'Craniopharyngioma', 'Cancer_type_1_6': 'Glioma', 'Cancer_type_1_7': 'Head and Neck Neoplasms', 'Cancer_type_1_8': 'Intestinal Neoplasms', 'Cancer_type_1_9': 'Kidney Neoplasms', 'Cancer_type_1_10': 'Leukemia', 'Cancer_type_1_11': 'Liver Neoplasms', 'Cancer_type_1_12': 'Lung Neoplasms', 'Cancer_type_1_13': 'Lymphoma', 'Cancer_type_1_14': 'Melanoma', 'Cancer_type_1_15': 'Meningeal Neoplasms', 'Cancer_type_1_16': 'Mesothelioma', 'Cancer_type_1_17': 'Multiple Myeloma', 'Cancer_type_1_18': 'Neuroblastoma', 'Cancer_type_1_19': 'Neuroendocrine Tumors', 'Cancer_type_1_20': 'Ovarian Neoplasms', 'Cancer_type_1_21': 'Pancreatic Neoplasms', 'Cancer_type_1_22': 'Prostatic Neoplasms', 'Cancer_type_1_23': 'Sarcoma', 'Cancer_type_1_24': 'Skin Neoplasms', 'Cancer_type_1_25': 'Stomach Neoplasms', 'Cancer_type_1_26': 'Thymus Neoplasms', 'Cancer_type_1_27': 'Urinary Bladder Neoplasms', 'Cancer_type_1_28': 'Uterine Neoplasms', 'Cancer_type_1_29': 'Vulvar Neoplasms', 'Cancer_type_1_30': 'Pancancer'}
+2022-12-18 11:02:12,166 INFO sqlalchemy.engine.Engine ROLLBACK
+127.0.0.1 - - [18/Dec/2022 11:02:12] "POST /RadiationDB/searchAll HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:29] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 11:02:56] "GET /RadiationDB/analysis HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:57] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:57] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:57] "GET /RadiationDB/images/cloud.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:57] "GET /RadiationDB/images/survival.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:57] "GET /RadiationDB/images/enrichment.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:57] "GET /RadiationDB/images/network.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:02:58] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 11:03:01] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/js/automatic.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/images/home_picture_1.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/images/home_picture_2.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/images/home_picture_5.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/images/home_picture_3.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/images/home_picture_4.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:21] "GET /RadiationDB/images/home_picture_6.svg HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/help HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/js/su.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/js/position.js HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/css/layui.css HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/images/help1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/images/pict5.1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/images/pict5.2-1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/images/pict5.2-2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/images/pict5.3.1.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:36] "GET /RadiationDB/images/RadiationDB_header_2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:38] "GET /RadiationDB/images/pict5.3.2.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:40] "GET /RadiationDB/images/pict5.3.3.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:36:43] "GET /RadiationDB/images/pict5.3.4.png HTTP/1.0" 200 -
+127.0.0.1 - - [18/Dec/2022 16:37:29] "[33mGET /favicon.ico HTTP/1.0[0m" 404 -
+ * Detected change in '/www/wwwroot/RadiationDB/App/views.py', reloading
+ * Restarting with stat
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server "localhost:10.0"
+      after 259 requests (259 known processed) with 2 events remaining.

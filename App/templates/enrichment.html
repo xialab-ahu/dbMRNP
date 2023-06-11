@@ -1,0 +1,348 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <script src="{{ url_for('static', filename='js/selectMultip.js') }}"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        .total {
+            margin: 0 auto;
+            width: 90%;
+            height: 80rem;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+            margin-top: 10px;
+        }
+
+        .left {
+            margin-left: 2%;
+            margin-top: 1rem;
+            width: 24%;
+            float: left;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+        }
+
+        .right {
+            width: 70%;
+            float: left;
+            margin-left: 2%;
+            margin-top: 1rem;
+            height: 95%;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+        }
+
+        #forms {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .two {
+            border-radius: 5px;
+            margin-top: 2rem;
+            position: relative;
+            height: 5rem;
+
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+        .two_center {
+            width: 93%;
+            padding-top: 1rem;
+            margin: 0 auto;
+        }
+
+        label {
+            width: 32%;
+            float: left;
+            height: 3rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 0.7rem;
+        }
+
+        select {
+            padding-left: 1%;
+            width: 68%;
+            float: left;
+            height: 3rem;
+            font-size: 1.5rem;
+        }
+
+        input {
+            padding-left: 1%;
+            width: 65.5%;
+            float: left;
+            height: 2.6rem;
+            font-size: 1.5rem;
+
+        }
+
+        .title_center {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 2.5rem;
+        }
+
+        .img_total {
+            width: 90%;
+            float: left;
+            height: 60rem;
+            padding-top: 1%;
+            padding-bottom: 2%;
+        }
+
+        img {
+            width: 90%;
+            height: 78%;
+        }
+
+        #img_left {
+            margin-left: 2%;
+            margin-top: 2%;
+        }
+
+        #img_right {
+            margin-left: 8%;
+        }
+
+
+        .button_center {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .button_origin {
+            width: 45%;
+            height: 4rem;
+            font-size: 2rem;
+            border-radius: 0.5rem;
+            border: none;
+            color: white;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .bg_submit {
+            background-color: rgb(8, 129, 204);
+            float: left;
+        }
+
+        .bg_submit:hover {
+            background-color: rgb(4, 73, 116);
+        }
+
+        .bg_reset {
+            background-color: rgb(6, 156, 6);
+            float: right;
+        }
+
+        .bg_reset:hover {
+            background-color: rgb(3, 107, 3);
+        }
+
+
+        input::-webkit-input-placeholder {
+            color: black;
+        }
+
+        input::-moz-placeholder {
+            color: black;
+        }
+
+        　　
+        input:-moz-placeholder {
+            color: black;
+        }
+
+        input:-ms-input-placeholder {
+            color: black;
+        }
+
+    </style>
+
+{% endblock %}
+
+<!-- 各页面主体内容 -->
+{% block body_part %}
+    <div style="height: 3rem"></div>
+    <div class="total">
+        <div style="height: 1rem"></div>
+        <div class="left">
+            <div id="forms">
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Cancer type:</label>
+                        <select class="cancer_type" id="cancer_list" required>
+                            <option value="all" selected disabled>Select cancer type</option>
+                            <option title="Adenoid cystic carcinoma" value="Adenoid cystic carcinoma">Adenoid cystic
+                                carcinoma
+                            </option>
+                            <option title="Breast Neoplasms" value="Breast Neoplasms">Breast Neoplasms</option>
+                            <option title="Cholangiocarcinoma" value="Cholangiocarcinoma">Cholangiocarcinoma</option>
+                            <option title="Chordoma" value="Chordoma">Chordoma</option>
+                            <option title="Craniopharyngioma" value="Craniopharyngioma">Craniopharyngioma</option>
+                            <option title="Glioma" value="Glioma">Glioma</option>
+                            <option title="Head and Neck Neoplasms" value="Head and Neck Neoplasms">Head and Neck
+                                Neoplasms
+                            </option>
+                            <option title="Intestinal Neoplasms" value="Intestinal Neoplasms">Intestinal Neoplasms
+                            </option>
+                            <option title="Kidney Neoplasms" value="Kidney Neoplasms">Kidney Neoplasms</option>
+                            <option title="Leukemia" value="Leukemia">Leukemia</option>
+                            <option title="Liver Neoplasms" value="Liver Neoplasms">Liver Neoplasms</option>
+                            <option title="Lung Neoplasms" value="Lung Neoplasms">Lung Neoplasms</option>
+                            <option title="Lymphoma" value="Lymphoma">Lymphoma</option>
+                            <option title="Melanoma" value="Melanoma">Melanoma</option>
+                            <option title="Meningeal Neoplasms" value="Meningeal Neoplasms">Meningeal Neoplasms</option>
+                            <option title="Mesothelioma" value="Mesothelioma">Mesothelioma</option>
+                            <option title="Multiple Myeloma" value="Multiple Myeloma">Multiple Myeloma</option>
+                            <option title="Neuroblastoma" value="Neuroblastoma">Neuroblastoma</option>
+                            <option title="Neuroendocrine Tumors" value="Neuroendocrine Tumors">Neuroendocrine Tumors
+                            </option>
+                            <option title="Ovarian Neoplasms" value="Ovarian Neoplasms">Ovarian Neoplasms</option>
+                            <option title="Pancreatic Neoplasms" value="Pancreatic Neoplasms">Pancreatic Neoplasms
+                            </option>
+                            <option title="Prostatic Neoplasms" value="Prostatic Neoplasms">Prostatic Neoplasms</option>
+                            <option title="Sarcoma" value="Sarcoma">Sarcoma</option>
+                            <option title="Skin Neoplasms" value="Skin Neoplasms">Skin Neoplasms</option>
+                            <option title="Stomach Neoplasms" value="Stomach Neoplasms">Stomach Neoplasms</option>
+                            <option title="Thymus Neoplasms" value="Thymus Neoplasms">Thymus Neoplasms</option>
+                            <option title="Urinary Bladder Neoplasms" value="Urinary Bladder Neoplasms">Urinary Bladder
+                                Neoplasms
+                            </option>
+                            <option title="Uterine Neoplasms" value="Uterine Neoplasms">Uterine Neoplasms</option>
+                            <option title="Vulvar Neoplasms" value="Vulvar Neoplasms">Vulvar Neoplasms</option>
+                            <option title="Pancancer" value="Pancancer">Pancancer</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Factor type:</label>
+                        <select class="factor_type" id="factor_type_list">
+                            <option value="all" selected disabled>Select factor type</option>
+                            <option value="Protein-coding gene">Protein-coding gene</option>
+                            <option value="miRNA_target gene">miRNA_target gene</option>
+                            <option value="LncRNA_target gene">LncRNA_target gene</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button_center">
+                    <button type="button" onclick="getvalue()" class="button_origin bg_submit over">Submit</button>
+                    <button type="reset" onclick="clearAll()" class="button_origin bg_reset over">Reset</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="right">
+            <div class="title_center">KEGG Pathway Enrichment Analysis</div>
+            <img id="img_left"
+                 src="{{ url_for('static', filename='images/kong.png') }}" alt="KEGG">
+
+            <div style="padding-right:10%;float: right;">
+                <button id="pfi_button" class="button_origin bg_download over" value="download" download="KEGG.png"
+                        style="width: 110%">Download
+                </button>
+            </div>
+            <style>
+                .bg_download {
+                    width: auto;
+                    font-size: 1.8rem;
+                    background-color: rgb(156, 217, 185);
+                }
+
+                .bg_download:hover {
+                    font-size: 1.8rem;
+                    background-color: rgb(40, 137, 85);
+                }
+            </style>
+        </div>
+
+    </div>
+
+    </div>
+    <script>
+        $(".bg_download").hide();
+        $("#pfi_button").click(function () {
+            var img = document.getElementById('img_left');
+            var url = img.src;
+            var a = document.createElement('a');
+            var event = new MouseEvent('click')
+            a.download = "image.png"
+            a.href = url;
+            a.dispatchEvent(event);
+        })
+
+        function download() {
+            var url = "{{ url_for('static', filename='images/KEGG_2016.png') }}"
+            window.location.href = url;
+        }
+
+
+        function clearAll() {
+            $(".cancer_type option").removeAttr("selected");
+            $(".cancer_type").find("option[value='all']").attr("selected", true);
+            $(".factor_type option").removeAttr("selected");
+            $(".factor_type").find("option[value='all']").attr("selected", true);
+
+        }
+
+        function getvalue() {
+            var value1 = $(".cancer_type option:selected").val();
+            if (value1 == "all") {
+                alert("please select cancer type !")
+                return;
+            }
+            var value2 = $(".factor_type option:selected").val();
+            if (value2 == "all") {
+                alert("please select factor type !")
+                return;
+            }
+
+            if (value2 == "Protein-coding gene") {
+                value2 = "protein";
+            } else if (value2 == "miRNA_target gene") {
+                value2 = "miRNA";
+            } else if (value2 == "LncRNA_target gene") {
+                value2 = "LncRNA";
+            }
+            var data = {ct: value1, ft: value2};
+            $.ajax({
+                url: "/enrichment_data",
+                type: "POST",
+                data: data,
+                beforeSend: function () {
+                    $("#img_left").attr('src', "{{ url_for('static', filename='images/loading1.gif') }}");
+                    $(".bg_download").hide();
+                },
+                success: function (res) {
+                    if (res.error) {
+                        $("#img_left").attr('src', "{{ url_for('static', filename='images/kong.png') }}");
+                        alert(res.error);
+                    } else {
+                        $("#img_left").attr('src', "{{ url_for('static', filename='images/') }}" + res.image);
+                        $(".bg_download").show();
+                    }
+                }
+            })
+        }
+    </script>
+{% endblock %}

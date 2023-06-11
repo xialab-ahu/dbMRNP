@@ -1,0 +1,15 @@
+{% block style %}
+
+    <link href="{{ url_for('static', filename='css/submit_form.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/head.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{#主体部分#}
+{% block body_part %}
+    <h3>提交成功</h3>
+{% endblock %}
+
+

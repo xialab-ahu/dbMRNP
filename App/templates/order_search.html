@@ -1,0 +1,96 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+        .resi {
+            float: left;
+        }
+        *{
+            font-weight: normal; !important;
+            color: black;
+        }
+        #detailTab tr td{
+            font-size: 1.7rem; !important;
+        }
+    </style>
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body_part %}
+    <div style="height: 2rem;"></div>
+    <div class="layui-container" style="border: none">
+        <div class="layui-row" id="bodyer">
+            <div class="layui-row" id="bodyer1">
+               
+                <div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1"
+                     style="margin-bottom:20px;margin-top:20px" id="detailDiv">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend style="font-size: 3rem"><i>Job Status</i></legend>
+                        <div class="layui-text" id="overview" style="text-align:justify;font-size: 1.8rem">
+                            The relevant information of {{ rsid }} is shown as follows:
+                        </div>
+                    </fieldset>
+
+                    <table class="layui-table" id="detailTab">
+                        <colgroup>
+                            <col width="300"/>
+                            <col/>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td style="font-weight: bold;">trait</td>
+                            <td id="Order">{{ trait }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">rsid</td>
+                            <td id="Factor">{{ rsid }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">chr_exposure</td>
+                            <td id="Factor_type">{{ chr_exposure }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">pos_exposure</td>
+                            <td id="Factor_regulation_type">{{ pos_exposure }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">effect_allele</td>
+                            <td id="Cancer_type">{{ effect_allele }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">other_allele</td>
+                            <td id="Cancer_specific_type">{{ other_allele }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">beta</td>
+                            <td id="Factor_source">{{ beta }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">se</td>
+                            <td id="Factor_expression/radiosensitivity_up">{{ se }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">pval</td>
+                            <td id="Factor_expression/radioresistance_up">{{ pval }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">samplesize</td>
+                            <td id="Potential_type">{{ samplesize }}</td>
+                        </tr>
+                        
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+  
+    </div>
+
+
+
+{% endblock %}

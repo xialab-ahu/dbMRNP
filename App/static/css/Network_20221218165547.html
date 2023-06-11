@@ -1,0 +1,110 @@
+
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>RadiationDB</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class='panel panel-default'>
+    <div class='panel-body  panel-table'>
+        <h3 align='center'>Network Association Visualization</h3>
+        <hr/>
+        <div id='echarts_img' style='height:830px'></div>
+    </div>
+</div>
+<script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+<script type='text/javascript' src='https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js'></script>
+<script>
+var msg=[[["PARP2","PARP3"],["PARP2","CDK4"],["PARP2","EGFR"],["PARP2","CDK6"],["PARP2","PARP1"],["CDK4","EGFR"],["CDK4","PARP1"],["CDK4","CDK6"],["CDK6","PARP1"],["CDK6","EGFR"],["EGFR","PARP1"],["PARP1","PARP3"],],[["PARP3",4,15],["PARP2",10,15],["CDK4",8,15],["EGFR",8,15],["PARP1",10,15],["CDK6",8,15],]];
+    var categories = [];
+    for (var i = 0; i < msg[0].length; i++) {
+        categories[i] = {
+            name: 'score' + i
+        }
+    }
+    var myChart = echarts.init(document.getElementById('echarts_img'));
+    myChart.setOption({
+        tooltip: {},
+        toolbox: {
+            show: true,
+            feature: {
+                restore: {show: true},
+                saveAsImage: {show: true}
+            },
+        },
+        animationDuration: 1000,
+        animationEasingUpdate: 'quinticInOut',
+        series: [
+            {
+                type: 'graph',
+                name: 'Gene',
+                layout: 'force',
+                data: function () {
+                    var arr = [];
+                    for (var j = 0; j < msg[1].length; j++) {
+                        arr.push({
+                            itemStyle: null,
+                            category: msg[1][j][1],
+                            name: msg[1][j][0],
+                            value: msg[1][j][1],
+                            symbolSize: msg[1][j][2],
+                            x: null,
+                            y: null,
+                            label: {
+                                show: true,
+                                fontSize: msg[1][j][2],
+                            }
+
+                        });
+                    }
+                    return arr;
+                }(),
+                links: function () {
+                    var arr = [];
+                    for (var i = 0; i < msg[0].length; i++) {
+                        arr.push({
+                            source: msg[0][i][0],
+                            target: msg[0][i][1]
+                        });
+                    }
+                    return arr;
+                }(),
+                categories: categories,
+                roam: true,
+                draggable: true,
+                focusNodeAdjacency: true,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 1,
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.3)'
+                    }
+                },
+                label: {
+                    position: 'inside',
+                    fontWeight: 'bold',
+                    fontSize: 20
+                },
+                lineStyle: {
+                    color: 'source',
+                    curveness: 0,
+                    width: 2
+                },
+                emphasis: {
+                    lineStyle: {
+                        width: 10
+                    }
+                },
+                force: {
+                    repulsion: 700
+                }
+            }
+        ]
+    });
+    window.onresize = myChart.resize;
+</script>
+</body>
+</html>
+    

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> {% block page_name %}dbCRAF{% endblock %} </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='js/su.js') }}" rel="stylesheet">
+    <style>
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        {#element.style,#}
+        .over {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
+        .nav_div {
+            width: 100%;
+            height: 16rem;
+            
+        !important;
+            line-height: 16rem;
+        !important;
+            background: url("{{url_for('static',filename='images/RadiationDB_header_2.png')}}");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            vertical-align: center;
+            margin-top: 0;
+
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 2.3rem;
+            color: white;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+            margin-left: 1rem;
+            display: inline-block;
+            
+            
+
+        }
+
+        .nav-link:hover {
+            color: rgb(156, 217, 185);
+        }
+
+        .nav-item {
+            line-height: 16rem;
+        }
+    </style>
+    {% block style %}{% endblock %}
+</head>
+
+<body>
+
+<div class="nav_div">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/search">Phenotype risk factor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/analysis">Brain imaging risk factor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/download">Bulk-tissue biomaker</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/statistics">Cell-specific biomaker</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/submission">Upload daatasets</a>
+        </li>
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/help">Help</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://www.xialab.info/">About us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="visibility:hidden">.............</a>
+        </li>-->
+    </ul>
+</div>
+<div style="clear: both;"></div>
+
+{% block body_part %}
+{% endblock %}
+<script>
+    function windowResize() {
+        s = window.screen.width / 1873;
+        document.body.style.zoom = s;
+    }
+    windowResize()
+    window.addEventListener('resize', windowResize);
+</script>
+
+
+</body>
+
+</html>

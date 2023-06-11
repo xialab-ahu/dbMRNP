@@ -1,0 +1,1635 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+
+    <script src="{{ url_for('static', filename='js/selectMultip.js') }}"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+        .total {
+            margin: 0 auto;
+            width: 90%;
+            height: 80rem;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+            margin-top: 10px;
+        }
+
+        .left {
+            margin-left: 2%;
+            margin-top: 1rem;
+            width: 24%;
+            float: left;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+        }
+
+        .right {
+            width: 70%;
+            float: left;
+            margin-left: 2%;
+            margin-top: 1rem;
+            height: 95%;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+        }
+
+        #forms {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .two {
+            border-radius: 5px;
+            margin-top: 2rem; position: relative;
+            height: 5rem;
+
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+        .two_center {
+            width: 93%;
+            padding-top: 1rem;
+            margin: 0 auto;
+        }
+
+        label {
+            width: 32%;
+            float: left;
+            height: 3rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 0.7rem;
+        }
+
+        select {
+            padding-left: 1%;
+            width: 68%;
+            float: left;
+            height: 3rem;
+            font-size: 1.5rem;
+        }
+
+        input {
+            padding-left: 1%;
+            width: 65.5%;
+            float: left;
+            height: 2.6rem;
+            font-size: 1.5rem;
+
+        }
+
+        .title_center {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            width: 100%;margin: 0 auto;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 2.5rem;
+        }
+
+        .img_total {
+            margin-top: 1rem;
+            width: 45%;
+            float: left;
+            height: 55rem;
+        }
+
+        #img_left {
+        }
+
+        #img_right {
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .button_center {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .button_origin {
+            width: 45%;
+            height: 4rem;
+            font-size: 2rem;
+            /* background-color: ; */
+            border-radius: 0.5rem;
+            border: none;
+            color: white;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .bg_submit {
+            background-color: rgb(8, 129, 204);
+            float: left;
+        }
+
+        .bg_submit:hover {
+            background-color: rgb(4, 73, 116);
+        }
+
+        .bg_reset {
+            background-color: rgb(6, 156, 6);
+            float: right;
+        }
+
+        .bg_reset:hover {
+            background-color: rgb(3, 107, 3);
+        }
+
+        input::-webkit-input-placeholder {
+        color: black;
+        }
+
+        input::-moz-placeholder {  color: black;
+        }
+
+        　　
+        input:-moz-placeholder { color: black;
+        }
+
+        input:-ms-input-placeholder { color: black;
+        }
+
+    </style>
+
+{% endblock %}
+
+<!-- 各页面主体内容 -->
+{% block body_part %}
+    <div style="height: 3rem"></div>
+    <div class="total">
+        <div style="height: 1rem"></div>
+        <div class="left">
+            <div id="forms">
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Cancer type:</label>
+                        <select multip class="cancer_type" id="cancer_list" required="required">
+                            <option value="all" selected disabled>Select one or more cancer type</option>
+                            <option value="TCGA-ACC">TCGA-ACC</option>
+                            <option value="TCGA-BLCA">TCGA-BLCA</option>
+                            <option value="TCGA-BRCA">TCGA-BRCA</option>
+                            <option value="TCGA-CESC">TCGA-CESC</option>
+                            <option value="TCGA-CHOL">TCGA-CHOL</option>
+                            <option value="TCGA-COAD">TCGA-COAD</option>
+                            <option value="TCGA-DLBC">TCGA-DLBC</option>
+                            <option value="TCGA-ESCA">TCGA-ESCA</option>
+                            <option value="TCGA-GBM">TCGA-GBM</option>
+                            <option value="TCGA-HNSC">TCGA-HNSC</option>
+                            <option value="TCGA-KICH">TCGA-KICH</option>
+                            <option value="TCGA-KIRC">TCGA-KIRC</option>
+                            <option value="TCGA-KIRP">TCGA-KIRP</option>
+                            <option value="TCGA-LGG">TCGA-LGG</option>
+                            <option value="TCGA-LIHC">TCGA-LIHC</option>
+                            <option value="TCGA-LUAD">TCGA-LUAD</option>
+                            <option value="TCGA-LUSC">TCGA-LUSC</option>
+                            <option value="TCGA-MESO">TCGA-MESO</option>
+                            <option value="TCGA-OV">TCGA-OV</option>
+                            <option value="TCGA-PAAD">TCGA-PAAD</option>
+                            <option value="TCGA-PCPG">TCGA-PCPG</option>
+                            <option value="TCGA-PRAD">TCGA-PRAD</option>
+                            <option value="TCGA-READ">TCGA-READ</option>
+                            <option value="TCGA-SARC">TCGA-SARC</option>
+                            <option value="TCGA-SKCM">TCGA-SKCM</option>
+                            <option value="TCGA-STAD">TCGA-STAD</option>
+                            <option value="TCGA-TGCT">TCGA-TGCT</option>
+                            <option value="TCGA-THCA">TCGA-THCA</option>
+                            <option value="TCGA-THYM">TCGA-THYM</option>
+                            <option value="TCGA-UCEC">TCGA-UCEC</option>
+                            <option value="TCGA-UCS">TCGA-UCS</option>
+                            <option value="TCGA-UVM">TCGA-UVM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Factor type:</label>
+                        <select class="factor_type" id="factor_type_list" required="required">
+                            <option value="all" selected disabled>Select factor type</option>
+                            <option value="mRNA">mRNA</option>
+                            <option value="miRNA">miRNA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Factor:</label>
+                        <input id="input3" type="text" list="factor_list" placeholder="Search or Select factor type">
+                        <datalist class="factor" id="factor_list" required="required">
+                            <option value="all" selected disabled>Select factor</option>
+                            <option title="AATK" value="AATK">AATK</option>
+                            <option title="ABCB1" value="ABCB1">ABCB1</option>
+                            <option title="ABCB7" value="ABCB7">ABCB7</option>
+                            <option title="ABCC2" value="ABCC2">ABCC2</option>
+                            <option title="ABCC3" value="ABCC3">ABCC3</option>
+                            <option title="ABCC4" value="ABCC4">ABCC4</option>
+                            <option title="ABCG2" value="ABCG2">ABCG2</option>
+                            <option title="ABL1" value="ABL1">ABL1</option>
+                            <option title="ACD" value="ACD">ACD</option>
+                            <option title="ACLY" value="ACLY">ACLY</option>
+                            <option title="ACSL4" value="ACSL4">ACSL4</option>
+                            <option title="ACTL8" value="ACTL8">ACTL8</option>
+                            <option title="ACTN1" value="ACTN1">ACTN1</option>
+                            <option title="ACVR2B" value="ACVR2B">ACVR2B</option>
+                            <option title="ADAM12" value="ADAM12">ADAM12</option>
+                            <option title="ADAM9" value="ADAM9">ADAM9</option>
+                            <option title="ADAMTS20" value="ADAMTS20">ADAMTS20</option>
+                            <option title="ADAMTS9" value="ADAMTS9">ADAMTS9</option>
+                            <option title="ADORA2B" value="ADORA2B">ADORA2B</option>
+                            <option title="ADRM1" value="ADRM1">ADRM1</option>
+                            <option title="AIMP1" value="AIMP1">AIMP1</option>
+                            <option title="AKR1B10" value="AKR1B10">AKR1B10</option>
+                            <option title="AKR1C3" value="AKR1C3">AKR1C3</option>
+                            <option title="AKT1" value="AKT1">AKT1</option>
+                            <option title="AKTIP" value="AKTIP">AKTIP</option>
+                            <option title="ALCAM" value="ALCAM">ALCAM</option>
+                            <option title="ALDH1A1" value="ALDH1A1">ALDH1A1</option>
+                            <option title="ALDOA" value="ALDOA">ALDOA</option>
+                            <option title="ALG3" value="ALG3">ALG3</option>
+                            <option title="ALK" value="ALK">ALK</option>
+                            <option title="ALOX12" value="ALOX12">ALOX12</option>
+                            <option title="ALOX15" value="ALOX15">ALOX15</option>
+                            <option title="ALPI" value="ALPI">ALPI</option>
+                            <option title="ALPP" value="ALPP">ALPP</option>
+                            <option title="AMDHD1" value="AMDHD1">AMDHD1</option>
+                            <option title="ANG" value="ANG">ANG</option>
+                            <option title="ANLN" value="ANLN">ANLN</option>
+                            <option title="ANO3" value="ANO3">ANO3</option>
+                            <option title="ANPEP" value="ANPEP">ANPEP</option>
+                            <option title="ANXA1" value="ANXA1">ANXA1</option>
+                            <option title="ANXA2P2" value="ANXA2P2">ANXA2P2</option>
+                            <option title="ANXA2" value="ANXA2">ANXA2</option>
+                            <option title="ANXA3" value="ANXA3">ANXA3</option>
+                            <option title="ANXA5" value="ANXA5">ANXA5</option>
+                            <option title="ANXA6" value="ANXA6">ANXA6</option>
+                            <option title="ANXA7" value="ANXA7">ANXA7</option>
+                            <option title="APAF1" value="APAF1">APAF1</option>
+                            <option title="APBB1" value="APBB1">APBB1</option>
+                            <option title="APEX1" value="APEX1">APEX1</option>
+                            <option title="APEX2" value="APEX2">APEX2</option>
+                            <option title="API5" value="API5">API5</option>
+                            <option title="APPL1" value="APPL1">APPL1</option>
+                            <option title="APTX" value="APTX">APTX</option>
+                            <option title="ARHGAP15" value="ARHGAP15">ARHGAP15</option>
+                            <option title="ARHGDIB" value="ARHGDIB">ARHGDIB</option>
+                            <option title="ARID1A" value="ARID1A">ARID1A</option>
+                            <option title="ARID1B" value="ARID1B">ARID1B</option>
+                            <option title="ARNT" value="ARNT">ARNT</option>
+                            <option title="ARRB1" value="ARRB1">ARRB1</option>
+                            <option title="AR" value="AR">AR</option>
+                            <option title="ASAH1" value="ASAH1">ASAH1</option>
+                            <option title="ASF1B" value="ASF1B">ASF1B</option>
+                            <option title="ASPM" value="ASPM">ASPM</option>
+                            <option title="ASS1" value="ASS1">ASS1</option>
+                            <option title="ASXL1" value="ASXL1">ASXL1</option>
+                            <option title="ATAD1" value="ATAD1">ATAD1</option>
+                            <option title="ATF2" value="ATF2">ATF2</option>
+                            <option title="ATF3" value="ATF3">ATF3</option>
+                            <option title="ATF4" value="ATF4">ATF4</option>
+                            <option title="ATF5" value="ATF5">ATF5</option>
+                            <option title="ATG12" value="ATG12">ATG12</option>
+                            <option title="ATG5" value="ATG5">ATG5</option>
+                            <option title="ATM" value="ATM">ATM</option>
+                            <option title="ATP4A" value="ATP4A">ATP4A</option>
+                            <option title="ATP6V1C1" value="ATP6V1C1">ATP6V1C1</option>
+                            <option title="AURKA" value="AURKA">AURKA</option>
+                            <option title="AURKB" value="AURKB">AURKB</option>
+                            <option title="B2M" value="B2M">B2M</option>
+                            <option title="BAK1" value="BAK1">BAK1</option>
+                            <option title="BANP" value="BANP">BANP</option>
+                            <option title="BATF" value="BATF">BATF</option>
+                            <option title="BAX" value="BAX">BAX</option>
+                            <option title="BBC3" value="BBC3">BBC3</option>
+                            <option title="BBS9" value="BBS9">BBS9</option>
+                            <option title="BCAR3" value="BCAR3">BCAR3</option>
+                            <option title="BCCIP" value="BCCIP">BCCIP</option>
+                            <option title="BCL11A" value="BCL11A">BCL11A</option>
+                            <option title="BCL2L11" value="BCL2L11">BCL2L11</option>
+                            <option title="BCL2L1" value="BCL2L1">BCL2L1</option>
+                            <option title="BCL2" value="BCL2">BCL2</option>
+                            <option title="BCOR" value="BCOR">BCOR</option>
+                            <option title="BECN1" value="BECN1">BECN1</option>
+                            <option title="BEST2" value="BEST2">BEST2</option>
+                            <option title="BEX1" value="BEX1">BEX1</option>
+                            <option title="BIN1" value="BIN1">BIN1</option>
+                            <option title="BIN2" value="BIN2">BIN2</option>
+                            <option title="BIRC2" value="BIRC2">BIRC2</option>
+                            <option title="BIRC5" value="BIRC5">BIRC5</option>
+                            <option title="BIRC7" value="BIRC7">BIRC7</option>
+                            <option title="BLM" value="BLM">BLM</option>
+                            <option title="BMI1" value="BMI1">BMI1</option>
+                            <option title="BNIP3" value="BNIP3">BNIP3</option>
+                            <option title="BRAF" value="BRAF">BRAF</option>
+                            <option title="BRCA1" value="BRCA1">BRCA1</option>
+                            <option title="BRCA2" value="BRCA2">BRCA2</option>
+                            <option title="BRD4" value="BRD4">BRD4</option>
+                            <option title="BSG" value="BSG">BSG</option>
+                            <option title="BTG1" value="BTG1">BTG1</option>
+                            <option title="BTG2" value="BTG2">BTG2</option>
+                            <option title="BTG3" value="BTG3">BTG3</option>
+                            <option title="BTK" value="BTK">BTK</option>
+                            <option title="BUB1B" value="BUB1B">BUB1B</option>
+                            <option title="BUB1" value="BUB1">BUB1</option>
+                            <option title="C1GALT1" value="C1GALT1">C1GALT1</option>
+                            <option title="C4orf19" value="C4orf19">C4orf19</option>
+                            <option title="CA9" value="CA9">CA9</option>
+                            <option title="CACNA2D1" value="CACNA2D1">CACNA2D1</option>
+                            <option title="CALR" value="CALR">CALR</option>
+                            <option title="CAMTA1" value="CAMTA1">CAMTA1</option>
+                            <option title="CAPNS1" value="CAPNS1">CAPNS1</option>
+                            <option title="CARHSP1" value="CARHSP1">CARHSP1</option>
+                            <option title="CARM1" value="CARM1">CARM1</option>
+                            <option title="CASP3" value="CASP3">CASP3</option>
+                            <option title="CAT" value="CAT">CAT</option>
+                            <option title="CAV1" value="CAV1">CAV1</option>
+                            <option title="CBR1" value="CBR1">CBR1</option>
+                            <option title="CBS" value="CBS">CBS</option>
+                            <option title="CBX8" value="CBX8">CBX8</option>
+                            <option title="CCAR1" value="CCAR1">CCAR1</option>
+                            <option title="CCDC136" value="CCDC136">CCDC136</option>
+                            <option title="CCDC34" value="CCDC34">CCDC34</option>
+                            <option title="CCDC88A" value="CCDC88A">CCDC88A</option>
+                            <option title="CCL3" value="CCL3">CCL3</option>
+                            <option title="CCL8" value="CCL8">CCL8</option>
+                            <option title="CCNB1" value="CCNB1">CCNB1</option>
+                            <option title="CCNB2" value="CCNB2">CCNB2</option>
+                            <option title="CCND1" value="CCND1">CCND1</option>
+                            <option title="CCNG1" value="CCNG1">CCNG1</option>
+                            <option title="CCNK" value="CCNK">CCNK</option>
+                            <option title="CCR2" value="CCR2">CCR2</option>
+                            <option title="CCR5" value="CCR5">CCR5</option>
+                            <option title="CCR6" value="CCR6">CCR6</option>
+                            <option title="CD163" value="CD163">CD163</option>
+                            <option title="CD164" value="CD164">CD164</option>
+                            <option title="CD200R1" value="CD200R1">CD200R1</option>
+                            <option title="CD274" value="CD274">CD274</option>
+                            <option title="CD34" value="CD34">CD34</option>
+                            <option title="CD40" value="CD40">CD40</option>
+                            <option title="CD44" value="CD44">CD44</option>
+                            <option title="CD47" value="CD47">CD47</option>
+                            <option title="CD59" value="CD59">CD59</option>
+                            <option title="CD63" value="CD63">CD63</option>
+                            <option title="CD69" value="CD69">CD69</option>
+                            <option title="CD82" value="CD82">CD82</option>
+                            <option title="CDC14A" value="CDC14A">CDC14A</option>
+                            <option title="CDC20" value="CDC20">CDC20</option>
+                            <option title="CDC25A" value="CDC25A">CDC25A</option>
+                            <option title="CDC25C" value="CDC25C">CDC25C</option>
+                            <option title="CDC27" value="CDC27">CDC27</option>
+                            <option title="CDCA2" value="CDCA2">CDCA2</option>
+                            <option title="CDH1" value="CDH1">CDH1</option>
+                            <option title="CDK16" value="CDK16">CDK16</option>
+                            <option title="CDK1" value="CDK1">CDK1</option>
+                            <option title="CDK2" value="CDK2">CDK2</option>
+                            <option title="CDK4" value="CDK4">CDK4</option>
+                            <option title="CDK6" value="CDK6">CDK6</option>
+                            <option title="CDK8" value="CDK8">CDK8</option>
+                            <option title="CDK9" value="CDK9">CDK9</option>
+                            <option title="CDKN1A" value="CDKN1A">CDKN1A</option>
+                            <option title="CDKN1B" value="CDKN1B">CDKN1B</option>
+                            <option title="CDKN1C" value="CDKN1C">CDKN1C</option>
+                            <option title="CDKN2AIP" value="CDKN2AIP">CDKN2AIP</option>
+                            <option title="CDKN2A" value="CDKN2A">CDKN2A</option>
+                            <option title="CDKN3" value="CDKN3">CDKN3</option>
+                            <option title="CDT1" value="CDT1">CDT1</option>
+                            <option title="CELF3" value="CELF3">CELF3</option>
+                            <option title="CELSR2" value="CELSR2">CELSR2</option>
+                            <option title="CEP164" value="CEP164">CEP164</option>
+                            <option title="CFL1" value="CFL1">CFL1</option>
+                            <option title="CFL2" value="CFL2">CFL2</option>
+                            <option title="CHAF1B" value="CHAF1B">CHAF1B</option>
+                            <option title="CHD4" value="CHD4">CHD4</option>
+                            <option title="CHEK1" value="CHEK1">CHEK1</option>
+                            <option title="CHEK2" value="CHEK2">CHEK2</option>
+                            <option title="CHRNA5" value="CHRNA5">CHRNA5</option>
+                            <option title="CHUK" value="CHUK">CHUK</option>
+                            <option title="CKAP4" value="CKAP4">CKAP4</option>
+                            <option title="CKB" value="CKB">CKB</option>
+                            <option title="CKMT1A" value="CKMT1A">CKMT1A</option>
+                            <option title="CKS1B" value="CKS1B">CKS1B</option>
+                            <option title="CLCA4" value="CLCA4">CLCA4</option>
+                            <option title="CLDN1" value="CLDN1">CLDN1</option>
+                            <option title="CLDN4" value="CLDN4">CLDN4</option>
+                            <option title="CLDN6" value="CLDN6">CLDN6</option>
+                            <option title="CLIC1" value="CLIC1">CLIC1</option>
+                            <option title="CLIC4" value="CLIC4">CLIC4</option>
+                            <option title="CLIP3" value="CLIP3">CLIP3</option>
+                            <option title="CLPTM1L" value="CLPTM1L">CLPTM1L</option>
+                            <option title="CLSPN" value="CLSPN">CLSPN</option>
+                            <option title="CMPK2" value="CMPK2">CMPK2</option>
+                            <option title="COBL" value="COBL">COBL</option>
+                            <option title="COL11A1" value="COL11A1">COL11A1</option>
+                            <option title="COL15A1" value="COL15A1">COL15A1</option>
+                            <option title="COL1A1" value="COL1A1">COL1A1</option>
+                            <option title="COL3A1" value="COL3A1">COL3A1</option>
+                            <option title="COL4A1" value="COL4A1">COL4A1</option>
+                            <option title="COL5A1" value="COL5A1">COL5A1</option>
+                            <option title="COL5A2" value="COL5A2">COL5A2</option>
+                            <option title="COLQ" value="COLQ">COLQ</option>
+                            <option title="CORO1A" value="CORO1A">CORO1A</option>
+                            <option title="COX7B" value="COX7B">COX7B</option>
+                            <option title="CPA4" value="CPA4">CPA4</option>
+                            <option title="CPEB2" value="CPEB2">CPEB2</option>
+                            <option title="CPE" value="CPE">CPE</option>
+                            <option title="CPNE1" value="CPNE1">CPNE1</option>
+                            <option title="CPT1A" value="CPT1A">CPT1A</option>
+                            <option title="CR1L" value="CR1L">CR1L</option>
+                            <option title="CREB1" value="CREB1">CREB1</option>
+                            <option title="CREB5" value="CREB5">CREB5</option>
+                            <option title="CRIP2" value="CRIP2">CRIP2</option>
+                            <option title="CSNK2A2" value="CSNK2A2">CSNK2A2</option>
+                            <option title="CTBP2" value="CTBP2">CTBP2</option>
+                            <option title="CTDSPL" value="CTDSPL">CTDSPL</option>
+                            <option title="CTLA4" value="CTLA4">CTLA4</option>
+                            <option title="CTNNB1" value="CTNNB1">CTNNB1</option>
+                            <option title="CTSB" value="CTSB">CTSB</option>
+                            <option title="CTSD" value="CTSD">CTSD</option>
+                            <option title="CTSH" value="CTSH">CTSH</option>
+                            <option title="CUL2" value="CUL2">CUL2</option>
+                            <option title="CXCL1" value="CXCL1">CXCL1</option>
+                            <option title="CXCL5" value="CXCL5">CXCL5</option>
+                            <option title="CXCR4" value="CXCR4">CXCR4</option>
+                            <option title="CXXC5" value="CXXC5">CXXC5</option>
+                            <option title="CYP20A1" value="CYP20A1">CYP20A1</option>
+                            <option title="CYP21A2" value="CYP21A2">CYP21A2</option>
+                            <option title="CYP26A1" value="CYP26A1">CYP26A1</option>
+                            <option title="DAB2IP" value="DAB2IP">DAB2IP</option>
+                            <option title="DAG1" value="DAG1">DAG1</option>
+                            <option title="DAPL1" value="DAPL1">DAPL1</option>
+                            <option title="DCLK1" value="DCLK1">DCLK1</option>
+                            <option title="DDB2" value="DDB2">DDB2</option>
+                            <option title="DDIT3" value="DDIT3">DDIT3</option>
+                            <option title="DDX25" value="DDX25">DDX25</option>
+                            <option title="DDX60" value="DDX60">DDX60</option>
+                            <option title="DEPDC1B" value="DEPDC1B">DEPDC1B</option>
+                            <option title="DERL1" value="DERL1">DERL1</option>
+                            <option title="DGCR5" value="DGCR5">DGCR5</option>
+                            <option title="DGCR8" value="DGCR8">DGCR8</option>
+                            <option title="DICER1" value="DICER1">DICER1</option>
+                            <option title="DIP2C" value="DIP2C">DIP2C</option>
+                            <option title="DLL4" value="DLL4">DLL4</option>
+                            <option title="DLX2" value="DLX2">DLX2</option>
+                            <option title="DNAJB4" value="DNAJB4">DNAJB4</option>
+                            <option title="DNMT1" value="DNMT1">DNMT1</option>
+                            <option title="DNMT3B" value="DNMT3B">DNMT3B</option>
+                            <option title="DOCK4" value="DOCK4">DOCK4</option>
+                            <option title="DPYSL3" value="DPYSL3">DPYSL3</option>
+                            <option title="DRAM1" value="DRAM1">DRAM1</option>
+                            <option title="DTL" value="DTL">DTL</option>
+                            <option title="DUOX2" value="DUOX2">DUOX2</option>
+                            <option title="DUSP1" value="DUSP1">DUSP1</option>
+                            <option title="DUSP6" value="DUSP6">DUSP6</option>
+                            <option title="E2F1" value="E2F1">E2F1</option>
+                            <option title="E2F7" value="E2F7">E2F7</option>
+                            <option title="E2F8" value="E2F8">E2F8</option>
+                            <option title="ECT2" value="ECT2">ECT2</option>
+                            <option title="EDA" value="EDA">EDA</option>
+                            <option title="EEF1E1" value="EEF1E1">EEF1E1</option>
+                            <option title="EEF2K" value="EEF2K">EEF2K</option>
+                            <option title="EGFR" value="EGFR">EGFR</option>
+                            <option title="EGF" value="EGF">EGF</option>
+                            <option title="EGLN1" value="EGLN1">EGLN1</option>
+                            <option title="EGOT" value="EGOT">EGOT</option>
+                            <option title="EGR1" value="EGR1">EGR1</option>
+                            <option title="EHMT2" value="EHMT2">EHMT2</option>
+                            <option title="EIF2AK2" value="EIF2AK2">EIF2AK2</option>
+                            <option title="EIF2AK3" value="EIF2AK3">EIF2AK3</option>
+                            <option title="EIF4A1" value="EIF4A1">EIF4A1</option>
+                            <option title="EIF4EBP1" value="EIF4EBP1">EIF4EBP1</option>
+                            <option title="EIF4E" value="EIF4E">EIF4E</option>
+                            <option title="EIF4G1" value="EIF4G1">EIF4G1</option>
+                            <option title="ELAVL1" value="ELAVL1">ELAVL1</option>
+                            <option title="ELAVL4" value="ELAVL4">ELAVL4</option>
+                            <option title="ELP3" value="ELP3">ELP3</option>
+                            <option title="EME1" value="EME1">EME1</option>
+                            <option title="EMP2" value="EMP2">EMP2</option>
+                            <option title="EMP3" value="EMP3">EMP3</option>
+                            <option title="ENC1" value="ENC1">ENC1</option>
+                            <option title="ENG" value="ENG">ENG</option>
+                            <option title="ENPP1" value="ENPP1">ENPP1</option>
+                            <option title="ENPP2" value="ENPP2">ENPP2</option>
+                            <option title="EPAS1" value="EPAS1">EPAS1</option>
+                            <option title="EPCAM" value="EPCAM">EPCAM</option>
+                            <option title="EPHA2" value="EPHA2">EPHA2</option>
+                            <option title="EPHA3" value="EPHA3">EPHA3</option>
+                            <option title="EPHA5" value="EPHA5">EPHA5</option>
+                            <option title="EPHB1" value="EPHB1">EPHB1</option>
+                            <option title="EPHB2" value="EPHB2">EPHB2</option>
+                            <option title="EPS8" value="EPS8">EPS8</option>
+                            <option title="ERAP1" value="ERAP1">ERAP1</option>
+                            <option title="ERBB2" value="ERBB2">ERBB2</option>
+                            <option title="ERBB3" value="ERBB3">ERBB3</option>
+                            <option title="ERCC1" value="ERCC1">ERCC1</option>
+                            <option title="ERG" value="ERG">ERG</option>
+                            <option title="ERLIN1" value="ERLIN1">ERLIN1</option>
+                            <option title="ERMP1" value="ERMP1">ERMP1</option>
+                            <option title="ERN1" value="ERN1">ERN1</option>
+                            <option title="ERP29" value="ERP29">ERP29</option>
+                            <option title="ESR1" value="ESR1">ESR1</option>
+                            <option title="ETV4" value="ETV4">ETV4</option>
+                            <option title="ETV6" value="ETV6">ETV6</option>
+                            <option title="EXO1" value="EXO1">EXO1</option>
+                            <option title="EZH2" value="EZH2">EZH2</option>
+                            <option title="F11R" value="F11R">F11R</option>
+                            <option title="FABP7" value="FABP7">FABP7</option>
+                            <option title="FAM114A1" value="FAM114A1">FAM114A1</option>
+                            <option title="FAM114A2" value="FAM114A2">FAM114A2</option>
+                            <option title="FAM135B" value="FAM135B">FAM135B</option>
+                            <option title="FAM168A" value="FAM168A">FAM168A</option>
+                            <option title="FAM83D" value="FAM83D">FAM83D</option>
+                            <option title="FANCD2" value="FANCD2">FANCD2</option>
+                            <option title="FASN" value="FASN">FASN</option>
+                            <option title="FBN2" value="FBN2">FBN2</option>
+                            <option title="FBP1" value="FBP1">FBP1</option>
+                            <option title="FBXL14" value="FBXL14">FBXL14</option>
+                            <option title="FBXW7" value="FBXW7">FBXW7</option>
+                            <option title="FDPS" value="FDPS">FDPS</option>
+                            <option title="FERMT1" value="FERMT1">FERMT1</option>
+                            <option title="FES" value="FES">FES</option>
+                            <option title="FGF13" value="FGF13">FGF13</option>
+                            <option title="FGF19" value="FGF19">FGF19</option>
+                            <option title="FGFR1" value="FGFR1">FGFR1</option>
+                            <option title="FGFR2" value="FGFR2">FGFR2</option>
+                            <option title="FGFR3" value="FGFR3">FGFR3</option>
+                            <option title="FHIT" value="FHIT">FHIT</option>
+                            <option title="FHL2" value="FHL2">FHL2</option>
+                            <option title="FHL5" value="FHL5">FHL5</option>
+                            <option title="FLCN" value="FLCN">FLCN</option>
+                            <option title="FLI1" value="FLI1">FLI1</option>
+                            <option title="FLT1" value="FLT1">FLT1</option>
+                            <option title="FLT3LG" value="FLT3LG">FLT3LG</option>
+                            <option title="FLT3" value="FLT3">FLT3</option>
+                            <option title="FN1" value="FN1">FN1</option>
+                            <option title="FOLR3" value="FOLR3">FOLR3</option>
+                            <option title="FOSL1" value="FOSL1">FOSL1</option>
+                            <option title="FOS" value="FOS">FOS</option>
+                            <option title="FOXC2" value="FOXC2">FOXC2</option>
+                            <option title="FOXD1" value="FOXD1">FOXD1</option>
+                            <option title="FOXL1" value="FOXL1">FOXL1</option>
+                            <option title="FOXM1" value="FOXM1">FOXM1</option>
+                            <option title="FOXN2" value="FOXN2">FOXN2</option>
+                            <option title="FOXO3" value="FOXO3">FOXO3</option>
+                            <option title="FOXP1" value="FOXP1">FOXP1</option>
+                            <option title="FSCN1" value="FSCN1">FSCN1</option>
+                            <option title="FST" value="FST">FST</option>
+                            <option title="FTH1" value="FTH1">FTH1</option>
+                            <option title="FUS" value="FUS">FUS</option>
+                            <option title="FUT8" value="FUT8">FUT8</option>
+                            <option title="FXYD3" value="FXYD3">FXYD3</option>
+                            <option title="FZD2" value="FZD2">FZD2</option>
+                            <option title="FZD4" value="FZD4">FZD4</option>
+                            <option title="FZR1" value="FZR1">FZR1</option>
+                            <option title="G0S2" value="G0S2">G0S2</option>
+                            <option title="G3BP1" value="G3BP1">G3BP1</option>
+                            <option title="GADD45A" value="GADD45A">GADD45A</option>
+                            <option title="GADD45GIP1" value="GADD45GIP1">GADD45GIP1</option>
+                            <option title="GALC" value="GALC">GALC</option>
+                            <option title="GAS2L3" value="GAS2L3">GAS2L3</option>
+                            <option title="GAS5" value="GAS5">GAS5</option>
+                            <option title="GBP1" value="GBP1">GBP1</option>
+                            <option title="GDF15" value="GDF15">GDF15</option>
+                            <option title="GDNF" value="GDNF">GDNF</option>
+                            <option title="GGA2" value="GGA2">GGA2</option>
+                            <option title="GIMAP6" value="GIMAP6">GIMAP6</option>
+                            <option title="GINS2" value="GINS2">GINS2</option>
+                            <option title="GJB2" value="GJB2">GJB2</option>
+                            <option title="GLI1" value="GLI1">GLI1</option>
+                            <option title="GLIS2" value="GLIS2">GLIS2</option>
+                            <option title="GLS2" value="GLS2">GLS2</option>
+                            <option title="GLUL" value="GLUL">GLUL</option>
+                            <option title="GMFG" value="GMFG">GMFG</option>
+                            <option title="GNA11" value="GNA11">GNA11</option>
+                            <option title="GNG11" value="GNG11">GNG11</option>
+                            <option title="GOLPH3" value="GOLPH3">GOLPH3</option>
+                            <option title="GPLD1" value="GPLD1">GPLD1</option>
+                            <option title="GPR135" value="GPR135">GPR135</option>
+                            <option title="GPX4" value="GPX4">GPX4</option>
+                            <option title="GRIK5" value="GRIK5">GRIK5</option>
+                            <option title="GRN" value="GRN">GRN</option>
+                            <option title="GRPR" value="GRPR">GRPR</option>
+                            <option title="GSK3A" value="GSK3A">GSK3A</option>
+                            <option title="GSK3B" value="GSK3B">GSK3B</option>
+                            <option title="GSTM3" value="GSTM3">GSTM3</option>
+                            <option title="GSTP1" value="GSTP1">GSTP1</option>
+                            <option title="GTSE1" value="GTSE1">GTSE1</option>
+                            <option title="H19" value="H19">H19</option>
+                            <option title="H6PD" value="H6PD">H6PD</option>
+                            <option title="HAP1" value="HAP1">HAP1</option>
+                            <option title="HAS2" value="HAS2">HAS2</option>
+                            <option title="HAVCR2" value="HAVCR2">HAVCR2</option>
+                            <option title="HBP1" value="HBP1">HBP1</option>
+                            <option title="HCLS1" value="HCLS1">HCLS1</option>
+                            <option title="HCP5" value="HCP5">HCP5</option>
+                            <option title="HDAC1" value="HDAC1">HDAC1</option>
+                            <option title="HDAC2" value="HDAC2">HDAC2</option>
+                            <option title="HDAC4" value="HDAC4">HDAC4</option>
+                            <option title="HDAC6" value="HDAC6">HDAC6</option>
+                            <option title="HDAC9" value="HDAC9">HDAC9</option>
+                            <option title="HDGF" value="HDGF">HDGF</option>
+                            <option title="HELLS" value="HELLS">HELLS</option>
+                            <option title="HIF1A" value="HIF1A">HIF1A</option>
+                            <option title="HINT1" value="HINT1">HINT1</option>
+                            <option title="HJURP" value="HJURP">HJURP</option>
+                            <option title="HK2" value="HK2">HK2</option>
+                            <option title="HLF" value="HLF">HLF</option>
+                            <option title="HLTF" value="HLTF">HLTF</option>
+                            <option title="HMBOX1" value="HMBOX1">HMBOX1</option>
+                            <option title="HMGA1" value="HMGA1">HMGA1</option>
+                            <option title="HMGB1" value="HMGB1">HMGB1</option>
+                            <option title="HMGB2" value="HMGB2">HMGB2</option>
+                            <option title="HMGB3" value="HMGB3">HMGB3</option>
+                            <option title="HMMR" value="HMMR">HMMR</option>
+                            <option title="HMOX1" value="HMOX1">HMOX1</option>
+                            <option title="HNF1A" value="HNF1A">HNF1A</option>
+                            <option title="HOOK1" value="HOOK1">HOOK1</option>
+                            <option title="HOTAIR" value="HOTAIR">HOTAIR</option>
+                            <option title="HOXA10" value="HOXA10">HOXA10</option>
+                            <option title="HOXB13" value="HOXB13">HOXB13</option>
+                            <option title="HOXB7" value="HOXB7">HOXB7</option>
+                            <option title="HOXC13" value="HOXC13">HOXC13</option>
+                            <option title="HPSE" value="HPSE">HPSE</option>
+                            <option title="HRAS" value="HRAS">HRAS</option>
+                            <option title="HSD17B6" value="HSD17B6">HSD17B6</option>
+                            <option title="HSP90AA1" value="HSP90AA1">HSP90AA1</option>
+                            <option title="HSP90B1" value="HSP90B1">HSP90B1</option>
+                            <option title="HSPA1A" value="HSPA1A">HSPA1A</option>
+                            <option title="HSPA4" value="HSPA4">HSPA4</option>
+                            <option title="HSPA5" value="HSPA5">HSPA5</option>
+                            <option title="HSPB1" value="HSPB1">HSPB1</option>
+                            <option title="HTRA1" value="HTRA1">HTRA1</option>
+                            <option title="HULC" value="HULC">HULC</option>
+                            <option title="IAPP" value="IAPP">IAPP</option>
+                            <option title="ICA1" value="ICA1">ICA1</option>
+                            <option title="ICAM1" value="ICAM1">ICAM1</option>
+                            <option title="ICAM2" value="ICAM2">ICAM2</option>
+                            <option title="ICAM3" value="ICAM3">ICAM3</option>
+                            <option title="ID1" value="ID1">ID1</option>
+                            <option title="IDH2" value="IDH2">IDH2</option>
+                            <option title="IDO1" value="IDO1">IDO1</option>
+                            <option title="IER3" value="IER3">IER3</option>
+                            <option title="IER5" value="IER5">IER5</option>
+                            <option title="IFI30" value="IFI30">IFI30</option>
+                            <option title="IFI35" value="IFI35">IFI35</option>
+                            <option title="IFIT1" value="IFIT1">IFIT1</option>
+                            <option title="IFNG" value="IFNG">IFNG</option>
+                            <option title="IGF1R" value="IGF1R">IGF1R</option>
+                            <option title="IGF1" value="IGF1">IGF1</option>
+                            <option title="IGF2BP3" value="IGF2BP3">IGF2BP3</option>
+                            <option title="IGF2" value="IGF2">IGF2</option>
+                            <option title="IGFBP3" value="IGFBP3">IGFBP3</option>
+                            <option title="IGFBP5" value="IGFBP5">IGFBP5</option>
+                            <option title="IGFBP7" value="IGFBP7">IGFBP7</option>
+                            <option title="IGFN1" value="IGFN1">IGFN1</option>
+                            <option title="IL11" value="IL11">IL11</option>
+                            <option title="IL17REL" value="IL17REL">IL17REL</option>
+                            <option title="IL1B" value="IL1B">IL1B</option>
+                            <option title="IL24" value="IL24">IL24</option>
+                            <option title="IL32" value="IL32">IL32</option>
+                            <option title="IL34" value="IL34">IL34</option>
+                            <option title="IL6" value="IL6">IL6</option>
+                            <option title="IL7R" value="IL7R">IL7R</option>
+                            <option title="IL9R" value="IL9R">IL9R</option>
+                            <option title="INA" value="INA">INA</option>
+                            <option title="ING4" value="ING4">ING4</option>
+                            <option title="INPP4B" value="INPP4B">INPP4B</option>
+                            <option title="INPPL1" value="INPPL1">INPPL1</option>
+                            <option title="IQGAP2" value="IQGAP2">IQGAP2</option>
+                            <option title="IQGAP3" value="IQGAP3">IQGAP3</option>
+                            <option title="IRAK2" value="IRAK2">IRAK2</option>
+                            <option title="IRF1" value="IRF1">IRF1</option>
+                            <option title="ISG20" value="ISG20">ISG20</option>
+                            <option title="ITGA2" value="ITGA2">ITGA2</option>
+                            <option title="ITGA3" value="ITGA3">ITGA3</option>
+                            <option title="ITGA6" value="ITGA6">ITGA6</option>
+                            <option title="ITGAM" value="ITGAM">ITGAM</option>
+                            <option title="ITGB1" value="ITGB1">ITGB1</option>
+                            <option title="ITGB5" value="ITGB5">ITGB5</option>
+                            <option title="ITPR1" value="ITPR1">ITPR1</option>
+                            <option title="ITPRIP" value="ITPRIP">ITPRIP</option>
+                            <option title="IVNS1ABP" value="IVNS1ABP">IVNS1ABP</option>
+                            <option title="JUND" value="JUND">JUND</option>
+                            <option title="JUN" value="JUN">JUN</option>
+                            <option title="JUP" value="JUP">JUP</option>
+                            <option title="KAT5" value="KAT5">KAT5</option>
+                            <option title="KCNB2" value="KCNB2">KCNB2</option>
+                            <option title="KCNJ12" value="KCNJ12">KCNJ12</option>
+                            <option title="KCNQ1OT1" value="KCNQ1OT1">KCNQ1OT1</option>
+                            <option title="KDM4C" value="KDM4C">KDM4C</option>
+                            <option title="KDM5B" value="KDM5B">KDM5B</option>
+                            <option title="KDR" value="KDR">KDR</option>
+                            <option title="KEAP1" value="KEAP1">KEAP1</option>
+                            <option title="KIF18A" value="KIF18A">KIF18A</option>
+                            <option title="KIF18B" value="KIF18B">KIF18B</option>
+                            <option title="KIF20A" value="KIF20A">KIF20A</option>
+                            <option title="KIF23" value="KIF23">KIF23</option>
+                            <option title="KIF2A" value="KIF2A">KIF2A</option>
+                            <option title="KLC4" value="KLC4">KLC4</option>
+                            <option title="KLF10" value="KLF10">KLF10</option>
+                            <option title="KLF3" value="KLF3">KLF3</option>
+                            <option title="KLF4" value="KLF4">KLF4</option>
+                            <option title="KPNA2" value="KPNA2">KPNA2</option>
+                            <option title="KRAS" value="KRAS">KRAS</option>
+                            <option title="KRT14" value="KRT14">KRT14</option>
+                            <option title="KRT86" value="KRT86">KRT86</option>
+                            <option title="KRT8" value="KRT8">KRT8</option>
+                            <option title="L1CAM" value="L1CAM">L1CAM</option>
+                            <option title="LACTB2" value="LACTB2">LACTB2</option>
+                            <option title="LAMB1" value="LAMB1">LAMB1</option>
+                            <option title="LAMC2" value="LAMC2">LAMC2</option>
+                            <option title="LAMP2" value="LAMP2">LAMP2</option>
+                            <option title="LAMP3" value="LAMP3">LAMP3</option>
+                            <option title="LAPTM4B" value="LAPTM4B">LAPTM4B</option>
+                            <option title="LAPTM5" value="LAPTM5">LAPTM5</option>
+                            <option title="LCN2" value="LCN2">LCN2</option>
+                            <option title="LDHA" value="LDHA">LDHA</option>
+                            <option title="LGALS1" value="LGALS1">LGALS1</option>
+                            <option title="LGALS3" value="LGALS3">LGALS3</option>
+                            <option title="LGALS7" value="LGALS7">LGALS7</option>
+                            <option title="LGALS9" value="LGALS9">LGALS9</option>
+                            <option title="LGR4" value="LGR4">LGR4</option>
+                            <option title="LHX3" value="LHX3">LHX3</option>
+                            <option title="LIFR" value="LIFR">LIFR</option>
+                            <option title="LIF" value="LIF">LIF</option>
+                            <option title="LIG4" value="LIG4">LIG4</option>
+                            <option title="LIMS1" value="LIMS1">LIMS1</option>
+                            <option title="LIN28A" value="LIN28A">LIN28A</option>
+                            <option title="LIN28B" value="LIN28B">LIN28B</option>
+                            <option title="LINS1" value="LINS1">LINS1</option>
+                            <option title="LITAF" value="LITAF">LITAF</option>
+                            <option title="LMX1B" value="LMX1B">LMX1B</option>
+                            <option title="LOXL2" value="LOXL2">LOXL2</option>
+                            <option title="LPCAT1" value="LPCAT1">LPCAT1</option>
+                            <option title="LPCAT2" value="LPCAT2">LPCAT2</option>
+                            <option title="LPCAT3" value="LPCAT3">LPCAT3</option>
+                            <option title="LPCAT4" value="LPCAT4">LPCAT4</option>
+                            <option title="LRIG1" value="LRIG1">LRIG1</option>
+                            <option title="LTF" value="LTF">LTF</option>
+                            <option title="LUC7L2" value="LUC7L2">LUC7L2</option>
+                            <option title="LYPD6B" value="LYPD6B">LYPD6B</option>
+                            <option title="LYPD6" value="LYPD6">LYPD6</option>
+                            <option title="LYPLAL1" value="LYPLAL1">LYPLAL1</option>
+                            <option title="LZTS2" value="LZTS2">LZTS2</option>
+                            <option title="MAD2L1" value="MAD2L1">MAD2L1</option>
+                            <option title="MAD2L2" value="MAD2L2">MAD2L2</option>
+                            <option title="MAF1" value="MAF1">MAF1</option>
+                            <option title="MAGED1" value="MAGED1">MAGED1</option>
+                            <option title="MAGI1" value="MAGI1">MAGI1</option>
+                            <option title="MALAT1" value="MALAT1">MALAT1</option>
+                            <option title="MAP1LC3A" value="MAP1LC3A">MAP1LC3A</option>
+                            <option title="MAP2K1" value="MAP2K1">MAP2K1</option>
+                            <option title="MAP2K2" value="MAP2K2">MAP2K2</option>
+                            <option title="MAP2K6" value="MAP2K6">MAP2K6</option>
+                            <option title="MAP2K7" value="MAP2K7">MAP2K7</option>
+                            <option title="MAP3K4" value="MAP3K4">MAP3K4</option>
+                            <option title="MAPK13" value="MAPK13">MAPK13</option>
+                            <option title="MAPK14" value="MAPK14">MAPK14</option>
+                            <option title="MAPK15" value="MAPK15">MAPK15</option>
+                            <option title="MAPK1" value="MAPK1">MAPK1</option>
+                            <option title="MAPK4" value="MAPK4">MAPK4</option>
+                            <option title="MAPK6" value="MAPK6">MAPK6</option>
+                            <option title="MAPK7" value="MAPK7">MAPK7</option>
+                            <option title="MAPK9" value="MAPK9">MAPK9</option>
+                            <option title="MARCKS" value="MARCKS">MARCKS</option>
+                            <option title="MARCO" value="MARCO">MARCO</option>
+                            <option title="MASTL" value="MASTL">MASTL</option>
+                            <option title="MATK" value="MATK">MATK</option>
+                            <option title="MAVS" value="MAVS">MAVS</option>
+                            <option title="MCAM" value="MCAM">MCAM</option>
+                            <option title="MCL1" value="MCL1">MCL1</option>
+                            <option title="MCM10" value="MCM10">MCM10</option>
+                            <option title="MCM3" value="MCM3">MCM3</option>
+                            <option title="MCM9" value="MCM9">MCM9</option>
+                            <option title="MDC1" value="MDC1">MDC1</option>
+                            <option title="MDM2" value="MDM2">MDM2</option>
+                            <option title="MECOM" value="MECOM">MECOM</option>
+                            <option title="MEF2D" value="MEF2D">MEF2D</option>
+                            <option title="MELK" value="MELK">MELK</option>
+                            <option title="METTL3" value="METTL3">METTL3</option>
+                            <option title="MET" value="MET">MET</option>
+                            <option title="MGAT5" value="MGAT5">MGAT5</option>
+                            <option title="MGMT" value="MGMT">MGMT</option>
+                            <option title="MICB" value="MICB">MICB</option>
+                            <option title="MIIP" value="MIIP">MIIP</option>
+                            <option title="MKI67" value="MKI67">MKI67</option>
+                            <option title="MLH1" value="MLH1">MLH1</option>
+                            <option title="MMD" value="MMD">MMD</option>
+                            <option title="MMP9" value="MMP9">MMP9</option>
+                            <option title="MOGAT1" value="MOGAT1">MOGAT1</option>
+                            <option title="MORF4L2" value="MORF4L2">MORF4L2</option>
+                            <option title="MSH2" value="MSH2">MSH2</option>
+                            <option title="MSI1" value="MSI1">MSI1</option>
+                            <option title="MSI2" value="MSI2">MSI2</option>
+                            <option title="MSRA" value="MSRA">MSRA</option>
+                            <option title="MTDH" value="MTDH">MTDH</option>
+                            <option title="MTOR" value="MTOR">MTOR</option>
+                            <option title="MTRF1" value="MTRF1">MTRF1</option>
+                            <option title="MUC1" value="MUC1">MUC1</option>
+                            <option title="MVP" value="MVP">MVP</option>
+                            <option title="MYB" value="MYB">MYB</option>
+                            <option title="MYC" value="MYC">MYC</option>
+                            <option title="MYO1B" value="MYO1B">MYO1B</option>
+                            <option title="MYO5C" value="MYO5C">MYO5C</option>
+                            <option title="NANOG" value="NANOG">NANOG</option>
+                            <option title="NBN" value="NBN">NBN</option>
+                            <option title="NCL" value="NCL">NCL</option>
+                            <option title="NDRG1" value="NDRG1">NDRG1</option>
+                            <option title="NDRG2" value="NDRG2">NDRG2</option>
+                            <option title="NEAT1" value="NEAT1">NEAT1</option>
+                            <option title="NEIL2" value="NEIL2">NEIL2</option>
+                            <option title="NEK1" value="NEK1">NEK1</option>
+                            <option title="NEK2" value="NEK2">NEK2</option>
+                            <option title="NEK4" value="NEK4">NEK4</option>
+                            <option title="NFATC1" value="NFATC1">NFATC1</option>
+                            <option title="NFE2L2" value="NFE2L2">NFE2L2</option>
+                            <option title="NFIA" value="NFIA">NFIA</option>
+                            <option title="NFIL3" value="NFIL3">NFIL3</option>
+                            <option title="NFKB1" value="NFKB1">NFKB1</option>
+                            <option title="NFKBIA" value="NFKBIA">NFKBIA</option>
+                            <option title="NMD3" value="NMD3">NMD3</option>
+                            <option title="NME1" value="NME1">NME1</option>
+                            <option title="NOB1" value="NOB1">NOB1</option>
+                            <option title="NOC3L" value="NOC3L">NOC3L</option>
+                            <option title="NOL3" value="NOL3">NOL3</option>
+                            <option title="NOTCH1" value="NOTCH1">NOTCH1</option>
+                            <option title="NOTCH2" value="NOTCH2">NOTCH2</option>
+                            <option title="NOX4" value="NOX4">NOX4</option>
+                            <option title="NPAS2" value="NPAS2">NPAS2</option>
+                            <option title="NPM1" value="NPM1">NPM1</option>
+                            <option title="NPY" value="NPY">NPY</option>
+                            <option title="NQO1" value="NQO1">NQO1</option>
+                            <option title="NR2C2" value="NR2C2">NR2C2</option>
+                            <option title="NRP1" value="NRP1">NRP1</option>
+                            <option title="NT5E" value="NT5E">NT5E</option>
+                            <option title="NUAK1" value="NUAK1">NUAK1</option>
+                            <option title="NUDT15" value="NUDT15">NUDT15</option>
+                            <option title="NUMB" value="NUMB">NUMB</option>
+                            <option title="OGG1" value="OGG1">OGG1</option>
+                            <option title="OLA1" value="OLA1">OLA1</option>
+                            <option title="OLIG2" value="OLIG2">OLIG2</option>
+                            <option title="OPTN" value="OPTN">OPTN</option>
+                            <option title="OSMR" value="OSMR">OSMR</option>
+                            <option title="OTUD4" value="OTUD4">OTUD4</option>
+                            <option title="OTUD5" value="OTUD5">OTUD5</option>
+                            <option title="P2RX7" value="P2RX7">P2RX7</option>
+                            <option title="PADI4" value="PADI4">PADI4</option>
+                            <option title="PAFAH1B2" value="PAFAH1B2">PAFAH1B2</option>
+                            <option title="PAG1" value="PAG1">PAG1</option>
+                            <option title="PAK2" value="PAK2">PAK2</option>
+                            <option title="PAK4" value="PAK4">PAK4</option>
+                            <option title="PARG" value="PARG">PARG</option>
+                            <option title="PARP1" value="PARP1">PARP1</option>
+                            <option title="PARP3" value="PARP3">PARP3</option>
+                            <option title="PARP9" value="PARP9">PARP9</option>
+                            <option title="PAX5" value="PAX5">PAX5</option>
+                            <option title="PAX6" value="PAX6">PAX6</option>
+                            <option title="PAX9" value="PAX9">PAX9</option>
+                            <option title="PBK" value="PBK">PBK</option>
+                            <option title="PBX1" value="PBX1">PBX1</option>
+                            <option title="PBX3" value="PBX3">PBX3</option>
+                            <option title="PCDH12" value="PCDH12">PCDH12</option>
+                            <option title="PCDH7" value="PCDH7">PCDH7</option>
+                            <option title="PCNA" value="PCNA">PCNA</option>
+                            <option title="PCNP" value="PCNP">PCNP</option>
+                            <option title="PCSK9" value="PCSK9">PCSK9</option>
+                            <option title="PDCD1LG2" value="PDCD1LG2">PDCD1LG2</option>
+                            <option title="PDCD1" value="PDCD1">PDCD1</option>
+                            <option title="PDCD4" value="PDCD4">PDCD4</option>
+                            <option title="PDCD6" value="PDCD6">PDCD6</option>
+                            <option title="PDGFD" value="PDGFD">PDGFD</option>
+                            <option title="PDGFRB" value="PDGFRB">PDGFRB</option>
+                            <option title="PDIA3" value="PDIA3">PDIA3</option>
+                            <option title="PDLIM7" value="PDLIM7">PDLIM7</option>
+                            <option title="PDPK1" value="PDPK1">PDPK1</option>
+                            <option title="PDRG1" value="PDRG1">PDRG1</option>
+                            <option title="PEBP1" value="PEBP1">PEBP1</option>
+                            <option title="PEBP4" value="PEBP4">PEBP4</option>
+                            <option title="PERP" value="PERP">PERP</option>
+                            <option title="PEX5" value="PEX5">PEX5</option>
+                            <option title="PFKM" value="PFKM">PFKM</option>
+                            <option title="PFN1" value="PFN1">PFN1</option>
+                            <option title="PFN2" value="PFN2">PFN2</option>
+                            <option title="PGAP3" value="PGAP3">PGAP3</option>
+                            <option title="PGK1" value="PGK1">PGK1</option>
+                            <option title="PHEX" value="PHEX">PHEX</option>
+                            <option title="PHF13" value="PHF13">PHF13</option>
+                            <option title="PI4KA" value="PI4KA">PI4KA</option>
+                            <option title="PIK3CA" value="PIK3CA">PIK3CA</option>
+                            <option title="PIK3CB" value="PIK3CB">PIK3CB</option>
+                            <option title="PIM1" value="PIM1">PIM1</option>
+                            <option title="PIM3" value="PIM3">PIM3</option>
+                            <option title="PINX1" value="PINX1">PINX1</option>
+                            <option title="PIR" value="PIR">PIR</option>
+                            <option title="PITPNC1" value="PITPNC1">PITPNC1</option>
+                            <option title="PKMYT1" value="PKMYT1">PKMYT1</option>
+                            <option title="PKN1" value="PKN1">PKN1</option>
+                            <option title="PLA2G4A" value="PLA2G4A">PLA2G4A</option>
+                            <option title="PLAC8" value="PLAC8">PLAC8</option>
+                            <option title="PLAUR" value="PLAUR">PLAUR</option>
+                            <option title="PLCE1" value="PLCE1">PLCE1</option>
+                            <option title="PLEK2" value="PLEK2">PLEK2</option>
+                            <option title="PLEKHA1" value="PLEKHA1">PLEKHA1</option>
+                            <option title="PLK1" value="PLK1">PLK1</option>
+                            <option title="PLK2" value="PLK2">PLK2</option>
+                            <option title="PLK4" value="PLK4">PLK4</option>
+                            <option title="PLOD3" value="PLOD3">PLOD3</option>
+                            <option title="PLS3" value="PLS3">PLS3</option>
+                            <option title="PMPCB" value="PMPCB">PMPCB</option>
+                            <option title="PNKP" value="PNKP">PNKP</option>
+                            <option title="PODXL" value="PODXL">PODXL</option>
+                            <option title="POLB" value="POLB">POLB</option>
+                            <option title="POLD2" value="POLD2">POLD2</option>
+                            <option title="POLG" value="POLG">POLG</option>
+                            <option title="POPDC3" value="POPDC3">POPDC3</option>
+                            <option title="POSTN" value="POSTN">POSTN</option>
+                            <option title="POT1" value="POT1">POT1</option>
+                            <option title="POU4F1" value="POU4F1">POU4F1</option>
+                            <option title="POU5F1B" value="POU5F1B">POU5F1B</option>
+                            <option title="POU5F1" value="POU5F1">POU5F1</option>
+                            <option title="PPA1" value="PPA1">PPA1</option>
+                            <option title="PPARA" value="PPARA">PPARA</option>
+                            <option title="PPARG" value="PPARG">PPARG</option>
+                            <option title="PPIA" value="PPIA">PPIA</option>
+                            <option title="PPP1R13L" value="PPP1R13L">PPP1R13L</option>
+                            <option title="PPP2R3A" value="PPP2R3A">PPP2R3A</option>
+                            <option title="PRC1" value="PRC1">PRC1</option>
+                            <option title="PRDX1" value="PRDX1">PRDX1</option>
+                            <option title="PRDX2" value="PRDX2">PRDX2</option>
+                            <option title="PRKAA2" value="PRKAA2">PRKAA2</option>
+                            <option title="PRKACA" value="PRKACA">PRKACA</option>
+                            <option title="PRKCA" value="PRKCA">PRKCA</option>
+                            <option title="PRKCB" value="PRKCB">PRKCB</option>
+                            <option title="PRKCE" value="PRKCE">PRKCE</option>
+                            <option title="PRKCI" value="PRKCI">PRKCI</option>
+                            <option title="PRKDC" value="PRKDC">PRKDC</option>
+                            <option title="PRMT5" value="PRMT5">PRMT5</option>
+                            <option title="PRPF19" value="PRPF19">PRPF19</option>
+                            <option title="PRPF4B" value="PRPF4B">PRPF4B</option>
+                            <option title="PRRT2" value="PRRT2">PRRT2</option>
+                            <option title="PRRX1" value="PRRX1">PRRX1</option>
+                            <option title="PRRX2" value="PRRX2">PRRX2</option>
+                            <option title="PRSS23" value="PRSS23">PRSS23</option>
+                            <option title="PSAT1" value="PSAT1">PSAT1</option>
+                            <option title="PSMB8" value="PSMB8">PSMB8</option>
+                            <option title="PSMD13" value="PSMD13">PSMD13</option>
+                            <option title="PSMD9" value="PSMD9">PSMD9</option>
+                            <option title="PSME3" value="PSME3">PSME3</option>
+                            <option title="PSPC1" value="PSPC1">PSPC1</option>
+                            <option title="PTCH1" value="PTCH1">PTCH1</option>
+                            <option title="PTCRA" value="PTCRA">PTCRA</option>
+                            <option title="PTENP1" value="PTENP1">PTENP1</option>
+                            <option title="PTEN" value="PTEN">PTEN</option>
+                            <option title="PTGFRN" value="PTGFRN">PTGFRN</option>
+                            <option title="PTGS2" value="PTGS2">PTGS2</option>
+                            <option title="PTK2" value="PTK2">PTK2</option>
+                            <option title="PTMA" value="PTMA">PTMA</option>
+                            <option title="PTMS" value="PTMS">PTMS</option>
+                            <option title="PTPN22" value="PTPN22">PTPN22</option>
+                            <option title="PTPN6" value="PTPN6">PTPN6</option>
+                            <option title="PTPRCAP" value="PTPRCAP">PTPRCAP</option>
+                            <option title="PTPRC" value="PTPRC">PTPRC</option>
+                            <option title="PTPRD" value="PTPRD">PTPRD</option>
+                            <option title="PVT1" value="PVT1">PVT1</option>
+                            <option title="PXDN" value="PXDN">PXDN</option>
+                            <option title="PXMP4" value="PXMP4">PXMP4</option>
+                            <option title="PXN" value="PXN">PXN</option>
+                            <option title="PYGB" value="PYGB">PYGB</option>
+                            <option title="QSOX1" value="QSOX1">QSOX1</option>
+                            <option title="RAB12" value="RAB12">RAB12</option>
+                            <option title="RAB13" value="RAB13">RAB13</option>
+                            <option title="RAB14" value="RAB14">RAB14</option>
+                            <option title="RAB15" value="RAB15">RAB15</option>
+                            <option title="RAB25" value="RAB25">RAB25</option>
+                            <option title="RAB5A" value="RAB5A">RAB5A</option>
+                            <option title="RAC1" value="RAC1">RAC1</option>
+                            <option title="RAD18" value="RAD18">RAD18</option>
+                            <option title="RAD21" value="RAD21">RAD21</option>
+                            <option title="RAD23B" value="RAD23B">RAD23B</option>
+                            <option title="RAD50" value="RAD50">RAD50</option>
+                            <option title="RAD51AP1" value="RAD51AP1">RAD51AP1</option>
+                            <option title="RAD51C" value="RAD51C">RAD51C</option>
+                            <option title="RAD51" value="RAD51">RAD51</option>
+                            <option title="RAD52" value="RAD52">RAD52</option>
+                            <option title="RAD9A" value="RAD9A">RAD9A</option>
+                            <option title="RAI14" value="RAI14">RAI14</option>
+                            <option title="RALA" value="RALA">RALA</option>
+                            <option title="RALB" value="RALB">RALB</option>
+                            <option title="RASSF1" value="RASSF1">RASSF1</option>
+                            <option title="RBBP4" value="RBBP4">RBBP4</option>
+                            <option title="RBBP6" value="RBBP6">RBBP6</option>
+                            <option title="RBL1" value="RBL1">RBL1</option>
+                            <option title="RBM14" value="RBM14">RBM14</option>
+                            <option title="RBM38" value="RBM38">RBM38</option>
+                            <option title="RBM3" value="RBM3">RBM3</option>
+                            <option title="RBP1" value="RBP1">RBP1</option>
+                            <option title="RBPMS" value="RBPMS">RBPMS</option>
+                            <option title="RCC2" value="RCC2">RCC2</option>
+                            <option title="RCSD1" value="RCSD1">RCSD1</option>
+                            <option title="RECK" value="RECK">RECK</option>
+                            <option title="REG1A" value="REG1A">REG1A</option>
+                            <option title="REG4" value="REG4">REG4</option>
+                            <option title="RELA" value="RELA">RELA</option>
+                            <option title="RELB" value="RELB">RELB</option>
+                            <option title="RFC4" value="RFC4">RFC4</option>
+                            <option title="RFXANK" value="RFXANK">RFXANK</option>
+                            <option title="RHEB" value="RHEB">RHEB</option>
+                            <option title="RHOA" value="RHOA">RHOA</option>
+                            <option title="RHOB" value="RHOB">RHOB</option>
+                            <option title="RHOC" value="RHOC">RHOC</option>
+                            <option title="RIN2" value="RIN2">RIN2</option>
+                            <option title="RNASE1" value="RNASE1">RNASE1</option>
+                            <option title="RNASE3" value="RNASE3">RNASE3</option>
+                            <option title="RND3" value="RND3">RND3</option>
+                            <option title="RNF165" value="RNF165">RNF165</option>
+                            <option title="RNF2" value="RNF2">RNF2</option>
+                            <option title="RNF6" value="RNF6">RNF6</option>
+                            <option title="RNF8" value="RNF8">RNF8</option>
+                            <option title="ROCK1" value="ROCK1">ROCK1</option>
+                            <option title="ROCK2" value="ROCK2">ROCK2</option>
+                            <option title="ROGDI" value="ROGDI">ROGDI</option>
+                            <option title="ROMO1" value="ROMO1">ROMO1</option>
+                            <option title="RORB" value="RORB">RORB</option>
+                            <option title="ROS1" value="ROS1">ROS1</option>
+                            <option title="RPA1" value="RPA1">RPA1</option>
+                            <option title="RPA3" value="RPA3">RPA3</option>
+                            <option title="RPL36AL" value="RPL36AL">RPL36AL</option>
+                            <option title="RPN2" value="RPN2">RPN2</option>
+                            <option title="RPPH1" value="RPPH1">RPPH1</option>
+                            <option title="RPS27A" value="RPS27A">RPS27A</option>
+                            <option title="RPS3" value="RPS3">RPS3</option>
+                            <option title="RPS6KA6" value="RPS6KA6">RPS6KA6</option>
+                            <option title="RPS6KB1" value="RPS6KB1">RPS6KB1</option>
+                            <option title="RRM2B" value="RRM2B">RRM2B</option>
+                            <option title="RRM2" value="RRM2">RRM2</option>
+                            <option title="RSF1" value="RSF1">RSF1</option>
+                            <option title="RSPO1" value="RSPO1">RSPO1</option>
+                            <option title="RUNX3" value="RUNX3">RUNX3</option>
+                            <option title="RXRA" value="RXRA">RXRA</option>
+                            <option title="S100A4" value="S100A4">S100A4</option>
+                            <option title="S100A6" value="S100A6">S100A6</option>
+                            <option title="SACM1L" value="SACM1L">SACM1L</option>
+                            <option title="SALL4" value="SALL4">SALL4</option>
+                            <option title="SARS2" value="SARS2">SARS2</option>
+                            <option title="SCGB2A1" value="SCGB2A1">SCGB2A1</option>
+                            <option title="SCML1" value="SCML1">SCML1</option>
+                            <option title="SCN2A" value="SCN2A">SCN2A</option>
+                            <option title="SCRN1" value="SCRN1">SCRN1</option>
+                            <option title="SDHAF2" value="SDHAF2">SDHAF2</option>
+                            <option title="SDHD" value="SDHD">SDHD</option>
+                            <option title="SENP1" value="SENP1">SENP1</option>
+                            <option title="SENP6" value="SENP6">SENP6</option>
+                            <option title="SERPINB2" value="SERPINB2">SERPINB2</option>
+                            <option title="SERPINB5" value="SERPINB5">SERPINB5</option>
+                            <option title="SERPINE1" value="SERPINE1">SERPINE1</option>
+                            <option title="SERPINE2" value="SERPINE2">SERPINE2</option>
+                            <option title="SESN2" value="SESN2">SESN2</option>
+                            <option title="SESN3" value="SESN3">SESN3</option>
+                            <option title="SETD2" value="SETD2">SETD2</option>
+                            <option title="SETD3" value="SETD3">SETD3</option>
+                            <option title="SETDB1" value="SETDB1">SETDB1</option>
+                            <option title="SFMBT1" value="SFMBT1">SFMBT1</option>
+                            <option title="SFN" value="SFN">SFN</option>
+                            <option title="SFRP2" value="SFRP2">SFRP2</option>
+                            <option title="SGK1" value="SGK1">SGK1</option>
+                            <option title="SGPP1" value="SGPP1">SGPP1</option>
+                            <option title="SIAH1" value="SIAH1">SIAH1</option>
+                            <option title="SIRT1" value="SIRT1">SIRT1</option>
+                            <option title="SIRT3" value="SIRT3">SIRT3</option>
+                            <option title="SIRT6" value="SIRT6">SIRT6</option>
+                            <option title="SIRT7" value="SIRT7">SIRT7</option>
+                            <option title="SIX1" value="SIX1">SIX1</option>
+                            <option title="SKP2" value="SKP2">SKP2</option>
+                            <option title="SLC16A1" value="SLC16A1">SLC16A1</option>
+                            <option title="SLC22A18" value="SLC22A18">SLC22A18</option>
+                            <option title="SLC22A3" value="SLC22A3">SLC22A3</option>
+                            <option title="SLC2A1" value="SLC2A1">SLC2A1</option>
+                            <option title="SLC38A1" value="SLC38A1">SLC38A1</option>
+                            <option title="SLC39A14" value="SLC39A14">SLC39A14</option>
+                            <option title="SLC3A2" value="SLC3A2">SLC3A2</option>
+                            <option title="SLC6A11" value="SLC6A11">SLC6A11</option>
+                            <option title="SLC7A11" value="SLC7A11">SLC7A11</option>
+                            <option title="SLPI" value="SLPI">SLPI</option>
+                            <option title="SMAD4" value="SMAD4">SMAD4</option>
+                            <option title="SMARCA2" value="SMARCA2">SMARCA2</option>
+                            <option title="SMC1A" value="SMC1A">SMC1A</option>
+                            <option title="SMG1" value="SMG1">SMG1</option>
+                            <option title="SMOX" value="SMOX">SMOX</option>
+                            <option title="SNAI1" value="SNAI1">SNAI1</option>
+                            <option title="SNAI2" value="SNAI2">SNAI2</option>
+                            <option title="SNCA" value="SNCA">SNCA</option>
+                            <option title="SNCG" value="SNCG">SNCG</option>
+                            <option title="SNPH" value="SNPH">SNPH</option>
+                            <option title="SNTB2" value="SNTB2">SNTB2</option>
+                            <option title="SOCS1" value="SOCS1">SOCS1</option>
+                            <option title="SOCS3" value="SOCS3">SOCS3</option>
+                            <option title="SOCS6" value="SOCS6">SOCS6</option>
+                            <option title="SOD2" value="SOD2">SOD2</option>
+                            <option title="SOS1" value="SOS1">SOS1</option>
+                            <option title="SOX17" value="SOX17">SOX17</option>
+                            <option title="SOX2" value="SOX2">SOX2</option>
+                            <option title="SP1" value="SP1">SP1</option>
+                            <option title="SPARC" value="SPARC">SPARC</option>
+                            <option title="SPATA2" value="SPATA2">SPATA2</option>
+                            <option title="SPC25" value="SPC25">SPC25</option>
+                            <option title="SPDYA" value="SPDYA">SPDYA</option>
+                            <option title="SPHK1" value="SPHK1">SPHK1</option>
+                            <option title="SPIN1" value="SPIN1">SPIN1</option>
+                            <option title="SPNS1" value="SPNS1">SPNS1</option>
+                            <option title="SPOP" value="SPOP">SPOP</option>
+                            <option title="SPP1" value="SPP1">SPP1</option>
+                            <option title="SQSTM1" value="SQSTM1">SQSTM1</option>
+                            <option title="SRC" value="SRC">SRC</option>
+                            <option title="SREBF1" value="SREBF1">SREBF1</option>
+                            <option title="SRGAP1" value="SRGAP1">SRGAP1</option>
+                            <option title="SRP72" value="SRP72">SRP72</option>
+                            <option title="SSBP1" value="SSBP1">SSBP1</option>
+                            <option title="ST6GALNAC4" value="ST6GALNAC4">ST6GALNAC4</option>
+                            <option title="STARD4" value="STARD4">STARD4</option>
+                            <option title="STAT1" value="STAT1">STAT1</option>
+                            <option title="STAT3" value="STAT3">STAT3</option>
+                            <option title="STAT5A" value="STAT5A">STAT5A</option>
+                            <option title="STAT5B" value="STAT5B">STAT5B</option>
+                            <option title="STC2" value="STC2">STC2</option>
+                            <option title="STK11" value="STK11">STK11</option>
+                            <option title="STK17A" value="STK17A">STK17A</option>
+                            <option title="STMN1" value="STMN1">STMN1</option>
+                            <option title="STUB1" value="STUB1">STUB1</option>
+                            <option title="STXBP4" value="STXBP4">STXBP4</option>
+                            <option title="SUB1" value="SUB1">SUB1</option>
+                            <option title="SULF2" value="SULF2">SULF2</option>
+                            <option title="SUMO1P3" value="SUMO1P3">SUMO1P3</option>
+                            <option title="SUMO1" value="SUMO1">SUMO1</option>
+                            <option title="SYT13" value="SYT13">SYT13</option>
+                            <option title="TAF9" value="TAF9">TAF9</option>
+                            <option title="TAGLN2" value="TAGLN2">TAGLN2</option>
+                            <option title="TAP2" value="TAP2">TAP2</option>
+                            <option title="TAS2R8" value="TAS2R8">TAS2R8</option>
+                            <option title="TAX1BP3" value="TAX1BP3">TAX1BP3</option>
+                            <option title="TCEAL1" value="TCEAL1">TCEAL1</option>
+                            <option title="TCF7L2" value="TCF7L2">TCF7L2</option>
+                            <option title="TDRD6" value="TDRD6">TDRD6</option>
+                            <option title="TDRD9" value="TDRD9">TDRD9</option>
+                            <option title="TERC" value="TERC">TERC</option>
+                            <option title="TERF2" value="TERF2">TERF2</option>
+                            <option title="TERT" value="TERT">TERT</option>
+                            <option title="TEX11" value="TEX11">TEX11</option>
+                            <option title="TFAM" value="TFAM">TFAM</option>
+                            <option title="TGFA" value="TGFA">TGFA</option>
+                            <option title="TGFB1" value="TGFB1">TGFB1</option>
+                            <option title="TGFBI" value="TGFBI">TGFBI</option>
+                            <option title="TGM2" value="TGM2">TGM2</option>
+                            <option title="THOC2" value="THOC2">THOC2</option>
+                            <option title="THOC5" value="THOC5">THOC5</option>
+                            <option title="THY1" value="THY1">THY1</option>
+                            <option title="TIAM1" value="TIAM1">TIAM1</option>
+                            <option title="TIMP1" value="TIMP1">TIMP1</option>
+                            <option title="TIPARP" value="TIPARP">TIPARP</option>
+                            <option title="TJP1" value="TJP1">TJP1</option>
+                            <option title="TK1" value="TK1">TK1</option>
+                            <option title="TKTL1" value="TKTL1">TKTL1</option>
+                            <option title="TLK1" value="TLK1">TLK1</option>
+                            <option title="TLR9" value="TLR9">TLR9</option>
+                            <option title="TM4SF1" value="TM4SF1">TM4SF1</option>
+                            <option title="TMEM233" value="TMEM233">TMEM233</option>
+                            <option title="TMOD3" value="TMOD3">TMOD3</option>
+                            <option title="TMPRSS15" value="TMPRSS15">TMPRSS15</option>
+                            <option title="TMPRSS4" value="TMPRSS4">TMPRSS4</option>
+                            <option title="TNFAIP3" value="TNFAIP3">TNFAIP3</option>
+                            <option title="TNFRSF10B" value="TNFRSF10B">TNFRSF10B</option>
+                            <option title="TNFRSF12A" value="TNFRSF12A">TNFRSF12A</option>
+                            <option title="TNFRSF6B" value="TNFRSF6B">TNFRSF6B</option>
+                            <option title="TNFSF10" value="TNFSF10">TNFSF10</option>
+                            <option title="TNF" value="TNF">TNF</option>
+                            <option title="TNKS1BP1" value="TNKS1BP1">TNKS1BP1</option>
+                            <option title="TNNI3" value="TNNI3">TNNI3</option>
+                            <option title="TNS4" value="TNS4">TNS4</option>
+                            <option title="TOB1" value="TOB1">TOB1</option>
+                            <option title="TOP2A" value="TOP2A">TOP2A</option>
+                            <option title="TOPBP1" value="TOPBP1">TOPBP1</option>
+                            <option title="TP53BP1" value="TP53BP1">TP53BP1</option>
+                            <option title="TP53I3" value="TP53I3">TP53I3</option>
+                            <option title="TP53INP1" value="TP53INP1">TP53INP1</option>
+                            <option title="TP53TG1" value="TP53TG1">TP53TG1</option>
+                            <option title="TP53" value="TP53">TP53</option>
+                            <option title="TP63" value="TP63">TP63</option>
+                            <option title="TPD52" value="TPD52">TPD52</option>
+                            <option title="TPM1" value="TPM1">TPM1</option>
+                            <option title="TPP1" value="TPP1">TPP1</option>
+                            <option title="TPT1" value="TPT1">TPT1</option>
+                            <option title="TPX2" value="TPX2">TPX2</option>
+                            <option title="TRAF6" value="TRAF6">TRAF6</option>
+                            <option title="TRIAP1" value="TRIAP1">TRIAP1</option>
+                            <option title="TRIB1" value="TRIB1">TRIB1</option>
+                            <option title="TRIB3" value="TRIB3">TRIB3</option>
+                            <option title="TRIM29" value="TRIM29">TRIM29</option>
+                            <option title="TRIM31" value="TRIM31">TRIM31</option>
+                            <option title="TRIM36" value="TRIM36">TRIM36</option>
+                            <option title="TRIM37" value="TRIM37">TRIM37</option>
+                            <option title="TRIP4" value="TRIP4">TRIP4</option>
+                            <option title="TRPM8" value="TRPM8">TRPM8</option>
+                            <option title="TSPAN13" value="TSPAN13">TSPAN13</option>
+                            <option title="TTK" value="TTK">TTK</option>
+                            <option title="TUBB2A" value="TUBB2A">TUBB2A</option>
+                            <option title="TUG1" value="TUG1">TUG1</option>
+                            <option title="TWF1" value="TWF1">TWF1</option>
+                            <option title="TWIST1" value="TWIST1">TWIST1</option>
+                            <option title="TXNIP" value="TXNIP">TXNIP</option>
+                            <option title="TXNRD1" value="TXNRD1">TXNRD1</option>
+                            <option title="UBA7" value="UBA7">UBA7</option>
+                            <option title="UBE2D3" value="UBE2D3">UBE2D3</option>
+                            <option title="UBE3A" value="UBE3A">UBE3A</option>
+                            <option title="UBR5" value="UBR5">UBR5</option>
+                            <option title="UCA1" value="UCA1">UCA1</option>
+                            <option title="UCHL3" value="UCHL3">UCHL3</option>
+                            <option title="UCP2" value="UCP2">UCP2</option>
+                            <option title="UHRF1" value="UHRF1">UHRF1</option>
+                            <option title="UNC119B" value="UNC119B">UNC119B</option>
+                            <option title="UNC5A" value="UNC5A">UNC5A</option>
+                            <option title="UNC93B1" value="UNC93B1">UNC93B1</option>
+                            <option title="USP18" value="USP18">USP18</option>
+                            <option title="USP1" value="USP1">USP1</option>
+                            <option title="USP21" value="USP21">USP21</option>
+                            <option title="USP28" value="USP28">USP28</option>
+                            <option title="USP53" value="USP53">USP53</option>
+                            <option title="USP7" value="USP7">USP7</option>
+                            <option title="USP9X" value="USP9X">USP9X</option>
+                            <option title="UTRN" value="UTRN">UTRN</option>
+                            <option title="UVRAG" value="UVRAG">UVRAG</option>
+                            <option title="VAMP7" value="VAMP7">VAMP7</option>
+                            <option title="VAV2" value="VAV2">VAV2</option>
+                            <option title="VCP" value="VCP">VCP</option>
+                            <option title="VDAC1" value="VDAC1">VDAC1</option>
+                            <option title="VEGFA" value="VEGFA">VEGFA</option>
+                            <option title="VEGFC" value="VEGFC">VEGFC</option>
+                            <option title="VGF" value="VGF">VGF</option>
+                            <option title="VIM" value="VIM">VIM</option>
+                            <option title="VTN" value="VTN">VTN</option>
+                            <option title="WAS" value="WAS">WAS</option>
+                            <option title="WDR48" value="WDR48">WDR48</option>
+                            <option title="WEE1" value="WEE1">WEE1</option>
+                            <option title="WFDC2" value="WFDC2">WFDC2</option>
+                            <option title="WNT1" value="WNT1">WNT1</option>
+                            <option title="WNT2B" value="WNT2B">WNT2B</option>
+                            <option title="WNT3A" value="WNT3A">WNT3A</option>
+                            <option title="WNT7A" value="WNT7A">WNT7A</option>
+                            <option title="WRAP53" value="WRAP53">WRAP53</option>
+                            <option title="WWOX" value="WWOX">WWOX</option>
+                            <option title="XIAP" value="XIAP">XIAP</option>
+                            <option title="XIST" value="XIST">XIST</option>
+                            <option title="XPO1" value="XPO1">XPO1</option>
+                            <option title="XRCC1" value="XRCC1">XRCC1</option>
+                            <option title="XRCC2" value="XRCC2">XRCC2</option>
+                            <option title="XRCC3" value="XRCC3">XRCC3</option>
+                            <option title="XRCC4" value="XRCC4">XRCC4</option>
+                            <option title="XRCC5" value="XRCC5">XRCC5</option>
+                            <option title="XRCC6" value="XRCC6">XRCC6</option>
+                            <option title="YAP1" value="YAP1">YAP1</option>
+                            <option title="YBX1" value="YBX1">YBX1</option>
+                            <option title="YWHAZ" value="YWHAZ">YWHAZ</option>
+                            <option title="YY1" value="YY1">YY1</option>
+                            <option title="ZDHHC8" value="ZDHHC8">ZDHHC8</option>
+                            <option title="ZEB1" value="ZEB1">ZEB1</option>
+                            <option title="ZEB2" value="ZEB2">ZEB2</option>
+                            <option title="ZFYVE1" value="ZFYVE1">ZFYVE1</option>
+                            <option title="ZMAT3" value="ZMAT3">ZMAT3</option>
+                            <option title="ZMYM2" value="ZMYM2">ZMYM2</option>
+                            <option title="ZNF292" value="ZNF292">ZNF292</option>
+                            <option title="ZNF341" value="ZNF341">ZNF341</option>
+                            <option title="ZNF445" value="ZNF445">ZNF445</option>
+                            <option title="ZNF521" value="ZNF521">ZNF521</option>
+                            <option title="ZNF541" value="ZNF541">ZNF541</option>
+                            <option title="ZNF587" value="ZNF587">ZNF587</option>
+                            <option title="ZNF621" value="ZNF621">ZNF621</option>
+                            <option title="ZNF644" value="ZNF644">ZNF644</option>
+                            <option title="ZNF653" value="ZNF653">ZNF653</option>
+                            <option title="ZNF703" value="ZNF703">ZNF703</option>
+                            <option title="ZNF70" value="ZNF70">ZNF70</option>
+                            <option title="ZNF780A" value="ZNF780A">ZNF780A</option>
+                            <option title="ZNF787" value="ZNF787">ZNF787</option>
+                            <option title="ZNF91" value="ZNF91">ZNF91</option>
+                            <option title="ZZZ3" value="ZZZ3">ZZZ3</option>
+                            <option title="hsa-let-7b" value="hsa-let-7b">hsa-let-7b</option>
+                            <option title="hsa-let-7c" value="hsa-let-7c">hsa-let-7c</option>
+                            <option title="hsa-let-7g" value="hsa-let-7g">hsa-let-7g</option>
+                            <option title="hsa-miR-100" value="hsa-miR-100">hsa-miR-100</option>
+                            <option title="hsa-miR-106a" value="hsa-miR-106a">hsa-miR-106a</option>
+                            <option title="hsa-miR-106b" value="hsa-miR-106b">hsa-miR-106b</option>
+                            <option title="hsa-miR-107" value="hsa-miR-107">hsa-miR-107</option>
+                            <option title="hsa-miR-10a" value="hsa-miR-10a">hsa-miR-10a</option>
+                            <option title="hsa-miR-122" value="hsa-miR-122">hsa-miR-122</option>
+                            <option title="hsa-miR-1246" value="hsa-miR-1246">hsa-miR-1246</option>
+                            <option title="hsa-miR-125a" value="hsa-miR-125a">hsa-miR-125a</option>
+                            <option title="hsa-miR-125b-1" value="hsa-miR-125b-1">hsa-miR-125b-1</option>
+                            <option title="hsa-miR-126" value="hsa-miR-126">hsa-miR-126</option>
+                            <option title="hsa-miR-1275" value="hsa-miR-1275">hsa-miR-1275</option>
+                            <option title="hsa-miR-1290" value="hsa-miR-1290">hsa-miR-1290</option>
+                            <option title="hsa-miR-130a" value="hsa-miR-130a">hsa-miR-130a</option>
+                            <option title="hsa-miR-130b" value="hsa-miR-130b">hsa-miR-130b</option>
+                            <option title="hsa-miR-132" value="hsa-miR-132">hsa-miR-132</option>
+                            <option title="hsa-miR-1323" value="hsa-miR-1323">hsa-miR-1323</option>
+                            <option title="hsa-miR-133b" value="hsa-miR-133b">hsa-miR-133b</option>
+                            <option title="hsa-miR-135b" value="hsa-miR-135b">hsa-miR-135b</option>
+                            <option title="hsa-miR-136" value="hsa-miR-136">hsa-miR-136</option>
+                            <option title="hsa-miR-137" value="hsa-miR-137">hsa-miR-137</option>
+                            <option title="hsa-miR-138-2" value="hsa-miR-138-2">hsa-miR-138-2</option>
+                            <option title="hsa-miR-143" value="hsa-miR-143">hsa-miR-143</option>
+                            <option title="hsa-miR-144" value="hsa-miR-144">hsa-miR-144</option>
+                            <option title="hsa-miR-145" value="hsa-miR-145">hsa-miR-145</option>
+                            <option title="hsa-miR-148b" value="hsa-miR-148b">hsa-miR-148b</option>
+                            <option title="hsa-miR-149" value="hsa-miR-149">hsa-miR-149</option>
+                            <option title="hsa-miR-150" value="hsa-miR-150">hsa-miR-150</option>
+                            <option title="hsa-miR-155" value="hsa-miR-155">hsa-miR-155</option>
+                            <option title="hsa-miR-15a" value="hsa-miR-15a">hsa-miR-15a</option>
+                            <option title="hsa-miR-15b" value="hsa-miR-15b">hsa-miR-15b</option>
+                            <option title="hsa-miR-16-1" value="hsa-miR-16-1">hsa-miR-16-1</option>
+                            <option title="hsa-miR-181a-2" value="hsa-miR-181a-2">hsa-miR-181a-2</option>
+                            <option title="hsa-miR-181d" value="hsa-miR-181d">hsa-miR-181d</option>
+                            <option title="hsa-miR-182" value="hsa-miR-182">hsa-miR-182</option>
+                            <option title="hsa-miR-183" value="hsa-miR-183">hsa-miR-183</option>
+                            <option title="hsa-miR-185" value="hsa-miR-185">hsa-miR-185</option>
+                            <option title="hsa-miR-186" value="hsa-miR-186">hsa-miR-186</option>
+                            <option title="hsa-miR-187" value="hsa-miR-187">hsa-miR-187</option>
+                            <option title="hsa-miR-18a" value="hsa-miR-18a">hsa-miR-18a</option>
+                            <option title="hsa-miR-190b" value="hsa-miR-190b">hsa-miR-190b</option>
+                            <option title="hsa-miR-191" value="hsa-miR-191">hsa-miR-191</option>
+                            <option title="hsa-miR-195" value="hsa-miR-195">hsa-miR-195</option>
+                            <option title="hsa-miR-196b" value="hsa-miR-196b">hsa-miR-196b</option>
+                            <option title="hsa-miR-199b" value="hsa-miR-199b">hsa-miR-199b</option>
+                            <option title="hsa-miR-19a" value="hsa-miR-19a">hsa-miR-19a</option>
+                            <option title="hsa-miR-200a" value="hsa-miR-200a">hsa-miR-200a</option>
+                            <option title="hsa-miR-200c" value="hsa-miR-200c">hsa-miR-200c</option>
+                            <option title="hsa-miR-203" value="hsa-miR-203">hsa-miR-203</option>
+                            <option title="hsa-miR-204" value="hsa-miR-204">hsa-miR-204</option>
+                            <option title="hsa-miR-205" value="hsa-miR-205">hsa-miR-205</option>
+                            <option title="hsa-miR-206" value="hsa-miR-206">hsa-miR-206</option>
+                            <option title="hsa-miR-208a" value="hsa-miR-208a">hsa-miR-208a</option>
+                            <option title="hsa-miR-20a" value="hsa-miR-20a">hsa-miR-20a</option>
+                            <option title="hsa-miR-21" value="hsa-miR-21">hsa-miR-21</option>
+                            <option title="hsa-miR-210" value="hsa-miR-210">hsa-miR-210</option>
+                            <option title="hsa-miR-211" value="hsa-miR-211">hsa-miR-211</option>
+                            <option title="hsa-miR-212" value="hsa-miR-212">hsa-miR-212</option>
+                            <option title="hsa-miR-214" value="hsa-miR-214">hsa-miR-214</option>
+                            <option title="hsa-miR-216a" value="hsa-miR-216a">hsa-miR-216a</option>
+                            <option title="hsa-miR-22" value="hsa-miR-22">hsa-miR-22</option>
+                            <option title="hsa-miR-221" value="hsa-miR-221">hsa-miR-221</option>
+                            <option title="hsa-miR-222" value="hsa-miR-222">hsa-miR-222</option>
+                            <option title="hsa-miR-223" value="hsa-miR-223">hsa-miR-223</option>
+                            <option title="hsa-miR-224" value="hsa-miR-224">hsa-miR-224</option>
+                            <option title="hsa-miR-23a" value="hsa-miR-23a">hsa-miR-23a</option>
+                            <option title="hsa-miR-23b" value="hsa-miR-23b">hsa-miR-23b</option>
+                            <option title="hsa-miR-26b" value="hsa-miR-26b">hsa-miR-26b</option>
+                            <option title="hsa-miR-27a" value="hsa-miR-27a">hsa-miR-27a</option>
+                            <option title="hsa-miR-296" value="hsa-miR-296">hsa-miR-296</option>
+                            <option title="hsa-miR-29a" value="hsa-miR-29a">hsa-miR-29a</option>
+                            <option title="hsa-miR-29c" value="hsa-miR-29c">hsa-miR-29c</option>
+                            <option title="hsa-miR-301a" value="hsa-miR-301a">hsa-miR-301a</option>
+                            <option title="hsa-miR-301b" value="hsa-miR-301b">hsa-miR-301b</option>
+                            <option title="hsa-miR-302a" value="hsa-miR-302a">hsa-miR-302a</option>
+                            <option title="hsa-miR-30a" value="hsa-miR-30a">hsa-miR-30a</option>
+                            <option title="hsa-miR-31" value="hsa-miR-31">hsa-miR-31</option>
+                            <option title="hsa-miR-3138" value="hsa-miR-3138">hsa-miR-3138</option>
+                            <option title="hsa-miR-32" value="hsa-miR-32">hsa-miR-32</option>
+                            <option title="hsa-miR-320a" value="hsa-miR-320a">hsa-miR-320a</option>
+                            <option title="hsa-miR-330" value="hsa-miR-330">hsa-miR-330</option>
+                            <option title="hsa-miR-335" value="hsa-miR-335">hsa-miR-335</option>
+                            <option title="hsa-miR-33a" value="hsa-miR-33a">hsa-miR-33a</option>
+                            <option title="hsa-miR-34a" value="hsa-miR-34a">hsa-miR-34a</option>
+                            <option title="hsa-miR-34b" value="hsa-miR-34b">hsa-miR-34b</option>
+                            <option title="hsa-miR-34c" value="hsa-miR-34c">hsa-miR-34c</option>
+                            <option title="hsa-miR-372" value="hsa-miR-372">hsa-miR-372</option>
+                            <option title="hsa-miR-374a" value="hsa-miR-374a">hsa-miR-374a</option>
+                            <option title="hsa-miR-374b" value="hsa-miR-374b">hsa-miR-374b</option>
+                            <option title="hsa-miR-375" value="hsa-miR-375">hsa-miR-375</option>
+                            <option title="hsa-miR-381" value="hsa-miR-381">hsa-miR-381</option>
+                            <option title="hsa-miR-410" value="hsa-miR-410">hsa-miR-410</option>
+                            <option title="hsa-miR-411" value="hsa-miR-411">hsa-miR-411</option>
+                            <option title="hsa-miR-421" value="hsa-miR-421">hsa-miR-421</option>
+                            <option title="hsa-miR-424" value="hsa-miR-424">hsa-miR-424</option>
+                            <option title="hsa-miR-449a" value="hsa-miR-449a">hsa-miR-449a</option>
+                            <option title="hsa-miR-451" value="hsa-miR-451">hsa-miR-451</option>
+                            <option title="hsa-miR-484" value="hsa-miR-484">hsa-miR-484</option>
+                            <option title="hsa-miR-495" value="hsa-miR-495">hsa-miR-495</option>
+                            <option title="hsa-miR-498" value="hsa-miR-498">hsa-miR-498</option>
+                            <option title="hsa-miR-499" value="hsa-miR-499">hsa-miR-499</option>
+                            <option title="hsa-miR-503" value="hsa-miR-503">hsa-miR-503</option>
+                            <option title="hsa-miR-504" value="hsa-miR-504">hsa-miR-504</option>
+                            <option title="hsa-miR-519d" value="hsa-miR-519d">hsa-miR-519d</option>
+                            <option title="hsa-miR-582" value="hsa-miR-582">hsa-miR-582</option>
+                            <option title="hsa-miR-621" value="hsa-miR-621">hsa-miR-621</option>
+                            <option title="hsa-miR-668" value="hsa-miR-668">hsa-miR-668</option>
+                            <option title="hsa-miR-874" value="hsa-miR-874">hsa-miR-874</option>
+                            <option title="hsa-miR-92b" value="hsa-miR-92b">hsa-miR-92b</option>
+                            <option title="hsa-miR-93" value="hsa-miR-93">hsa-miR-93</option>
+                            <option title="hsa-miR-95" value="hsa-miR-95">hsa-miR-95</option>
+                            <option title="hsa-miR-96" value="hsa-miR-96">hsa-miR-96</option>
+                            <option title="hsa-miR-98" value="hsa-miR-98">hsa-miR-98</option>
+                            <option title="hsa-miR-99a" value="hsa-miR-99a">hsa-miR-99a</option>
+                            <option title="hsa-miR-99b" value="hsa-miR-99b">hsa-miR-99b</option>
+                            <option title="hsa-miR-1281" value="hsa-miR-1281">hsa-miR-1281</option>
+                            <option title="hsa-miR-422a" value="hsa-miR-422a">hsa-miR-422a</option>
+                            <option title="hsa-miR-448" value="hsa-miR-448">hsa-miR-448</option>
+                            <option title="hsa-miR-492" value="hsa-miR-492">hsa-miR-492</option>
+                            <option title="hsa-miR-613" value="hsa-miR-613">hsa-miR-613</option>
+                            <option title="hsa-miR-622" value="hsa-miR-622">hsa-miR-622</option>
+                            <option title="hsa-miR-630" value="hsa-miR-630">hsa-miR-630</option>
+                            <option title="hsa-miR-762" value="hsa-miR-762">hsa-miR-762</option>
+                            <option title="hsa-miR-302e" value="hsa-miR-302e">hsa-miR-302e</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div class="button_center">
+                    <button type="button" onclick="getvalue()" class="button_origin bg_submit over">Submit</button>
+                    <button type="reset" onclick="clearAll()" class="button_origin bg_reset over">Reset</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="right">
+            <div class="title_center over">Kaplan-Meier survival curves</div>
+            <div style="height:80%;width:90%;position:relative">
+                <div id="a1" style="float: left;width:50%;height: 100%;">
+                    <div style="height: 90%;width:100%;">
+                        <img id="img_left" src="{{ url_for('static', filename='images/kong.png') }}" alt="survival1">
+                    </div>
+                    <div style="margin-top:2%;height:8%;">
+                        <button id="os_button" class="button_origin bg_download over" value="download" style="width: 25%">Download</button>
+                    </div>
+                </div>
+                <div id="a2" style="float: left;width:50%;height: 100%;">
+                    <div style="height: 90%;width:100%;">
+                        <img id="img_right" src="{{ url_for('static', filename='images/kong.png') }}" alt="survival2">
+                    </div>
+                    <div style="margin-top:2%;height:8%;">
+                        <button id="pfi_button" class="button_origin bg_download over" value="download" style="width: 25%">Download</button>
+                    </div>
+                </div>
+                <div id="a3"
+                     style="top: 10%;margin-left:25%;width:50%;height: 80%;position: absolute;">
+                    <img id="load_img" src="{{ url_for('static', filename='images/loading1.gif') }}">
+                </div>
+            </div>
+            <style>
+                .bg_download {
+                    width: auto;
+                    font-size: 1.8rem;
+                    background-color: rgb(156, 217, 185);
+                    margin-left: 45%;
+                }
+
+                .bg_download:hover {
+                    font-size: 1.8rem;
+                    background-color: rgb(40, 137, 85);
+                }
+            </style>
+
+        </div>
+    </div>
+    <script>
+        selectMultip.register();
+
+        $("#load_img").hide();
+        $(".bg_download").hide();
+
+        $("#os_button").click(function () {
+            var img = document.getElementById('img_left');
+            var url = img.src;
+            var a = document.createElement('a');
+            var event = new MouseEvent('click')
+            a.download = '图片名称'
+            a.href = url;
+            a.dispatchEvent(event);
+        })
+        $("#pfi_button").click(function () {
+            var img = document.getElementById('img_right');
+            var url = img.src;
+            var a = document.createElement('a');
+            var event = new MouseEvent('click')
+            a.download = '图片名称'
+            a.href = url;
+            a.dispatchEvent(event);
+        })
+
+        function clearAll() {
+            $(".cancer_type option").removeAttr("selected");
+            $(".cancer_type option").removeAttr("choose");
+            $(".cancer_type").find("option[value='all']").attr("selected", true);
+            selectMultip.register();
+
+            if ($(".factor_type option:selected").val() != "all") {
+                $(".factor_type option").removeAttr("selected");
+                $(".factor_type").find("option[value='all']").attr("selected", true);
+            }
+
+            $(".factor option").removeAttr("selected");
+            $("#input3").val("");
+            while ($(".factor").find('option').length) {
+                $(".factor").empty();
+            }
+            three = ['AATK', 'ABCB1', 'ABCB7', 'ABCC2', 'ABCC3', 'ABCC4', 'ABCG2', 'ABL1', 'ACD', 'ACLY', 'ACSL4', 'ACTL8', 'ACTN1', 'ACVR2B', 'ADAM12', 'ADAM9', 'ADAMTS20', 'ADAMTS9', 'ADORA2B', 'ADRM1', 'AIMP1', 'AKR1B10', 'AKR1C3', 'AKT1', 'AKTIP', 'ALCAM', 'ALDH1A1', 'ALDOA', 'ALG3', 'ALK', 'ALOX12', 'ALOX15', 'ALPI', 'ALPP', 'AMDHD1', 'ANG', 'ANLN', 'ANO3', 'ANPEP', 'ANXA1', 'ANXA2P2', 'ANXA2', 'ANXA3', 'ANXA5', 'ANXA6', 'ANXA7', 'APAF1', 'APBB1', 'APEX1', 'APEX2', 'API5', 'APPL1', 'APTX', 'ARHGAP15', 'ARHGDIB', 'ARID1A', 'ARID1B', 'ARNT', 'ARRB1', 'AR', 'ASAH1', 'ASF1B', 'ASPM', 'ASS1', 'ASXL1', 'ATAD1', 'ATF2', 'ATF3', 'ATF4', 'ATF5', 'ATG12', 'ATG5', 'ATM', 'ATP4A', 'ATP6V1C1', 'AURKA', 'AURKB', 'B2M', 'BAK1', 'BANP', 'BATF', 'BAX', 'BBC3', 'BBS9', 'BCAR3', 'BCCIP', 'BCL11A', 'BCL2L11', 'BCL2L1', 'BCL2', 'BCOR', 'BECN1', 'BEST2', 'BEX1', 'BIN1', 'BIN2', 'BIRC2', 'BIRC5', 'BIRC7', 'BLM', 'BMI1', 'BNIP3', 'BRAF', 'BRCA1', 'BRCA2', 'BRD4', 'BSG', 'BTG1', 'BTG2', 'BTG3', 'BTK', 'BUB1B', 'BUB1', 'C1GALT1', 'C4orf19', 'CA9', 'CACNA2D1', 'CALR', 'CAMTA1', 'CAPNS1', 'CARHSP1', 'CARM1', 'CASP3', 'CAT', 'CAV1', 'CBR1', 'CBS', 'CBX8', 'CCAR1', 'CCDC136', 'CCDC34', 'CCDC88A', 'CCL3', 'CCL8', 'CCNB1', 'CCNB2', 'CCND1', 'CCNG1', 'CCNK', 'CCR2', 'CCR5', 'CCR6', 'CD163', 'CD164', 'CD200R1', 'CD274', 'CD34', 'CD40', 'CD44', 'CD47', 'CD59', 'CD63', 'CD69', 'CD82', 'CDC14A', 'CDC20', 'CDC25A', 'CDC25C', 'CDC27', 'CDCA2', 'CDH1', 'CDK16', 'CDK1', 'CDK2', 'CDK4', 'CDK6', 'CDK8', 'CDK9', 'CDKN1A', 'CDKN1B', 'CDKN1C', 'CDKN2AIP', 'CDKN2A', 'CDKN3', 'CDT1', 'CELF3', 'CELSR2', 'CEP164', 'CFL1', 'CFL2', 'CHAF1B', 'CHD4', 'CHEK1', 'CHEK2', 'CHRNA5', 'CHUK', 'CKAP4', 'CKB', 'CKMT1A', 'CKS1B', 'CLCA4', 'CLDN1', 'CLDN4', 'CLDN6', 'CLIC1', 'CLIC4', 'CLIP3', 'CLPTM1L', 'CLSPN', 'CMPK2', 'COBL', 'COL11A1', 'COL15A1', 'COL1A1', 'COL3A1', 'COL4A1', 'COL5A1', 'COL5A2', 'COLQ', 'CORO1A', 'COX7B', 'CPA4', 'CPEB2', 'CPE', 'CPNE1', 'CPT1A', 'CR1L', 'CREB1', 'CREB5', 'CRIP2', 'CSNK2A2', 'CTBP2', 'CTDSPL', 'CTLA4', 'CTNNB1', 'CTSB', 'CTSD', 'CTSH', 'CUL2', 'CXCL1', 'CXCL5', 'CXCR4', 'CXXC5', 'CYP20A1', 'CYP21A2', 'CYP26A1', 'DAB2IP', 'DAG1', 'DAPL1', 'DCLK1', 'DDB2', 'DDIT3', 'DDX25', 'DDX60', 'DEPDC1B', 'DERL1', 'DGCR5', 'DGCR8', 'DICER1', 'DIP2C', 'DLL4', 'DLX2', 'DNAJB4', 'DNMT1', 'DNMT3B', 'DOCK4', 'DPYSL3', 'DRAM1', 'DTL', 'DUOX2', 'DUSP1', 'DUSP6', 'E2F1', 'E2F7', 'E2F8', 'ECT2', 'EDA', 'EEF1E1', 'EEF2K', 'EGFR', 'EGF', 'EGLN1', 'EGOT', 'EGR1', 'EHMT2', 'EIF2AK2', 'EIF2AK3', 'EIF4A1', 'EIF4EBP1', 'EIF4E', 'EIF4G1', 'ELAVL1', 'ELAVL4', 'ELP3', 'EME1', 'EMP2', 'EMP3', 'ENC1', 'ENG', 'ENPP1', 'ENPP2', 'EPAS1', 'EPCAM', 'EPHA2', 'EPHA3', 'EPHA5', 'EPHB1', 'EPHB2', 'EPS8', 'ERAP1', 'ERBB2', 'ERBB3', 'ERCC1', 'ERG', 'ERLIN1', 'ERMP1', 'ERN1', 'ERP29', 'ESR1', 'ETV4', 'ETV6', 'EXO1', 'EZH2', 'F11R', 'FABP7', 'FAM114A1', 'FAM114A2', 'FAM135B', 'FAM168A', 'FAM83D', 'FANCD2', 'FASN', 'FBN2', 'FBP1', 'FBXL14', 'FBXW7', 'FDPS', 'FERMT1', 'FES', 'FGF13', 'FGF19', 'FGFR1', 'FGFR2', 'FGFR3', 'FHIT', 'FHL2', 'FHL5', 'FLCN', 'FLI1', 'FLT1', 'FLT3LG', 'FLT3', 'FN1', 'FOLR3', 'FOSL1', 'FOS', 'FOXC2', 'FOXD1', 'FOXL1', 'FOXM1', 'FOXN2', 'FOXO3', 'FOXP1', 'FSCN1', 'FST', 'FTH1', 'FUS', 'FUT8', 'FXYD3', 'FZD2', 'FZD4', 'FZR1', 'G0S2', 'G3BP1', 'GADD45A', 'GADD45GIP1', 'GALC', 'GAS2L3', 'GAS5', 'GBP1', 'GDF15', 'GDNF', 'GGA2', 'GIMAP6', 'GINS2', 'GJB2', 'GLI1', 'GLIS2', 'GLS2', 'GLUL', 'GMFG', 'GNA11', 'GNG11', 'GOLPH3', 'GPLD1', 'GPR135', 'GPX4', 'GRIK5', 'GRN', 'GRPR', 'GSK3A', 'GSK3B', 'GSTM3', 'GSTP1', 'GTSE1', 'H19', 'H6PD', 'HAP1', 'HAS2', 'HAVCR2', 'HBP1', 'HCLS1', 'HCP5', 'HDAC1', 'HDAC2', 'HDAC4', 'HDAC6', 'HDAC9', 'HDGF', 'HELLS', 'HIF1A', 'HINT1', 'HJURP', 'HK2', 'HLF', 'HLTF', 'HMBOX1', 'HMGA1', 'HMGB1', 'HMGB2', 'HMGB3', 'HMMR', 'HMOX1', 'HNF1A', 'HOOK1', 'HOTAIR', 'HOXA10', 'HOXB13', 'HOXB7', 'HOXC13', 'HPSE', 'HRAS', 'HSD17B6', 'HSP90AA1', 'HSP90B1', 'HSPA1A', 'HSPA4', 'HSPA5', 'HSPB1', 'HTRA1', 'HULC', 'IAPP', 'ICA1', 'ICAM1', 'ICAM2', 'ICAM3', 'ID1', 'IDH2', 'IDO1', 'IER3', 'IER5', 'IFI30', 'IFI35', 'IFIT1', 'IFNG', 'IGF1R', 'IGF1', 'IGF2BP3', 'IGF2', 'IGFBP3', 'IGFBP5', 'IGFBP7', 'IGFN1', 'IL11', 'IL17REL', 'IL1B', 'IL24', 'IL32', 'IL34', 'IL6', 'IL7R', 'IL9R', 'INA', 'ING4', 'INPP4B', 'INPPL1', 'IQGAP2', 'IQGAP3', 'IRAK2', 'IRF1', 'ISG20', 'ITGA2', 'ITGA3', 'ITGA6', 'ITGAM', 'ITGB1', 'ITGB5', 'ITPR1', 'ITPRIP', 'IVNS1ABP', 'JUND', 'JUN', 'JUP', 'KAT5', 'KCNB2', 'KCNJ12', 'KCNQ1OT1', 'KDM4C', 'KDM5B', 'KDR', 'KEAP1', 'KIF18A', 'KIF18B', 'KIF20A', 'KIF23', 'KIF2A', 'KLC4', 'KLF10', 'KLF3', 'KLF4', 'KPNA2', 'KRAS', 'KRT14', 'KRT86', 'KRT8', 'L1CAM', 'LACTB2', 'LAMB1', 'LAMC2', 'LAMP2', 'LAMP3', 'LAPTM4B', 'LAPTM5', 'LCN2', 'LDHA', 'LGALS1', 'LGALS3', 'LGALS7', 'LGALS9', 'LGR4', 'LHX3', 'LIFR', 'LIF', 'LIG4', 'LIMS1', 'LIN28A', 'LIN28B', 'LINS1', 'LITAF', 'LMX1B', 'LOXL2', 'LPCAT1', 'LPCAT2', 'LPCAT3', 'LPCAT4', 'LRIG1', 'LTF', 'LUC7L2', 'LYPD6B', 'LYPD6', 'LYPLAL1', 'LZTS2', 'MAD2L1', 'MAD2L2', 'MAF1', 'MAGED1', 'MAGI1', 'MALAT1', 'MAP1LC3A', 'MAP2K1', 'MAP2K2', 'MAP2K6', 'MAP2K7', 'MAP3K4', 'MAPK13', 'MAPK14', 'MAPK15', 'MAPK1', 'MAPK4', 'MAPK6', 'MAPK7', 'MAPK9', 'MARCKS', 'MARCO', 'MASTL', 'MATK', 'MAVS', 'MCAM', 'MCL1', 'MCM10', 'MCM3', 'MCM9', 'MDC1', 'MDM2', 'MECOM', 'MEF2D', 'MELK', 'METTL3', 'MET', 'MGAT5', 'MGMT', 'MICB', 'MIIP', 'MKI67', 'MLH1', 'MMD', 'MMP9', 'MOGAT1', 'MORF4L2', 'MSH2', 'MSI1', 'MSI2', 'MSRA', 'MTDH', 'MTOR', 'MTRF1', 'MUC1', 'MVP', 'MYB', 'MYC', 'MYO1B', 'MYO5C', 'NANOG', 'NBN', 'NCL', 'NDRG1', 'NDRG2', 'NEAT1', 'NEIL2', 'NEK1', 'NEK2', 'NEK4', 'NFATC1', 'NFE2L2', 'NFIA', 'NFIL3', 'NFKB1', 'NFKBIA', 'NMD3', 'NME1', 'NOB1', 'NOC3L', 'NOL3', 'NOTCH1', 'NOTCH2', 'NOX4', 'NPAS2', 'NPM1', 'NPY', 'NQO1', 'NR2C2', 'NRP1', 'NT5E', 'NUAK1', 'NUDT15', 'NUMB', 'OGG1', 'OLA1', 'OLIG2', 'OPTN', 'OSMR', 'OTUD4', 'OTUD5', 'P2RX7', 'PADI4', 'PAFAH1B2', 'PAG1', 'PAK2', 'PAK4', 'PARG', 'PARP1', 'PARP3', 'PARP9', 'PAX5', 'PAX6', 'PAX9', 'PBK', 'PBX1', 'PBX3', 'PCDH12', 'PCDH7', 'PCNA', 'PCNP', 'PCSK9', 'PDCD1LG2', 'PDCD1', 'PDCD4', 'PDCD6', 'PDGFD', 'PDGFRB', 'PDIA3', 'PDLIM7', 'PDPK1', 'PDRG1', 'PEBP1', 'PEBP4', 'PERP', 'PEX5', 'PFKM', 'PFN1', 'PFN2', 'PGAP3', 'PGK1', 'PHEX', 'PHF13', 'PI4KA', 'PIK3CA', 'PIK3CB', 'PIM1', 'PIM3', 'PINX1', 'PIR', 'PITPNC1', 'PKMYT1', 'PKN1', 'PLA2G4A', 'PLAC8', 'PLAUR', 'PLCE1', 'PLEK2', 'PLEKHA1', 'PLK1', 'PLK2', 'PLK4', 'PLOD3', 'PLS3', 'PMPCB', 'PNKP', 'PODXL', 'POLB', 'POLD2', 'POLG', 'POPDC3', 'POSTN', 'POT1', 'POU4F1', 'POU5F1B', 'POU5F1', 'PPA1', 'PPARA', 'PPARG', 'PPIA', 'PPP1R13L', 'PPP2R3A', 'PRC1', 'PRDX1', 'PRDX2', 'PRKAA2', 'PRKACA', 'PRKCA', 'PRKCB', 'PRKCE', 'PRKCI', 'PRKDC', 'PRMT5', 'PRPF19', 'PRPF4B', 'PRRT2', 'PRRX1', 'PRRX2', 'PRSS23', 'PSAT1', 'PSMB8', 'PSMD13', 'PSMD9', 'PSME3', 'PSPC1', 'PTCH1', 'PTCRA', 'PTENP1', 'PTEN', 'PTGFRN', 'PTGS2', 'PTK2', 'PTMA', 'PTMS', 'PTPN22', 'PTPN6', 'PTPRCAP', 'PTPRC', 'PTPRD', 'PVT1', 'PXDN', 'PXMP4', 'PXN', 'PYGB', 'QSOX1', 'RAB12', 'RAB13', 'RAB14', 'RAB15', 'RAB25', 'RAB5A', 'RAC1', 'RAD18', 'RAD21', 'RAD23B', 'RAD50', 'RAD51AP1', 'RAD51C', 'RAD51', 'RAD52', 'RAD9A', 'RAI14', 'RALA', 'RALB', 'RASSF1', 'RBBP4', 'RBBP6', 'RBL1', 'RBM14', 'RBM38', 'RBM3', 'RBP1', 'RBPMS', 'RCC2', 'RCSD1', 'RECK', 'REG1A', 'REG4', 'RELA', 'RELB', 'RFC4', 'RFXANK', 'RHEB', 'RHOA', 'RHOB', 'RHOC', 'RIN2', 'RNASE1', 'RNASE3', 'RND3', 'RNF165', 'RNF2', 'RNF6', 'RNF8', 'ROCK1', 'ROCK2', 'ROGDI', 'ROMO1', 'RORB', 'ROS1', 'RPA1', 'RPA3', 'RPL36AL', 'RPN2', 'RPPH1', 'RPS27A', 'RPS3', 'RPS6KA6', 'RPS6KB1', 'RRM2B', 'RRM2', 'RSF1', 'RSPO1', 'RUNX3', 'RXRA', 'S100A4', 'S100A6', 'SACM1L', 'SALL4', 'SARS2', 'SCGB2A1', 'SCML1', 'SCN2A', 'SCRN1', 'SDHAF2', 'SDHD', 'SENP1', 'SENP6', 'SERPINB2', 'SERPINB5', 'SERPINE1', 'SERPINE2', 'SESN2', 'SESN3', 'SETD2', 'SETD3', 'SETDB1', 'SFMBT1', 'SFN', 'SFRP2', 'SGK1', 'SGPP1', 'SIAH1', 'SIRT1', 'SIRT3', 'SIRT6', 'SIRT7', 'SIX1', 'SKP2', 'SLC16A1', 'SLC22A18', 'SLC22A3', 'SLC2A1', 'SLC38A1', 'SLC39A14', 'SLC3A2', 'SLC6A11', 'SLC7A11', 'SLPI', 'SMAD4', 'SMARCA2', 'SMC1A', 'SMG1', 'SMOX', 'SNAI1', 'SNAI2', 'SNCA', 'SNCG', 'SNPH', 'SNTB2', 'SOCS1', 'SOCS3', 'SOCS6', 'SOD2', 'SOS1', 'SOX17', 'SOX2', 'SP1', 'SPARC', 'SPATA2', 'SPC25', 'SPDYA', 'SPHK1', 'SPIN1', 'SPNS1', 'SPOP', 'SPP1', 'SQSTM1', 'SRC', 'SREBF1', 'SRGAP1', 'SRP72', 'SSBP1', 'ST6GALNAC4', 'STARD4', 'STAT1', 'STAT3', 'STAT5A', 'STAT5B', 'STC2', 'STK11', 'STK17A', 'STMN1', 'STUB1', 'STXBP4', 'SUB1', 'SULF2', 'SUMO1P3', 'SUMO1', 'SYT13', 'TAF9', 'TAGLN2', 'TAP2', 'TAS2R8', 'TAX1BP3', 'TCEAL1', 'TCF7L2', 'TDRD6', 'TDRD9', 'TERC', 'TERF2', 'TERT', 'TEX11', 'TFAM', 'TGFA', 'TGFB1', 'TGFBI', 'TGM2', 'THOC2', 'THOC5', 'THY1', 'TIAM1', 'TIMP1', 'TIPARP', 'TJP1', 'TK1', 'TKTL1', 'TLK1', 'TLR9', 'TM4SF1', 'TMEM233', 'TMOD3', 'TMPRSS15', 'TMPRSS4', 'TNFAIP3', 'TNFRSF10B', 'TNFRSF12A', 'TNFRSF6B', 'TNFSF10', 'TNF', 'TNKS1BP1', 'TNNI3', 'TNS4', 'TOB1', 'TOP2A', 'TOPBP1', 'TP53BP1', 'TP53I3', 'TP53INP1', 'TP53TG1', 'TP53', 'TP63', 'TPD52', 'TPM1', 'TPP1', 'TPT1', 'TPX2', 'TRAF6', 'TRIAP1', 'TRIB1', 'TRIB3', 'TRIM29', 'TRIM31', 'TRIM36', 'TRIM37', 'TRIP4', 'TRPM8', 'TSPAN13', 'TTK', 'TUBB2A', 'TUG1', 'TWF1', 'TWIST1', 'TXNIP', 'TXNRD1', 'UBA7', 'UBE2D3', 'UBE3A', 'UBR5', 'UCA1', 'UCHL3', 'UCP2', 'UHRF1', 'UNC119B', 'UNC5A', 'UNC93B1', 'USP18', 'USP1', 'USP21', 'USP28', 'USP53', 'USP7', 'USP9X', 'UTRN', 'UVRAG', 'VAMP7', 'VAV2', 'VCP', 'VDAC1', 'VEGFA', 'VEGFC', 'VGF', 'VIM', 'VTN', 'WAS', 'WDR48', 'WEE1', 'WFDC2', 'WNT1', 'WNT2B', 'WNT3A', 'WNT7A', 'WRAP53', 'WWOX', 'XIAP', 'XIST', 'XPO1', 'XRCC1', 'XRCC2', 'XRCC3', 'XRCC4', 'XRCC5', 'XRCC6', 'YAP1', 'YBX1', 'YWHAZ', 'YY1', 'ZDHHC8', 'ZEB1', 'ZEB2', 'ZFYVE1', 'ZMAT3', 'ZMYM2', 'ZNF292', 'ZNF341', 'ZNF445', 'ZNF521', 'ZNF541', 'ZNF587', 'ZNF621', 'ZNF644', 'ZNF653', 'ZNF703', 'ZNF70', 'ZNF780A', 'ZNF787', 'ZNF91', 'ZZZ3', 'hsa-let-7b', 'hsa-let-7c', 'hsa-let-7g', 'hsa-miR-100', 'hsa-miR-106a', 'hsa-miR-106b', 'hsa-miR-107', 'hsa-miR-10a', 'hsa-miR-122', 'hsa-miR-1246', 'hsa-miR-125a', 'hsa-miR-125b-1', 'hsa-miR-126', 'hsa-miR-1275', 'hsa-miR-1290', 'hsa-miR-130a', 'hsa-miR-130b', 'hsa-miR-132', 'hsa-miR-1323', 'hsa-miR-133b', 'hsa-miR-135b', 'hsa-miR-136', 'hsa-miR-137', 'hsa-miR-138-2', 'hsa-miR-143', 'hsa-miR-144', 'hsa-miR-145', 'hsa-miR-148b', 'hsa-miR-149', 'hsa-miR-150', 'hsa-miR-155', 'hsa-miR-15a', 'hsa-miR-15b', 'hsa-miR-16-1', 'hsa-miR-181a-2', 'hsa-miR-181d', 'hsa-miR-182', 'hsa-miR-183', 'hsa-miR-185', 'hsa-miR-186', 'hsa-miR-187', 'hsa-miR-18a', 'hsa-miR-190b', 'hsa-miR-191', 'hsa-miR-195', 'hsa-miR-196b', 'hsa-miR-199b', 'hsa-miR-19a', 'hsa-miR-200a', 'hsa-miR-200c', 'hsa-miR-203', 'hsa-miR-204', 'hsa-miR-205', 'hsa-miR-206', 'hsa-miR-208a', 'hsa-miR-20a', 'hsa-miR-21', 'hsa-miR-210', 'hsa-miR-211', 'hsa-miR-212', 'hsa-miR-214', 'hsa-miR-216a', 'hsa-miR-22', 'hsa-miR-221', 'hsa-miR-222', 'hsa-miR-223', 'hsa-miR-224', 'hsa-miR-23a', 'hsa-miR-23b', 'hsa-miR-26b', 'hsa-miR-27a', 'hsa-miR-296', 'hsa-miR-29a', 'hsa-miR-29c', 'hsa-miR-301a', 'hsa-miR-301b', 'hsa-miR-302a', 'hsa-miR-30a', 'hsa-miR-31', 'hsa-miR-3138', 'hsa-miR-32', 'hsa-miR-320a', 'hsa-miR-330', 'hsa-miR-335', 'hsa-miR-33a', 'hsa-miR-34a', 'hsa-miR-34b', 'hsa-miR-34c', 'hsa-miR-372', 'hsa-miR-374a', 'hsa-miR-374b', 'hsa-miR-375', 'hsa-miR-381', 'hsa-miR-410', 'hsa-miR-411', 'hsa-miR-421', 'hsa-miR-424', 'hsa-miR-449a', 'hsa-miR-451', 'hsa-miR-484', 'hsa-miR-495', 'hsa-miR-498', 'hsa-miR-499', 'hsa-miR-503', 'hsa-miR-504', 'hsa-miR-519d', 'hsa-miR-582', 'hsa-miR-621', 'hsa-miR-668', 'hsa-miR-874', 'hsa-miR-92b', 'hsa-miR-93', 'hsa-miR-95', 'hsa-miR-96', 'hsa-miR-98', 'hsa-miR-99a', 'hsa-miR-99b', 'hsa-miR-1281', 'hsa-miR-422a', 'hsa-miR-448', 'hsa-miR-492', 'hsa-miR-613', 'hsa-miR-622', 'hsa-miR-630', 'hsa-miR-762', 'hsa-miR-302e'];
+            for (var i = 0; i < three.length; i++) {
+                $(".factor").append("<option value=\"" + three[i] + "\" >" + three[i] + "</option>");
+            }
+        }
+
+        function getvalue() {
+            var value1 = $(".cancer_type option:selected").val();
+            var value2 = $(".factor_type option:selected").val();
+            var value3 = $("#input3").val();
+            if (value1 == "all") {
+                alert("plesase select one or more cancer type");
+                return;
+            }
+            if (value2 == "all") {
+                alert("plesase select factor type");
+                return;
+            }
+            if (value3 == "all" || value3 == "") {
+                alert("please search or select fator");
+                return;
+            }
+            if (value1 && value2 && value3) {
+                var data = {ct: value1, ft: value2, f: value3};
+                $.ajax({
+                    url: "/survival_data",
+                    type: "POST",
+                    data: data,
+                    beforeSend: function () {
+                        $("#img_left").hide();
+                        $("#img_right").hide();
+                        $(".bg_download").hide();
+                        $("#load_img").show();
+                    },
+                    success: function (res) {
+                        $("#load_img").hide();
+                        if (res.error) {
+                            alert(res.error);
+
+                        } else {
+                            var left = res.left;
+                            var right = res.right;
+                            $("#img_left").attr('src', "{{ url_for('static',filename='images/') }}" + res.left);
+                            $("#img_right").attr('src', "{{ url_for('static',filename='images/') }}" + res.right);
+                            $("#OS_a").attr('herf', "{{ url_for('static',filename='images/') }}" + res.left);
+                            $("#PFI_a").attr('herf', "{{ url_for('static',filename='images/') }}" + res.right);
+                            $("#img_left").show();
+                            $("#img_right").show();
+                            $(".bg_download").show();
+                        }
+                    }
+                })
+            }
+
+        }
+    </script>
+    <script>
+        var different_list = {};
+        different_list['all'] = ['hsa-miR-371a-5p', 'hsa-miR-450b-5p', 'hsa-miR-149', 'hsa-miR-92b', 'hsa-miR-1290', 'hsa-miR-1275', 'hsa-miR-27b-3p', 'hsa-miR-136', 'hsa-miR-99b', 'hsa-miR-216a', 'hsa-miR-3138', 'hsa-miR-194-3p', 'hsa-miR-125b-1', 'hsa-miR-324-3p', 'hsa-miR-210', 'hsa-miR-449b-5p', 'hsa-miR-421', 'hsa-miR-181d', 'hsa-miR-223-3p', 'hsa-miR-484', 'hsa-miR-93-3p', 'hsa-miR-145-5p', 'hsa-miR-29a-3p', 'hsa-miR-186', 'hsa-miR-15a-3p', 'hsa-miR-524-5p', 'hsa-miR-138-1-3p', 'hsa-miR-342-3p', 'hsa-miR-621', 'hsa-miR-193a-3p', 'hsa-miR-30a-3p', 'hsa-miR-541-3p', 'hsa-miR-422a', 'hsa-miR-34b', 'hsa-miR-138-2', 'PFI.time', 'hsa-miR-455-3p', 'hsa-miR-494-3p', 'hsa-miR-302', 'hsa-miR-195-5p', 'hsa-miR-498', 'hsa-miR-302e', 'hsa-miR-16-1-3p', 'hsa-miR-126', 'OS.time', 'hsa-miR-132', 'hsa-miR-31-5p', 'hsa-miR-668', 'hsa-miR-495-3p', 'hsa-miR-155', 'OS.status', 'hsa-miR-1246', 'hsa-miR-320', 'hsa-miR-214', 'cancer', 'hsa-miR-204', 'hsa-miR-147a', 'hsa-miR-328-3p', 'hsa-miR-133b', 'hsa-miR-22-5p', 'hsa-miR-107', 'hsa-miR-200a-3p', 'hsa-miR-122-5p', 'hsa-miR-340-5p', 'hsa-miR-622', 'hsa-miR-143-3p', 'hsa-miR-25a', 'hsa-miR-449', 'hsa-miR-410', 'hsa-miR-106b', 'hsa-let-7b', 'hsa-let-7g', 'hsa-miR-372', 'hsa-miR-770-5p', 'hsa-miR-106a', 'hsa-miR-21', 'hsa-miR-296-5p', 'hsa-miR-135b', 'hsa-miR-19a', 'hsa-miR-451a', 'Unnamed: 0', 'hsa-miR-125a', 'hsa-miR-499a-5p', 'hsa-miR-504', 'hsa-miR-744-5p', 'hsa-miR-26b-5p', 'hsa-miR-212', 'hsa-miR-330', 'hsa-miR-208a', 'hsa-miR-10a', 'hsa-miR-486-5p', 'hsa-miR-519d', 'hsa-miR-144-5p', 'hsa-miR-378a-3p', 'hsa-miR-18a-5p', 'hsa-miR-33a-5p', 'hsa-miR-146b-3p', 'hsa-miR-874', 'hsa-let-7c', 'hsa-miR-26a-1-3p', 'hsa-miR-23b', 'hsa-miR-338-3p', 'hsa-miR-34c-5p', 'hsa-miR-30b-5p', 'hsa-miR-411', 'hsa-let-7d-5p', 'hsa-miR-137', 'hsa-miR-215-5p', 'hsa-miR-99a', 'hsa-miR-142-3p', 'hsa-miR-27a-5p', 'hsa-miR-191', 'hsa-miR-148b', 'hsa-miR-503', 'hsa-miR-448', 'hsa-miR-130b', 'hsa-miR-1271-5p', 'hsa-miR-483-5p', 'hsa-miR-374a', 'hsa-miR-96-5p', 'hsa-miR-211', 'hsa-miR-187', 'hsa-miR-196b', 'hsa-miR-32-5p', 'hsa-miR-381-3p', 'hsa-miR-95-5p', 'hsa-miR-613', 'hsa-miR-301b', 'hsa-miR-222-3p', 'hsa-miR-193b-5p', 'hsa-miR-582', 'hsa-miR-383-5p', 'hsa-miR-525-3p', 'hsa-miR-454-3p', 'hsa-miR-375', 'hsa-miR-345-5p', 'hsa-miR-185-3p', 'hsa-miR-762', 'hsa-miR-20a-5p', 'hsa-miR-205-5p', 'hsa-miR-15b', 'hsa-miR-130a', 'hsa-miR-590-3p', 'hsa-miR-190b', 'hsa-miR-1323', 'hsa-miR-1281', 'hsa-miR-423-5p', 'hsa-miR-17-5p', 'hsa-miR-100', 'hsa-miR-181a', 'hsa-miR-34a', 'hsa-miR-221-3p', 'hsa-miR-183-5p', 'hsa-miR-301a', 'hsa-miR-492', 'hsa-miR-206', 'hsa-miR-199b', 'hsa-miR-574-3p', 'hsa-miR-335', 'hsa-miR-374b', 'hsa-miR-146a-5p', 'hsa-miR-182-5p', 'hsa-miR-98-5p', 'PFI.status', 'hsa-miR-23a-3p', 'hsa-miR-630', 'hsa-miR-224', 'hsa-miR-200c', 'hsa-miR-139-5p', 'hsa-miR-339-5p', 'hsa-miR-203a-3p', 'hsa-miR-424', 'hsa-miR-29c', 'hsa-miR-150', 'hsa-miR-671-5p', 'CORO1A', 'CDT1', 'CLIC1', 'EME1', 'PCDHB9', 'KIF2A', 'GNG11', 'EMP2', 'SLC26A2', 'PSME3', 'GPR15LG', 'PINX1', 'SYT13', 'PFI.time', 'CHIT1', 'STAT5A', 'ERG', 'AURKA', 'ARHGAP15', 'IFNG', 'PDGFD', 'C1GALT1', 'COL4A1', 'HSPB1', 'PARP9', 'RAB12', 'MAPK7', 'HOTAIR', 'TK1', 'HDAC4', 'FZR1', 'SLC3A2', 'PLCE1', 'ISG15', 'EHMT2', 'CLDN1', 'MORF4L2', 'MAP2K2', 'GLUL', 'RPL36AL', 'SOCS1', 'FAM201A', 'LINS1', 'PDRG1', 'EGOT', 'CTLA4', 'PARG', 'E2F8', 'LUM', 'ACLY', 'ESR1', 'CDHR1', 'EPAS1', 'SRSF2', 'ASXL1', 'BTG2', 'NEAT1', 'NEO1', 'SNTB2', 'CA9', 'LAMP2', 'HSPA4', 'RSF1', 'MDC1', 'NPY', 'CPT1A', 'TRIAP1', 'EGR1', 'MET', 'MAD2L1', 'TP53I3', 'HRH1', 'RNF6', 'PRKCB', 'PRRT2', 'OTUD4', 'ZNF292', 'IGF1', 'PARP3', 'RBPMS', 'IL11', 'SMARCA2', 'TNFRSF10B', 'ROCK1', 'ATG16L2', 'CARHSP1', 'RPA3', 'HPSE', 'FGF19', 'HJURP', 'STK11', 'MEF2D', 'ZMAT3', 'NF1', 'EIF4G1', 'SGK1', 'PFKM', 'KRT13', 'IGFBP3', 'BCL2L11', 'FUT8', 'ZPR1', 'RHOC', 'HMGA1', 'XIAP', 'PCSK9', 'RPS6KA6', 'ITGA6', 'ROBO1', 'PVT1', 'PMPCB', 'HINT1', 'SMAD3', 'APAF1', 'TRIB1', 'FES', 'RAB5A', 'CDCA2', 'XBP1P1', 'SLC6A11', 'TAF9', 'BRCA2', 'USP28', 'ERGIC2', 'VGF', 'CD200R1', 'DUSP3', 'HDAC9', 'ACTL8', 'miR22HG', 'ADAM9', 'IRAK2', 'PPA1', 'ATF2', 'PCDH7', 'TLK1', 'MAPK13', 'ABCB1', 'AIMP1', 'FLT3LG', 'SRSF1', 'MGAT5', 'WNT3A', 'KDM4C', 'CCR5', 'BUB1', 'ART3', 'USP53', 'RPA1', 'FDPS', 'NUDT15', 'WEE1', 'INA', 'CCNB2', 'DUSP6', 'P2RX7', 'GNG12', 'UNC93B1', 'NDRG2', 'LCN2', 'CKMT1A', 'PDLIM4', 'GRN', 'TDRD6', 'UPP1', 'RAD51AP1', 'CCNK', 'PEBP4', 'GJB2', 'ARID1A', 'FLCN', 'PIM1', 'CD40', 'TAX1BP3', 'TP53INP1', 'NR2C2', 'PCNP', 'C2CD5', 'ENPP2', 'TRIM37', 'PRKCI', 'ALDH18A1', 'SOWAHC', 'BTK', 'CPA4', 'VDAC1', 'HIF1A', 'ITGA3', 'LYPLAL1', 'SENP1', 'NEK2', 'PID1', 'LINC00473', 'UBE2D3', 'OLA1', 'ICAM2', 'RBBP4', 'LAMB1', 'REG4', 'XRCC6', 'CCN2', 'JAG2', 'APPL1', 'NDRG1', 'B2M', 'PRSS23', 'PDPK1', 'TNFRSF6B', 'TGFA', 'EFCAB14', 'MAPK1', 'MTDH', 'MPC1', 'EIF4E', 'TM4SF1', 'DAPL1', 'H2AX', 'TRIM31', 'LMNTD1', 'SOCS3', 'ANXA5', 'MYO5C', 'ELAVL4', 'EPHA3', 'ETV4', 'GADD45GIP1', 'CCR6', 'BORA', 'CYP21A2', 'PADI4', 'SNCA', 'BCL11A', 'ITGA2', 'CHEK2', 'NID2', 'ERMP1', 'GINS2', 'LYPD6B', 'PRSS8', 'SMG1', 'TNFRSF1A', 'XRCC2', 'SPNS1', 'BEST2', 'CDC25A', 'ENPP1', 'DOCK4', 'MAP1LC3A', 'PAG1', 'CDK2', 'CAMK2G', 'MCL1', 'USP1', 'KRAS', 'RBM38', 'PTGS1', 'UVRAG', 'PGK1', 'ARPC1B', 'SERPINB5', 'TKTL1', 'RUNX3', 'HTRA1', 'CHRM3', 'FBLN1', 'PROM1', 'ATG5', 'SRC', 'RELB', 'BSG', 'RAD18', 'CLIC4', 'FABP7', 'MYC', 'CCAR1', 'BCCIP', 'VAV2', 'CD69', 'KCNJ12', 'FGFR3', 'SGPP1', 'JUP', 'BRD4', 'ATP4A', 'H6PD', 'FOS', 'CTC1', 'SLC39A14', 'SESN3', 'DAB2IP', 'ERCC1', 'KHDRBS3', 'RND3', 'APTX', 'CLSPN', 'EGLN1', 'IDO1', 'CPEB2', 'TP73-AS1', 'RAB14', 'AKR1C3', 'PFN1', 'WNT7A', 'CREB5', 'ABL1', 'ISG20', 'PERP', 'ACVR2B', 'ERCC2', 'PGBD5', 'SESN2', 'ADAMTS9', 'ABCC4', 'MAD2L2', 'LRPAP1', 'PAX5', 'COL3A1', 'RELA', 'FHIP2B', 'AR', 'FBP1', 'ACTN1', 'LIMS1', 'RNASE1', 'PTPA', 'PRKCE', 'JUND', 'PEBP1', 'MAPK4', 'TP53BP1', 'PLAGL1', 'MELK', 'POSTN', 'TP53', 'ZNF653', 'EDA', 'ACSL4', 'AKTIP', 'ZNF71', 'SSBP1', 'EPHA5', 'KLC4', 'MAP2K1', 'PITPNC1', 'SALL4', 'MTOR', 'MSMO1', 'AURKB', 'THBS2', 'LIN28A', 'MCM3', 'DLX2', 'NUMB', 'HULC', 'RPS6KB1', 'SFRP2', 'ANKRD40CL', 'IGF1R', 'CD164', 'GRPR', 'LTN1', 'ITGAM', 'PLK4', 'RIN2', 'DTL', 'RCSD1', 'FOXC2', 'SNPH', 'CBR1', 'PPARA', 'PHEX', 'PIK3CD', 'INPP4B', 'OGG1', 'ALCAM', 'FGF13', 'PPP2R3A', 'EPHB1', 'MAVS', 'PARN', 'GOLPH3', 'IL24', 'SIX1', 'NFKB1', 'POPDC3', 'FOXN2', 'S100P', 'CDK9', 'PSMB8', 'MARCKS', 'ZEB2', 'SKP2', 'G0S2', 'FOXD1', 'RAD52', 'ECT2', 'TJP1', 'ITGB1', 'MAP3K8', 'L1CAM', 'PIK3CB', 'PRPF19', 'ADAM12', 'MAPK9', 'TBX1', 'NKX2-2', 'POLD2', 'FUS', 'DUOX2', 'PRRX1', 'MMP9', 'EGFR', 'PTPN6', 'ENPP4', 'GSK3B', 'COL1A2', 'CD163', 'RHOB', 'ROGDI', 'H2AJ', 'ACD', 'COL1A1', 'TDRD9', 'KAT5', 'BCL2', 'ALPP', 'NBN', 'ZNF787', 'CLDN4', 'KCNQ1OT1', 'SPP1', 'TUG1', 'PXDN', 'XIST', 'PTPN22', 'DLL4', 'ROMO1', 'TNNI3', 'GPR135', 'OS.time', 'KRT19', 'BIRC5', 'TNS4', 'SARS2', 'TSC22D1', 'PIM3', 'ZMYM2', 'BAX', 'KIF23', 'PRPF4B', 'POLG', 'COBL', 'MUC5B', 'CDC14A', 'GNMT', 'MMP1', 'ERLIN1', 'PLEKHA1', 'TRIP4', 'RNF2', 'JUN', 'MAPK14', 'WDR1', 'TSPAN13', 'SFMBT1', 'DGCR5', 'PNKP', 'URI1', 'CXCR4', 'HLTF', 'RCC2', 'TRIM44', 'CHEK1', 'DDB2', 'HK2', 'UBE4A', 'RSPO1', 'TNKS1BP1', 'HOXA10', 'LGR4', 'MMP11', 'FAM83D', 'FXYD3', 'HSPA5', 'BBC3', 'TCIM', 'TIMP3', 'PFI.status', 'CCND2', 'FOXM1', 'ADRM1', 'POU2AF1', 'PARP1', 'H2BC9', 'ICA1', 'CYP26A1', 'PAX9', 'TEX11', 'AKR1B10', 'CBX8', 'GPX2', 'DCN', 'HMGB3', 'IVNS1ABP', 'LPCAT2', 'BCOR', 'VAV3', 'XRCC3', 'MOGAT1', 'UCA1', 'CXCL1', 'CBS', 'IL1B', 'RNASE3', 'SSH1', 'CCDC34', 'CD34', 'PAMR1', 'NOL3', 'ZNF587', 'DUSP1', 'COL15A1', 'HMBOX1', 'C4orf19', 'PDIA4', 'PTGFRN', 'ANO3', 'NECTIN3', 'YY1', 'RXRA', 'CDC20', 'LATS1', 'PLOD3', 'FGFR2', 'BBS9', 'PLEK2', 'GAL3ST4', 'IL9R', 'LACTB2', 'ARID1B', 'CXCL10', 'GDF15', 'LITAF', 'EGF', 'CXCL8', 'ARRB1', 'CSNK2A2', 'B4GALNT3', 'RPS27A', 'CLCA4', 'LUC7L2', 'RNF8', 'SLC16A1', 'GLIPR1L1', 'KDM5B', 'ALOX15', 'PBX1', 'RNF181', 'FZD2', 'TOPBP1', 'HAVCR2', 'RRM2B', 'CLDN6', 'PSPC1', 'ALG3', 'MGMT', 'SPARC', 'ZNF445', 'UBA7', 'TIMP1', 'WFDC2', 'ZNRD2', 'MMP13', 'CKB', 'WNT11', 'SLC7A8', 'TAP2', 'HELLS', 'SIRT6', 'DKC1', 'INPPL1', 'ADORA2B', 'MECOM', 'PTGS2', 'ZNF10', 'LPCAT4', 'STX17', 'CCN4', 'COL5A1', 'HCLS1', 'FASN', 'RBBP6', 'SMC1A', 'DHDH', 'NEK4', 'FERMT1', 'SUB1', 'TGFB1', 'TNFRSF21', 'OS.status', 'WNT1', 'cancer', 'CTNNB1', 'MAGI1', 'GAS2L3', 'LINC00261', 'TRPM8', 'EIF4A1', 'MTRF1', 'IGF2', 'DNMT3B', 'STMN1', 'TCF7L2', 'CTSD', 'ATF5', 'LPCAT1', 'NEIL2', 'CLIP3', 'ITGB5', 'KAT8', 'CALR', 'RBM14', 'CCL20', 'ID1', 'MAPK15', 'SPDYA', 'YAP1', 'STC2', 'PAX6', 'MUC1', 'MSI2', 'RALA', 'LMX1B', 'CCNG1', 'PLA2G4A', 'TIAM1', 'RAD23B', 'TNFRSF12A', 'FOLR3', 'MRE11', 'HDAC2', 'MAP2K6', 'HRAS', 'SCRN1', 'VSTM2L', 'VCP', 'KEAP1', 'NUAK1', 'ASAH1', 'IFIT1', 'XRCC4', 'CTSH', 'GPX4', 'FGFBP1', 'TNFRSF1B', 'PIR', 'DERL1', 'NFIL3', 'TPT1', 'POT1', 'AMDHD1', 'NIBAN2', 'CFL2', 'CXCL11', 'DDX60', 'ZEB1', 'LIN28B', 'CCDC65', 'RHOA', 'CKAP4', 'OLIG2', 'GIMAP6', 'ATF4', 'GAS5', 'NFIA', 'PSMD9', 'PFN2', 'HSPB2', 'TBCC', 'GBP1', 'TAS2R8', 'RALB', 'CASP3', 'MIIP', 'PAK2', 'HDAC1', 'APBB1', 'LINC00518', 'DAND5', 'KRT86', 'PKMYT1', 'E2F7', 'FHL5', 'GSTM3', 'ALOX12', 'NEK1', 'FST', 'PPARG', 'CAT', 'LGALS1', 'FSCN1', 'CD63', 'TAGLN2', 'SP1', 'TRIB3', 'WDR46', 'SLC22A3', 'SIRPA', 'ERBB2', 'SIGLEC15', 'GDNF', 'SERPINA2', 'NQO1', 'ITPR1', 'ASS1', 'TERC', 'GSTM1', 'TUBB2A', 'COL17A1', 'SOD2', 'SIRT1', 'VEGFA', 'PLS3', 'LGALS8', 'ERBB3', 'PPIA', 'TYRO3', 'HMGB2', 'IRF1', 'SETDB1', 'PAX1', 'POLB', 'CHAF1B', 'PLAC8', 'BUB1B', 'PAWR', 'UNC119B', 'ZZZ3', 'FAM114A2', 'GLIS2', 'KLF3', 'TNFSF10', 'SETD3', 'ROS1', 'ALDH1A1', 'VTN', 'BRCA1', 'NMD3', 'MAP2K7', 'EIF2AK3', 'TERT', 'IGFBP7', 'MALAT1', 'SENP6', 'SOS1', 'CELF3', 'DCLK1', 'MAGED1', 'FOSL1', 'TMOD3', 'PRDX2', 'BIRC2', 'DNMT1', 'CLTRN', 'BCL2L1', 'NPAS2', 'CCDC88A', 'MMD', 'MSRA', 'SPAG9', 'ZNF644', 'IRAG2', 'SERPINB2', 'ZNF521', 'MATK', 'MDM2', 'ARNT', 'PIK3CA', 'PDCD1', 'POU5F1B', 'IGFBP5', 'BIRC7', 'ELAVL1', 'PODXL', 'CCNB1', 'CEP164', 'EIF2AK2', 'EZH2', 'TINCR', 'CXXC5', 'ABCC2', 'FOXO3', 'TRAP1', 'CCDC136', 'CUL2', 'STUB1', 'PCK1', 'MX1', 'ANXA6', 'RBL1', 'COL5A2', 'PXN', 'SETD2', 'ZNF780A', 'KRT2', 'SIRT3', 'DDIT3', 'CCND1', 'MCM10', 'ANXA1', 'FOXL1', 'CEP43', 'FTH1', 'CDC25B', 'LRIG1', 'BIN2', 'CDKN2A', 'CPE', 'CAMTA1', 'BAK1', 'IP6K2', 'HNF1A', 'HMMR', 'HSP90B1', 'PHF20L1', 'SCML1', 'CTBP2', 'THOC2', 'ERAP1', 'RACK1', 'TYMS', 'LAMP3', 'DENND2B', 'FZD4', 'CCL8', 'HOOK1', 'TRIM33', 'RAB15', 'TP73', 'RTN4RL2', 'RBM3', 'GLS2', 'RPSA', 'UBR5', 'SMAD4', 'PCLAF', 'SPATA2', 'NRP1', 'PLAUR', 'SRP72', 'TMPRSS4', 'E2F1', 'YBX1', 'TXNIP', 'PEG10', 'FHL2', 'TMEM233', 'DAB2', 'WNT2B', 'AFP', 'SRGAP1', 'NFE2L2', 'ZNF91', 'LYPD6', 'AKT1', 'STAT3', 'COX7B', 'SLC22A18', 'CDC27', 'KLHDC7B', 'CPNE1', 'IL32', 'TERF2', 'SPOP', 'PTEN', 'GRIK5', 'IGFN1', 'MVP', 'SERPINE1', 'HSP90AA1', 'FGFR1', 'MSLN', 'ANXA7', 'HDAC6', 'USP18', 'KRT8', 'MIB1', 'GHR', 'PKM', 'S100A4', 'SERPINE2', 'CD59', 'KRT14', 'TNF', 'XPO1', 'TPM1', 'IQGAP3', 'UCHL3', 'TPX2', 'BTG3', 'RPN2', 'LINC01600', 'PEX5', 'ICAM1', 'APEX2', 'UCP2', 'ADGRG1', 'PPP1R12A', 'NOS3', 'CDKN1B', 'BANP', 'PTMS', 'LDHA', 'FAM114A1', 'TP63', 'ALDH2', 'SMARCC1', 'IFI30', 'BNIP3', 'MYB', 'TPD52', 'ZNF621', 'SLC19A3', 'RAD9A', 'TLR9', 'WWOX', 'CELSR2', 'RAD51C', 'YWHAZ', 'RFC4', 'CXCL5', 'MICB', 'HSPA1A', 'LTBP1', 'PRKDC', 'ALPI', 'PAK4', 'CREM', 'LDHB', 'MAPK6', 'CYP20A1', 'PTPRD', 'SFN', 'HCP5', 'FBXL14', 'ANLN', 'MSI1', 'MSH2', 'ELP3', 'ERP29', 'ETV6', 'FBXW7', 'ING4', 'UIMC1', 'PAK5', 'SPC25', 'USP9X', 'QSOX1', 'NFATC1', 'KRT4', 'APEX1', 'PKN1', 'USP7', 'MAP3K4', 'OSMR', 'HLF', 'RBP1', 'FAM135B', 'RAI14', 'S100A6', 'COL11A1', 'PTCRA', 'TNFAIP3', 'PDCD6', 'WAS', 'FN1', 'LAPTM4B', 'FLI1', 'NPM1', 'PRKAA2', 'COLQ', 'ATF3', 'SULF2', 'SUMO1', 'CKS1B', 'ANXA2', 'ATP5PD', 'IL7R', 'SOCS6', 'IL34', 'GTSE1', 'ITGA1', 'USP21', 'G3BP1', 'EIF4EBP1', 'ATM', 'CR1L', 'BMI1', 'LTF', 'MYO1B', 'SQSTM1', 'PRRX2', 'CDKN3', 'TFAM', 'PAFAH1B2', 'FOSL2', 'EIF5B', 'CD47', 'CMPK2', 'GSTP1', 'VEGFC', 'BEX1', 'BTG1', 'MKI67', 'PCDH12', 'CDKN2AIP', 'CDKN1C', 'AGAP2-AS1', 'NCL', 'TPP1', 'BIN1', 'PTENP1', 'PTPRCAP', 'STXBP4', 'KLF4', 'BRAF', 'JAG1', 'ZNF341', 'FHIT', 'FAM168A', 'DIP2C', 'BAZ1A', 'PDCD4', 'AK4', 'GGA2', 'MCM9', 'P3H2', 'PLK2', 'RPS6KA3', 'CDK4', 'RFXANK', 'F11R', 'ANXA2P2', 'TNFRSF10C', 'ALDOA', 'TGFBI', 'SPAST', 'TRIM36', 'PSMC2', 'DDX25', 'KLF10', 'RRM2', 'NFKBIA', 'PBK', 'PRC1', 'TMPRSS15', 'SNCG', 'CHUK', 'FLT1', 'PTHLH', 'TP53TG1', 'PDGFRB', 'SOX17', 'PDLIM7', 'PSAT1', 'EEF1E1', 'CAPNS1', 'ITPRIP', 'RNF215', 'CHD4', 'ANPEP', 'MLH1', 'EMP3', 'SDHAF2', 'PRMT5', 'ZNF70', 'LAMC2', 'ZNF703', 'GPLD1', 'THOC5', 'PTMA', 'KIF20A', 'KRT20', 'BATF', 'LHX3', 'TRIM29', 'ATG12', 'HMGB1', 'UBE3A', 'PYGB', 'WRAP53', 'HOXB13', 'DGCR8', 'RPS3', 'RASSF1', 'CIP2A', 'XRCC1', 'CDK10', 'KDR', 'POU4F1', 'KIRREL2', 'CTSL', 'HMOX1', 'HAS2', 'CD44', 'NOX4', 'NOC3L', 'PPID', 'DEPDC1B', 'ZNF541', 'HBP1', 'DRAM1', 'TMPRSS12', 'MACROH2A2', 'PPP1R13L', 'TDGF1P3', 'EPHB2', 'PPIAP10', 'KIF18B', 'HMGN2', 'FOXP1', 'PBX3', 'BCAR3', 'LIF', 'SIRT7', 'TXNRD1', 'LZTS2', 'ROCK2', 'MARCO', 'STARD4', 'SPHK1', 'PRKCA', 'GMFG', 'PLK1', 'BECN1', 'AATK', 'CCR1', 'EPCAM', 'POU5F1', 'METTL3', 'SUMO1P3', 'GALC', 'NANOG', 'ERN1', 'SYK', 'CARM1', 'SREBF1', 'IL6', 'PDCD1LG2', 'MAF1', 'CDK1', 'UBL3', 'CLPTM1L', 'REG1A', 'SACM1L', 'LIG4', 'CCDC102B', 'ABCB7', 'CFL1', 'CAV1', 'CDK16', 'EPHA2', 'SDHD', 'MME', 'LINC-PINT', 'GADD45A', 'RNF165', 'ENC1', 'SCN2A', 'HOXC13', 'IGF2BP3', 'ADAMTS20', 'CPS1', 'SLC38A1', 'RAB25', 'CDKN1A', 'SCARF2', 'WNT5A', 'IAPP', 'TWF1', 'CD274', 'PIAS3', 'CDKN2B-AS1', 'STK17A', 'RAC2', 'CREB1', 'UHRF1', 'CDK6', 'ABCG2', 'MMP17', 'PGAP3', 'ATP6V1C1', 'PHF13', 'OTUD5', 'PSMD13', 'STAT5B', 'CDC25C', 'NT5E', 'FBN2', 'PTPRC', 'NOTCH2', 'CCL3', 'GSK3A', 'LINC00520', 'RORB', 'ALK', 'ITGB3', 'KCNB2', 'NOB1', 'ASF1B', 'EXO1', 'SLC2A1', 'TOB1', 'PTCH1', 'BPIFB1', 'TGM2', 'IQGAP2', 'LINC00312', 'VAMP7', 'DCLRE1C', 'KIF18A', 'DPYSL3', 'LINC00461', 'GLI1', 'CRIP2', 'IFI35', 'HOXB7', 'PXMP4', 'SLPI', 'PRDX1', 'USP46', 'ILK', 'FOXN3', 'WT1', 'UNC5A', 'FLT3', 'RAD21', 'SOX2', 'LAPTM5', 'ELAPOR1', 'ID3', 'IER5', 'TANK', 'ABCC3', 'XRCC5', 'ICAM3', 'ASPM', 'XPC', 'DDX6', 'H19', 'RAD51', 'EEF2K', 'ANG', 'SMOX', 'TCEAL1', 'TWIST1', 'CDH1', 'HSPB8', 'STAT1', 'HSD17B6', 'TIPARP', 'PTK2', 'MMP3', 'IDH2', 'SIAH1', 'ITGAV', 'MASTL', 'Unnamed: 0', 'ATAD1', 'WDR48', 'PI4KA', 'THY1', 'HDGF', 'SCGB2A1', 'ARHGDIB', 'SOD1', 'DAG1', 'TRAF6', 'MCAM', 'RAB13', 'TTK', 'ZDHHC8', 'IER3', 'RECK', 'RAD50', 'API5', 'PRKACA', 'CDK8', 'CTDSPL', 'OPTN', 'PWWP3A', 'CCR2', 'UTRN', 'BLM', 'LGALS9', 'HAP1', 'SLC7A11', 'FANCD2', 'IL17REL', 'CD82', 'EPS8', 'RPPH1', 'LPCAT3', 'TOP2A', 'ARC', 'CTSB', 'NOTCH1', 'ZFYVE1', 'LOXL2']
+;
+        different_list['mRNA'] = ['SIAH1', 'PEBP1', 'LGALS1', 'PTK2', 'PERP', 'ABCB1', 'CCDC34', 'FBLN1', 'ANXA2P2', 'XIST', 'BTK', 'CBS', 'CHEK2', 'RBBP4', 'OPTN', 'TMEM233', 'TP53BP1', 'RELA', 'LUC7L2', 'MOGAT1', 'PTPRC', 'PCK1', 'IQGAP3', 'PRSS8', 'UTRN', 'PTPRD', 'STC2', 'PEX5', 'ING4', 'LGR4', 'LRIG1', 'FOXO3', 'FGFR1', 'TERC', 'ADAMTS20', 'TNKS1BP1', 'CTSB', 'CD164', 'TMPRSS12', 'EPCAM', 'HMGN2', 'SQSTM1', 'DUSP1', 'COL17A1', 'MAP1LC3A', 'WNT5A', 'HLF', 'CPE', 'TP73', 'SDHAF2', 'EGR1', 'SALL4', 'HDAC6', 'NFIL3', 'COL5A2', 'ART3', 'ARPC1B', 'GHR', 'GRIK5', 'ETV4', 'MCM3', 'RPS6KB1', 'LDHB', 'ERGIC2', 'ALG3', 'CPA4', 'UBR5', 'DNMT1', 'ELP3', 'PRDX1', 'YY1', 'ANXA5', 'TERT', 'RAD52', 'NFE2L2', 'PCDHB9', 'TNF', 'KLC4', 'MTDH', 'HLTF', 'HPSE', 'EPS8', 'miR22HG', 'DCLK1', 'CHIT1', 'LAMB1', 'ZNF780A', 'PRC1', 'SIX1', 'PVT1', 'GLIS2', 'ENC1', 'ATP5PD', 'KRT14', 'TP53INP1', 'S100P', 'CKB', 'CCR6', 'FOXM1', 'TFAM', 'CARHSP1', 'FAM114A2', 'FOS', 'SMOX', 'LYPD6', 'APBB1', 'PLCE1', 'FLCN', 'KIF20A', 'SDHD', 'ARHGDIB', 'TAP2', 'HOXB7', 'WNT7A', 'COL1A1', 'AURKB', 'ADAM9', 'ATF5', 'TNFRSF21', 'MAPK14', 'PPP1R12A', 'ZNF541', 'NUMB', 'RBL1', 'S100A4', 'HMGB2', 'KLF10', 'MIB1', 'ZNF70', 'LTN1', 'MAD2L2', 'MAPK7', 'SRGAP1', 'PRKCB', 'CUL2', 'CDKN2A', 'KRT2', 'JUN', 'ZNF91', 'B2M', 'GSTM3', 'H2BC9', 'CTSH', 'PPP2R3A', 'ATF4', 'FOSL1', 'HCLS1', 'FAM201A', 'FXYD3', 'ZNF787', 'XPO1', 'PWWP3A', 'DHDH', 'NPM1', 'SUB1', 'TYRO3', 'CCR2', 'RBBP6', 'SULF2', 'PNKP', 'PDCD1LG2', 'LPCAT4', 'SACM1L', 'CARM1', 'CR1L', 'PAK5', 'EIF2AK2', 'PLOD3', 'HMGA1', 'SYT13', 'IL32', 'VEGFA', 'EEF1E1', 'HJURP', 'HDAC4', 'TNFRSF10C', 'UIMC1', 'IFI30', 'PKMYT1', 'TAF9', 'ROCK1', 'CTSL', 'SENP1', 'PDCD4', 'PDPK1', 'GPR15LG', 'RPA1', 'ICA1', 'POU5F1B', 'CD200R1', 'CD34', 'ERCC2', 'HSPA5', 'BANP', 'CHEK1', 'HNF1A', 'XRCC1', 'IGF2BP3', 'DTL', 'ZNF644', 'MDM2', 'MCM9', 'GPR135', 'CD47', 'GPLD1', 'BTG3', 'PCNP', 'TRIM36', 'CD59', 'MAP2K7', 'G3BP1', 'HMGB1', 'DAPL1', 'KDR', 'LAMC2', 'EME1', 'DDIT3', 'SIRT3', 'ITGAM', 'PRRX2', 'RNF165', 'JAG1', 'MYO1B', 'SOCS1', 'ASF1B', 'EXO1', 'PIM3', 'QSOX1', 'PAK2', 'IGFBP7', 'PDCD6', 'USP9X', 'PDIA4', 'GOLPH3', 'PTPRCAP', 'CCNG1', 'NID2', 'GIMAP6', 'BCCIP', 'CKS1B', 'GLUL', 'CLIC4', 'CD82', 'USP21', 'INPP4B', 'ZZZ3', 'CDHR1', 'SOCS3', 'MAPK6', 'UCP2', 'OSMR', 'IGFN1', 'OTUD5', 'BATF', 'RAD51AP1', 'TXNRD1', 'NRP1', 'KRT86', 'CDC25C', 'CYP21A2', 'TP53TG1', 'SPARC', 'COBL', 'NEK2', 'SNCG', 'ERBB2', 'CFL2', 'ITGA3', 'DUOX2', 'FGFBP1', 'CSNK2A2', 'RTN4RL2', 'EEF2K', 'PAX1', 'PGBD5', 'COL4A1', 'EZH2', 'RACK1', 'ELAVL4', 'FOLR3', 'EIF4A1', 'CCL8', 'EIF4EBP1', 'THOC5', 'VAV2', 'CTC1', 'HSP90AA1', 'SERPINB5', 'IL1B', 'LINC-PINT', 'ZNRD2', 'PRKAA2', 'PIK3CA', 'TGFB1', 'CDK2', 'DDX60', 'METTL3', 'FGF19', 'CA9', 'COL5A1', 'TDRD9', 'PI4KA', 'RALA', 'MAP3K4', 'FLT1', 'ZNF621', 'NOS3', 'CCR1', 'IDH2', 'AR', 'ACLY', 'PITPNC1', 'AATK', 'DGCR8', 'SLC3A2', 'SMG1', 'RSF1', 'LINC00312', 'MAGI1', 'GAS5', 'ERAP1', 'PLK1', 'GADD45GIP1', 'RRM2', 'IL6', 'LMX1B', 'FBXL14', 'LHX3', 'ACD', 'ENPP4', 'CAV1', 'SLC16A1', 'BIRC7', 'PARG', 'RCC2', 'DGCR5', 'ANO3', 'ZEB1', 'PSME3', 'NECTIN3', 'FBN2', 'SFN', 'HMGB3', 'PADI4', 'TRIM29', 'ZFYVE1', 'PXN', 'WRAP53', 'PIR', 'DLL4', 'LPCAT3', 'ZNF445', 'BRCA1', 'GRN', 'KCNQ1OT1', 'SRP72', 'CDH1', 'RIN2', 'NOTCH2', 'MEF2D', 'ASAH1', 'CCDC88A', 'ZNF10', 'ATAD1', 'TINCR', 'ATP6V1C1', 'SERPINA2', 'REG4', 'CREB1', 'PPA1', 'FLT3LG', 'MCL1', 'TSPAN13', 'ANXA6', 'ROGDI', 'CDK10', 'CDK8', 'API5', 'BPIFB1', 'PHF13', 'LINC01600', 'KRT8', 'EIF4E', 'ARC', 'UNC119B', 'ALDH2', 'WWOX', 'DLX2', 'NOC3L', 'TTK', 'APEX1', 'PRSS23', 'RFC4', 'PRRT2', 'MAP2K1', 'PRPF4B', 'BMI1', 'CCDC136', 'RCSD1', 'HSPB2', 'LTBP1', 'XRCC3', 'E2F8', 'APEX2', 'HSPB8', 'ADORA2B', 'BCL2L11', 'CDC25A', 'USP1', 'KRAS', 'RALB', 'TDRD6', 'DAB2IP', 'TP63', 'CCAR1', 'CDKN1A', 'RPA3', 'RBPMS', 'EMP3', 'CXCL11', 'ALCAM', 'MARCO', 'ZNF521', 'MTOR', 'ABL1', 'STXBP4', 'RAB13', 'C4orf19', 'MRE11', 'CALR', 'SLC26A2', 'LGALS8', 'FN1', 'CLSPN', 'RBP1', 'ITGA1', 'PFN1', 'GAS2L3', 'H6PD', 'LATS1', 'THOC2', 'CTNNB1', 'CDKN2AIP', 'ICAM2', 'PKM', 'PRPF19', 'UCHL3', 'CLPTM1L', 'LRPAP1', 'PSAT1', 'RAI14', 'SMARCA2', 'VAMP7', 'RPSA', 'SCARF2', 'MSI1', 'KAT5', 'LAMP2', 'FZD2', 'MME', 'PTPN22', 'LIMS1', 'TAS2R8', 'YWHAZ', 'NOL3', 'SCGB2A1', 'CCDC65', 'ICAM1', 'NEAT1', 'PBK', 'ERBB3', 'SPHK1', 'DDB2', 'LAPTM5', 'XRCC4', 'MAPK4', 'FHL2', 'TP53I3', 'SENP6', 'LINC00261', 'NKX2-2', 'FST', 'MAD2L1', 'SGPP1', 'POLB', 'LGALS9', 'BIN1', 'RBM3', 'SOWAHC', 'LYPD6B', 'C2CD5', 'MMP11', 'CDKN2B-AS1', 'SREBF1', 'SOD1', 'CDK9', 'CKAP4', 'DPYSL3', 'PDGFRB', 'HMOX1', 'EGFR', 'SLC7A8', 'MTRF1', 'CD63', 'ETV6', 'ZEB2', 'TGFBI', 'ZNF703', 'ACVR2B', 'HSP90B1', 'PIK3CD', 'CDC14A', 'SMARCC1', 'FUS', 'RBM38', 'STAT5B', 'SCML1', 'WDR46', 'AIMP1', 'POU4F1', 'RAC2', 'IGFBP3', 'ANXA7', 'LCN2', 'TMPRSS4', 'MMP3', 'ENPP1', 'SNPH', 'BTG1', 'WNT3A', 'VDAC1', 'KIF2A', 'SP1', 'FASN', 'FBXW7', 'RND3', 'SPP1', 'LINC00520', 'FERMT1', 'PCDH7', 'SLC22A18', 'PPARA', 'IRF1', 'DAB2', 'XIAP', 'ABCC4', 'PBX3', 'DOCK4', 'SLC38A1', 'STAT5A', 'CD163', 'SOCS6', 'PINX1', 'HSPB1', 'CBX8', 'UBE3A', 'FOXL1', 'PTENP1', 'NMD3', 'CAMTA1', 'FGFR3', 'EDA', 'CDKN1C', 'FOXD1', 'ARNT', 'PPIAP10', 'PSMD13', 'MALAT1', 'YAP1', 'EGOT', 'RNF8', 'FTH1', 'SLC19A3', 'cancer', 'UNC5A', 'CDK4', 'ANXA2', 'PLS3', 'PRRX1', 'MMD', 'CCDC102B', 'ARID1A', 'ZNF341', 'ITGA6', 'RAD51', 'TKTL1', 'EPHB2', 'PCSK9', 'BORA', 'RAD50', 'HDGF', 'TGM2', 'AKR1C3', 'FGFR2', 'MSI2', 'EMP2', 'SPC25', 'NUAK1', 'NBN', 'LINC00473', 'EIF2AK3', 'PSMB8', 'LPCAT1', 'RAB15', 'EPAS1', 'ASS1', 'RPS27A', 'MASTL', 'CCN4', 'FHIT', 'PIM1', 'CIP2A', 'IAPP', 'OS.status', 'BUB1', 'CCND2', 'GSTM1', 'NQO1', 'ITPRIP', 'PRKACA', 'RNASE3', 'RAD9A', 'MVP', 'WDR48', 'PEBP4', 'PTCRA', 'USP53', 'SOX17', 'PPID', 'KRT19', 'SETDB1', 'STK17A', 'SIRPA', 'IVNS1ABP', 'SRSF1', 'BBS9', 'AFP', 'TLR9', 'ZNF653', 'COL1A2', 'CHAF1B', 'LINC00461', 'GSK3B', 'MAPK9', 'IL9R', 'RAD18', 'POPDC3', 'PDLIM7', 'CTLA4', 'BAX', 'CBR1', 'EPHA2', 'IER3', 'CCNK', 'PPP1R13L', 'CTSD', 'PRKCA', 'LUM', 'NUDT15', 'AKR1B10', 'STK11', 'POU2AF1', 'TRIAP1', 'NEO1', 'ANPEP', 'UCA1', 'ITGA2', 'EFCAB14', 'THBS2', 'DDX25', 'PDRG1', 'OLIG2', 'HSPA1A', 'GTSE1', 'GJB2', 'PLAC8', 'GAL3ST4', 'GMFG', 'ANKRD40CL', 'C1GALT1', 'TPT1', 'CREM', 'LAMP3', 'TCF7L2', 'PTGS1', 'LMNTD1', 'VEGFC', 'BEX1', 'ITPR1', 'TCIM', 'AURKA', 'CD274', 'OTUD4', 'RPS6KA6', 'SSH1', 'KLHDC7B', 'TRIP4', 'MET', 'OS.time', 'UBE4A', 'FSCN1', 'PMPCB', 'IL34', 'ALPP', 'ITGB3', 'FOXP1', 'HBP1', 'BAK1', 'KDM4C', 'HSD17B6', 'DCN', 'CPEB2', 'ANG', 'PARP3', 'ELAVL1', 'TPX2', 'ROCK2', 'MCAM', 'CCND1', 'ATG16L2', 'STARD4', 'SRSF2', 'PHEX', 'FGF13', 'KIRREL2', 'MYC', 'PRMT5', 'MYB', 'ABCC3', 'CAMK2G', 'PKN1', 'BAZ1A', 'KRT4', 'PPARG', 'SLC22A3', 'KCNB2', 'CDC27', 'IER5', 'CYP26A1', 'MAF1', 'KAT8', 'TRIB3', 'MKI67', 'AK4', 'IFNG', 'TBX1', 'ROMO1', 'KCNJ12', 'MMP13', 'ECT2', 'ZNF71', 'TOB1', 'NFKB1', 'PLAUR', 'WNT2B', 'TNFRSF12A', 'ALDH1A1', 'FAM135B', 'PAX5', 'RNF215', 'TK1', 'SLC7A11', 'IL24', 'ALK', 'GSK3A', 'SRC', 'CHRM3', 'NOX4', 'LTF', 'POU5F1', 'IL11', 'XRCC2', 'FOXN3', 'RAD23B', 'FLI1', 'TRIM31', 'POLG', 'PAX9', 'GLIPR1L1', 'CDKN3', 'CD69', 'NCL', 'CXXC5', 'SSBP1', 'UVRAG', 'PTMS', 'TRIM44', 'CORO1A', 'HULC', 'TUG1', 'CDK1', 'VGF', 'PSPC1', 'MSLN', 'IDO1', 'GSTP1', 'SPAST', 'PAFAH1B2', 'ATF2', 'BCAR3', 'CREB5', 'ID1', 'CFL1', 'ERLIN1', 'UBE2D3', 'ABCB7', 'TP73-AS1', 'S100A6', 'BECN1', 'RELB', 'WAS', 'BCL11A', 'RXRA', 'IRAG2', 'HSPA4', 'MAVS', 'CD44', 'BTG2', 'GGA2', 'COL3A1', 'ILK', 'HOXA10', 'SIRT7', 'FAM114A1', 'IFIT1', 'FHIP2B', 'SGK1', 'DUSP3', 'DRAM1', 'NDRG2', 'SOS1', 'FOXN2', 'P3H2', 'SUMO1', 'PCLAF', 'MSH2', 'APPL1', 'ALOX15', 'GALC', 'ROS1', 'USP28', 'E2F7', 'ICAM3', 'GINS2', 'ZMYM2', 'IGF2', 'ATP4A', 'SLC2A1', 'STAT1', 'SPNS1', 'SFMBT1', 'GADD45A', 'TGFA', 'EIF5B', 'SKP2', 'NOB1', 'KLF4', 'ZNF587', 'TPP1', 'KRT13', 'MGAT5', 'USP18', 'RFXANK', 'ROBO1', 'ZMAT3', 'PFN2', 'MORF4L2', 'GRPR', 'WNT1', 'TRIB1', 'SMAD4', 'MAP2K2', 'ALDH18A1', 'CLDN4', 'SOX2', 'FABP7', 'CPS1', 'L1CAM', 'ERMP1', 'BIRC2', 'RAB14', 'EGLN1', 'ADGRG1', 'TEX11', 'TXNIP', 'H2AX', 'PTGFRN', 'PRKDC', 'TUBB2A', 'BRCA2', 'XRCC6', 'APTX', 'CLDN1', 'CDKN1B', 'CXCL1', 'GNG11', 'DCLRE1C', 'RAB5A', 'CELF3', 'SCRN1', 'B4GALNT3', 'PDLIM4', 'JUND', 'HDAC2', 'SPDYA', 'SESN2', 'HAVCR2', 'PGAP3', 'PEG10', 'CHD4', 'RNF2', 'DAND5', 'ABCG2', 'PAX6', 'FANCD2', 'HMBOX1', 'STMN1', 'VSTM2L', 'MATK', 'PXMP4', 'MECOM', 'PIK3CB', 'NPY', 'NEK1', 'USP46', 'HAS2', 'POSTN', 'HELLS', 'NPAS2', 'CCL20', 'TRIM33', 'POT1', 'SERPINE2', 'SPOP', 'ERG', 'NOTCH1', 'FBP1', 'JAG2', 'BUB1B', 'MLH1', 'SUMO1P3', 'COL15A1', 'TAGLN2', 'GPX2', 'MIIP', 'CHUK', 'FHL5', 'EPHA3', 'CLIP3', 'GDNF', 'EHMT2', 'STX17', 'IRAK2', 'TNFAIP3', 'LDHA', 'ITGAV', 'TWIST1', 'LZTS2', 'F11R', 'ATG12', 'ANXA1', 'WEE1', 'PTCH1', 'TJP1', 'NFIA', 'ASXL1', 'PDCD1', 'BCL2L1', 'PFI.time', 'TP53', 'CTDSPL', 'ARRB1', 'URI1', 'NEK4', 'IGF1R', 'HIF1A', 'ISG15', 'FZR1', 'SNCA', 'IFI35', 'RPS3', 'PARN', 'TNFRSF6B', 'CLDN6', 'LIN28A', 'RAB12', 'CD40', 'TCEAL1', 'FZD4', 'VAV3', 'PODXL', 'HAP1', 'IP6K2', 'TNFRSF1B', 'PTPA', 'DIP2C', 'LIG4', 'OGG1', 'ESR1', 'LIF', 'RNF6', 'MCM10', 'AMDHD1', 'BRAF', 'CDC20', 'TNFRSF1A', 'LACTB2', 'GDF15', 'CXCR4', 'CMPK2', 'NR2C2', 'ISG20', 'LINC00518', 'IGF1', 'ITGB5', 'NFKBIA', 'KIF23', 'TRIM37', 'TPM1', 'ADRM1', 'LINS1', 'PAK4', 'TIMP3', 'MAP3K8', 'CCNB1', 'VCP', 'HCP5', 'NANOG', 'DEPDC1B', 'PLK4', 'TMOD3', 'HOOK1', 'CELSR2', 'SIRT1', 'FOSL2', 'CXCL5', 'FDPS', 'P2RX7', 'EPHA5', 'TANK', 'FLT3', 'CTBP2', 'NDRG1', 'INPPL1', 'KDM5B', 'TIAM1', 'HDAC1', 'GBP1', 'BSG', 'PSMC2', 'SERPINB2', 'TYMS', 'ZPR1', 'KHDRBS3', 'TAX1BP3', 'ATG5', 'CLTRN', 'BCOR', 'PXDN', 'PGK1', 'REG1A', 'ACTN1', 'CCN2', 'ACTL8', 'STAT3', 'UBA7', 'MACROH2A2', 'PROM1', 'TPD52', 'DUSP6', 'CLIC1', 'IQGAP2', 'RNF181', 'PARP1', 'RPPH1', 'USP7', 'TRPM8', 'PTHLH', 'CYP20A1', 'MMP1', 'SYK', 'ARID1B', 'UBL3', 'MDC1', 'MSRA', 'ELAPOR1', 'PTPN6', 'LAPTM4B', 'OLA1', 'SETD2', 'PARP9', 'KIF18B', 'CCNB2', 'KLF3', 'PHF20L1', 'ADAM12', 'BIRC5', 'BBC3', 'BRD4', 'WT1', 'PPIA', 'MUC5B', 'CCL3', 'TNFSF10', 'MARCKS', 'SETD3', 'LOXL2', 'SESN3', 'NT5E', 'PTGS2', 'PBX1', 'PAG1', 'CPNE1', 'TLK1', 'DAG1', 'LPCAT2', 'ALPI', 'MPC1', 'IL17REL', 'ALOX12', 'ENPP2', 'PTMA', 'YBX1', 'SCN2A', 'PRKCE', 'ABCC2', 'HDAC9', 'FAM83D', 'PRKCI', 'SNTB2', 'IGFBP5', 'IL7R', 'RUNX3', 'SIGLEC15', 'RHOB', 'JUP', 'PLA2G4A', 'MSMO1', 'TERF2', 'LITAF', 'RECK', 'WFDC2', 'CEP43', 'GPX4', 'RBM14', 'RAB25', 'HOXC13', 'RHOC', 'ZNF292', 'ARHGAP15', 'PLEKHA1', 'PTEN', 'MAGED1', 'CEP164', 'LYPLAL1', 'ATF3', 'NEIL2', 'H19', 'RSPO1', 'ERCC1', 'PID1', 'PIAS3', 'SFRP2', 'CXCL8', 'HMMR', 'CDT1', 'MGMT', 'E2F1', 'RASSF1', 'FUT8', 'PAMR1', 'PLAGL1', 'PCDH12', 'PLK2', 'RNASE1', 'ANLN', 'TDGF1P3', 'SIRT6', 'CASP3', 'THY1', 'HINT1', 'MICB', 'ASPM', 'CDCA2', 'HOXB13', 'MELK', 'TRAP1', 'UHRF1', 'ACSL4', 'DKC1', 'APAF1', 'RAD21', 'SPAG9', 'HRAS', 'TIMP1', 'HOTAIR', 'DERL1', 'SARS2', 'COLQ', 'DDX6', 'SLC6A11', 'SOD2', 'CAPNS1', 'TRAF6', 'CRIP2', 'MUC1', 'RPN2', 'AKT1', 'VTN', 'CCR5', 'SERPINE1', 'PFKM', 'TNNI3', 'FOXC2', 'FES', 'RPL36AL', 'RRM2B', 'RPS6KA3', 'KEAP1', 'PYGB', 'TMPRSS15', 'SMAD3', 'MAPK1', 'PSMD9', 'SMC1A', 'DENND2B', 'MMP9', 'FAM168A', 'CLCA4', 'GLS2', 'HRH1', 'PFI.status', 'MX1', 'KRT20', 'CDK6', 'GNMT', 'TNFRSF10B', 'UPP1', 'MMP17', 'MAPK13', 'BEST2', 'TM4SF1', 'ID3', 'XPC', 'AKTIP', 'HK2', 'NFATC1', 'MAPK15', 'ALDOA', 'POLD2', 'BLM', 'LIN28B', 'TWF1', 'SLPI', 'RHOA', 'NIBAN2', 'MAP2K6', 'WNT11', 'H2AJ', 'COX7B', 'CDK16', 'G0S2', 'GNG12', 'TOP2A', 'PRDX2', 'ADAMTS9', 'XRCC5', 'TIPARP', 'ZDHHC8', 'TSC22D1', 'ITGB1', 'CPT1A', 'SLC39A14', 'CXCL10', 'TNS4', 'HTRA1', 'BIN2', 'RORB', 'ERP29', 'TOPBP1', 'COL11A1', 'PDGFD', 'PAWR', 'UNC93B1', 'XBP1P1', 'SPATA2', 'ERN1', 'CKMT1A', 'BNIP3', 'MYO5C', 'WDR1', 'AGAP2-AS1', 'CDC25B', 'DNMT3B', 'RAD51C', 'EGF', 'NF1', 'Unnamed: 0', 'PLEK2', 'EPHB1', 'TBCC', 'INA', 'ATM', 'CAT', 'EIF4G1', 'GLI1', 'BCL2', 'STUB1', 'KIF18A']
+;
+        different_list['miRNA'] = ['hsa-miR-17-5p', 'hsa-miR-138-2', 'hsa-miR-106a', 'hsa-miR-455-3p', 'hsa-miR-411', 'hsa-miR-34a', 'hsa-miR-320', 'hsa-miR-374b', 'hsa-miR-410', 'hsa-miR-148b', 'hsa-miR-21', 'hsa-miR-449b-5p', 'hsa-miR-99b', 'hsa-miR-613', 'hsa-miR-339-5p', 'hsa-miR-504', 'hsa-miR-450b-5p', 'hsa-miR-200c', 'hsa-miR-375', 'hsa-miR-146a-5p', 'hsa-miR-630', 'hsa-miR-182-5p', 'hsa-let-7b', 'hsa-miR-342-3p', 'hsa-miR-381-3p', 'hsa-miR-744-5p', 'hsa-miR-18a-5p', 'hsa-miR-525-3p', 'hsa-miR-29a-3p', 'hsa-miR-423-5p', 'hsa-miR-503', 'hsa-miR-196b', 'hsa-miR-26b-5p', 'hsa-miR-449', 'hsa-miR-422a', 'hsa-miR-122-5p', 'hsa-miR-100', 'PFI.time', 'hsa-miR-92b', 'hsa-miR-1281', 'hsa-miR-345-5p', 'hsa-miR-383-5p', 'hsa-miR-216a', 'hsa-miR-582', 'hsa-miR-27b-3p', 'hsa-miR-32-5p', 'hsa-miR-335', 'hsa-miR-671-5p', 'hsa-miR-874', 'hsa-miR-221-3p', 'hsa-miR-372', 'hsa-miR-26a-1-3p', 'hsa-let-7c', 'hsa-miR-200a-3p', 'hsa-miR-186', 'hsa-miR-762', 'hsa-miR-136', 'hsa-miR-31-5p', 'OS.time', 'hsa-miR-126', 'hsa-miR-1290', 'hsa-miR-483-5p', 'hsa-miR-98-5p', 'hsa-miR-185-3p', 'hsa-miR-224', 'hsa-miR-34c-5p', 'hsa-miR-328-3p', 'hsa-miR-1275', 'hsa-miR-135b', 'hsa-miR-147a', 'hsa-miR-340-5p', 'hsa-miR-181d', 'hsa-miR-424', 'hsa-miR-144-5p', 'hsa-miR-96-5p', 'hsa-miR-222-3p', 'hsa-miR-486-5p', 'hsa-miR-106b', 'hsa-miR-29c', 'hsa-miR-125a', 'hsa-miR-668', 'hsa-miR-484', 'hsa-miR-193b-5p', 'hsa-miR-30b-5p', 'hsa-miR-133b', 'hsa-miR-130b', 'hsa-miR-454-3p', 'hsa-miR-338-3p', 'PFI.status', 'hsa-miR-95-5p', 'hsa-miR-27a-5p', 'hsa-miR-498', 'hsa-miR-330', 'hsa-miR-590-3p', 'hsa-miR-206', 'hsa-miR-199b', 'hsa-miR-22-5p', 'hsa-miR-187', 'hsa-miR-19a', 'hsa-miR-138-1-3p', 'hsa-miR-191', 'hsa-miR-770-5p', 'hsa-miR-324-3p', 'hsa-miR-223-3p', 'hsa-miR-16-1-3p', 'hsa-miR-155', 'hsa-miR-195-5p', 'hsa-miR-33a-5p', 'hsa-miR-519d', 'hsa-miR-205-5p', 'cancer', 'hsa-miR-150', 'hsa-miR-130a', 'hsa-miR-25a', 'hsa-miR-194-3p', 'hsa-miR-302', 'hsa-miR-421', 'hsa-miR-15a-3p', 'hsa-miR-132', 'hsa-miR-210', 'hsa-miR-181a', 'hsa-miR-296-5p', 'hsa-miR-203a-3p', 'hsa-miR-499a-5p', 'hsa-miR-211', 'hsa-miR-208a', 'hsa-miR-183-5p', 'hsa-miR-20a-5p', 'hsa-miR-301b', 'hsa-miR-34b', 'hsa-miR-142-3p', 'hsa-miR-149', 'hsa-miR-494-3p', 'hsa-miR-1246', 'hsa-miR-524-5p', 'hsa-miR-212', 'hsa-miR-621', 'hsa-miR-1323', 'hsa-miR-99a', 'hsa-miR-193a-3p', 'hsa-let-7g', 'hsa-miR-23a-3p', 'hsa-miR-451a', 'hsa-miR-1271-5p', 'hsa-miR-622', 'hsa-miR-371a-5p', 'hsa-miR-214', 'hsa-miR-378a-3p', 'hsa-miR-137', 'hsa-miR-574-3p', 'hsa-miR-374a', 'Unnamed: 0', 'hsa-miR-204', 'hsa-miR-30a-3p', 'hsa-miR-495-3p', 'hsa-miR-3138', 'hsa-miR-143-3p', 'hsa-miR-125b-1', 'hsa-miR-23b', 'hsa-miR-190b', 'hsa-miR-448', 'hsa-miR-146b-3p', 'hsa-miR-107', 'hsa-miR-302e', 'hsa-miR-541-3p', 'OS.status', 'hsa-miR-93-3p', 'hsa-miR-492', 'hsa-miR-10a', 'hsa-miR-215-5p', 'hsa-miR-301a', 'hsa-miR-145-5p', 'hsa-miR-139-5p', 'hsa-let-7d-5p', 'hsa-miR-15b']
+;
+        $(".factor_type").on("change", function () {
+            var selected = $(".factor_type option:selected").val();
+            while ($(".factor").find('option').length) {
+                $(".factor").empty();
+            }
+            $("#input3").val("");
+            var selected_list = different_list[selected];
+            if (selected_list) {
+                for (var i = 0; i < selected_list.length; i++) {
+                    $(".factor").append("<option value=\"" + selected_list[i] + "\" >" + selected_list[i] + "</option>");
+                }
+            }
+        })
+
+        $("#input3").on("change", function () {
+                var value = $("#input3").val();
+                if (different_list['miRNA'].includes(value)) {
+                    $(".factor_type").val("miRNA");
+                    $(".factor_type").find("option[value='miRNA']").attr("selected", true);
+
+                } else {
+                    $(".factor_type").val("mRNA");
+                    $(".factor_type").find("option[value='mRNA']").attr("selected", true);
+                }
+            }
+        )
+    </script>
+
+{% endblock %}

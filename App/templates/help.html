@@ -1,0 +1,624 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <script src="{{ url_for('static',filename='js/position.js') }}"></script>
+    <style>
+        * {
+            margin: 0 auto
+        }
+
+        html {
+
+            font-size: 62.5%;
+        }
+
+        img {
+            max-width: 100%;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        .nav_a {
+            text-decoration: none;
+            font-size: 2.1rem;
+            padding-left: 2%;
+            color: white;
+            line-height: 100%;
+            float: left;
+            margin: 0 auto;
+            display: block;
+            margin-top: 4rem;
+        }
+
+        .nav_a:hover {
+            color: rgb(156, 217, 185);
+        }
+
+        .total_div {
+            width: 100%;
+            height: 12rem;
+            line-height: 12rem;
+            background: url("{{url_for('static',filename='images/RadiationDB_header_2.png')}}");
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .total_div_1 {
+            float: left;
+            width: 40%;
+            height: 100%;
+            line-height: 40%;
+            margin: 0 auto
+        }
+
+        #container {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 1.6rem;
+        }
+
+        #container .article {
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #container .article .articlebox {
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        #container .article .articlebox .articlelist {
+            width: 25%;
+        / / height: 56 rem;
+        / / background: #8A2BE2;
+            border: none;
+            float: left;
+            padding-bottom: 2rem;
+        }
+
+        #container .article .articlebox .articledetail {
+            width: 70%;
+        / / height: 400 rem;
+        / / background: #FFB6C1;
+            float: right;
+        }
+
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <style>
+        /* 这里写新加的样式 */
+    </style>
+{% endblock %}
+
+{% block body_part %}
+
+    <div id="container">
+        <div class="article">
+            <div class="articlebox">
+                <div class="articlelist" style="top: 0;">
+                    <div class="top_next"></div>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#a" class="over">1. Overview</a>
+                        </li>
+                    </ul>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#b" class="over">2. Web browser requirements</a>
+                        </li>
+                    </ul>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#c" class="over">3. Information annotation</a>
+                        </li>
+                        <li class="border1 active">
+                            <a href="#d" class="over">4. Information of TCGA data</a>
+                        </li>
+                        <li class="border1">
+                            <a href="#e" class="over">5. Database usage</a>
+                            <ul class="nav2">
+                                <li><a href="#e1" class="over">5.1 Search the data</a></li>
+                                <li><a href="#e2" class="over">5.2 Detail of the data</a></li>
+                                <li>
+                                    <a href="#e3" class="over">5.3 Analyze the data</a>
+                                    <ul class="nav3">
+                                        <li class="active"><a href="##e1" class="over">5.3.1 Word cloud</a></li>
+                                        <li class="active"><a href="##e2" class="over">5.3.2 KEGG pathway enrichment
+                                            analysis</a></li>
+                                        <li class="active"><a href="##e3" class="over">5.3.3 Kaplan-Meier survival
+                                            analysis</a></li>
+                                        <li class="active"><a href="##e4" class="over">5.3.4 Association network
+                                            visualization</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#f" class="over">6. Data download and feedback</a>
+                        </li>
+                    </ul>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#g" class="over">7. Contact us</a>
+                        </li>
+                    </ul>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#h" class="over">8. Cite us</a>
+                        </li>
+                    </ul>
+                    <ul class="nav1">
+                        <li class="border1 active">
+                            <a href="#i" class="over">9. Version</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="articledetail">
+                    <div style="border: none;margin-top:2rem;">
+                        <div id="a">
+                            <h2>1. Overview</h2><br/>
+                            <p class="layui-textarea" style="line-height:1.5em;text-indent:2em;text-align:justify;">
+                                Cancer is a complex disease that ranking the leading cause of death and decreasing human
+                                life
+                                expectancy in worldwide. Radiotherapy (RT) is a primary treatment modality for cancer
+                                patients
+                                and is used for almost all solid tumors and palliative care. Therefore, it is crucial to
+                                investigate the radiation response mechanism that enhances tumor killing while reducing
+                                toxicity to surrounding normal tissues and cells, which could ensure better RT
+                                utilization
+                                and overcome the adverse side effects. Many researchers have focused on screening and
+                                mechanistic study of human tumor radiation response regulatory factors, but these
+                                resources are hidden in the vast amount of relevant literatures.
+                            </p>
+                            <p class="layui-textarea" style="line-height:1.5em ;text-indent:2em;text-align:justify;">
+                                Here we describe a comprehensive database dbCRAF with human cancer radiation
+                                response regulation
+                                factors derived from the literatures in PubMed. dbCRAF is an informative and
+                                functional resource
+                                of various factors related to the regulatory mechanisms of radiation response, including
+                                radiosensitivity,
+                                radioresistance and RT prognosis of cancer patients. Based on manual curation of 2,670
+                                published articles,
+                                we extracted 4,448 associations for 30 types of human cancer. In general, dbCRAF
+                                offers a user-friendly
+                                web interface for data browsing, searching, analysis and visualization, with the aim to
+                                provide useful
+                                information and a one-stop service for researchers studying radiation response
+                                mechanism.
+                            </p>
+                            <br/>
+                            <div align="center"><img style="width: 80% ; height: 90%"
+                                                     src="{{ url_for('static', filename='images/help1.png') }}"
+                                                     class="img-responsive"/></div>
+                            <div style="text-align: center"><h4>Overview diagram of dbCRAF</h4></div>
+                        </div>
+                    </div>
+                    <div style="border: none;margin-top:2rem;">
+                        <div id="b">
+                            <h2>2. Web Browser Requirements</h2><br/>
+                            <p class="layui-textarea" style="line-height:1.5em; text-indent:2em; text-align:justify;">
+                                The dbCRAF requires a modern web browser with JavaScript and cookies
+                                enabled. To view the complex details, pop-ups must not be blocked. The following
+                                browsers have been thoroughly tested with dbCRAF:<br/>
+                                • Mozilla Firefox, version 4 or above<br/>
+                                • Internet Explorer, versions 9 or above<br/>
+                                • Chrome, version 5 or above<br/>
+                                • The latest version of Firefox and Chrome is recommended for visualization.<br/>
+                            </p>
+                            <p class="layui-textarea" style="line-height:1.5em; text-indent:2em; text-align:justify;">
+                                The dbCRAF database is freely available for the research community at here
+                                (http://dbCRAF.xialab.info/). Users are not required to register or login to
+                                access the data in the database.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="none; margin-top:2.3rem;">
+                        <div id="c">
+                            <h2>3. Information annotation</h2><br/><br/>
+                            <table class="myble1" ;align="center" ; width="90%" ;>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td width="35%">Factor source</td>
+                                    <td>The type of radiation response regulation factor information derived from
+                                        biological experiments or prediction publication
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Title</td>
+                                    <td>The title of publication</td>
+                                </tr>
+                                <tr>
+                                    <td>PMID</td>
+                                    <td>The PubMed ID of publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Factor type/Factor regulation type</td>
+                                    <td>The type and regulation approaches of radiation response regulation factor</td>
+                                </tr>
+                                <tr>
+                                    <td>Factor</td>
+                                    <td>The name of radiation response regulation factor</td>
+                                </tr>
+                                <tr>
+                                    <td>Entrez id</td>
+                                    <td>Gene identifier</td>
+                                </tr>
+                                <tr>
+                                    <td>Ensembl gene id</td>
+                                    <td>Gene identifier</td>
+                                </tr>
+                                <tr>
+                                    <td>Cancer type</td>
+                                    <td>The name of cancer that normalized by MeSH database</td>
+                                </tr>
+                                <tr>
+                                    <td>Cancer specific type</td>
+                                    <td>The name of cancer that described in the publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Factor expression/radiosensitivity up</td>
+                                    <td>The association of regulation factor expression levels with increased
+                                        radiasensitivity
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Factor expression/radioresistance up</td>
+                                    <td>The association of regulation factor expression levels with increased
+                                        radioresistance
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Potential type</td>
+                                    <td>The relationship between regulation factors from prediction publication and
+                                        radiation response of cancer patients
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Subcellular localization</td>
+                                    <td>The subcellular localization information that derived from GeneCards database
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cell line</td>
+                                    <td>The cell line used in biological experiments that described in the publication
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Data Source</td>
+                                    <td>The source of sequencing data that described in the publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Data time range</td>
+                                    <td>The collection time of sequencing data that described in the publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Data number</td>
+                                    <td>The number of cancer tissues involved in sequencing data that described in the
+                                        publication
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Endpoint</td>
+                                    <td>The evaluation index of radiotherapy effect</td>
+                                </tr>
+                                <tr>
+                                    <td>Key sentence</td>
+                                    <td>The statement related to mechanism of radiation response regulation factor</td>
+                                </tr>
+                                <tr>
+                                    <td>Treatment</td>
+                                    <td>The ray type that described in the publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Species</td>
+                                    <td>The species information of cancer tissue or cell line</td>
+                                </tr>
+                                <tr>
+                                    <td>Journal</td>
+                                    <td>The journal of publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>The date of publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Author</td>
+                                    <td>The author of publication</td>
+                                </tr>
+                                <tr>
+                                    <td>Abstract</td>
+                                    <td>The abstract of publication</td>
+                                </tr>
+                                <tr>
+                                    <td>dbCRAF target gene annotation</td>
+                                    <td>The annotation of whether the target gene has been shown to be associated with
+                                        human tumor radiation response in the dbCRAF database
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="border:none;margin-top:2rem;">
+                        <div id="d">
+                            <h2>4. Information of TCGA data</h2><br/><br/>
+                            <table class="myble1" ; width="80%" ;>
+                                <tr>
+                                    <th>TCGA_id</th>
+                                    <th>Cancer_name</th>
+                                </tr>
+                                <tr>
+                                    <td width="25%">TCGA-ACC</td>
+                                    <td>Adrenocortical Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-BLCA</td>
+                                    <td>Bladder Urothelial Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-BRCA</td>
+                                    <td>Breast Invasive Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-CESC</td>
+                                    <td>Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-CHOL</td>
+                                    <td>Cholangiocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-COAD</td>
+                                    <td>Colon Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-DLBC</td>
+                                    <td>Lymphoid Neoplasm Diffuse Large B-cell Lymphoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-ESCA</td>
+                                    <td>Esophageal Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-GBM</td>
+                                    <td>Glioblastoma Multiforme</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-HNSC</td>
+                                    <td>Head and Neck Squamous Cell Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-KICH</td>
+                                    <td>Kidney Chromophobe</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-KIRC</td>
+                                    <td>Kidney Renal Clear Cell Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-KIRP</td>
+                                    <td>Kidney Renal Papillary Cell Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-LAML</td>
+                                    <td>Acute Myeloid Leukemia</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-LGG</td>
+                                    <td>Brain Lower Grade Glioma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-LIHC</td>
+                                    <td>Liver Hepatocellular Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-LUAD</td>
+                                    <td>Lung Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-LUSC</td>
+                                    <td>Lung Squamous Cell Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-MESO</td>
+                                    <td>Mesothelioma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-OV</td>
+                                    <td>Ovarian Serous Cystadenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-PAAD</td>
+                                    <td>Pancreatic Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-PCPG</td>
+                                    <td>Pheochromocytoma and Paraganglioma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-PRAD</td>
+                                    <td>Prostate Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-READ</td>
+                                    <td>Rectum Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-SARCt</td>
+                                    <td>Sarcoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-SKCM</td>
+                                    <td>Skin Cutaneous Melanoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-STAD</td>
+                                    <td>Stomach Adenocarcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-TGCT</td>
+                                    <td>Testicular Germ Cell Tumors</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-THCA</td>
+                                    <td>Thyroid Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-THYM</td>
+                                    <td>Thymoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-UCEC</td>
+                                    <td>Uterine Corpus Endometrial Carcinoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-UCS</td>
+                                    <td>Uterine Carcinosarcoma</td>
+                                </tr>
+                                <tr>
+                                    <td>TCGA-UVM</td>
+                                    <td>Uveal Melanoma</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="border:none;margin-top:2.5rem;">
+                        <div id="e">
+                            <h2>5. Database usage</h2>
+                            <br/>
+                            <h3 id="e1">5.1 Data-Matrix</h3>
+                            <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                Matrix-like viewer for radiation response regulatory factor-cancer associations.
+                                The Data-Matrix page allows users to quickly search for related associations
+                                through "By All", "By Prediction", and "By Experiment". To view the related
+                                data for regulatory factor-cancer association of interest, users only need to
+                                click the link on the "count" number.
+                            </p>
+                            <div align="center"><img style="width: 100% ; height: 60%"
+                                                     src="{{ url_for('static', filename='images/pict5.1.png') }}"
+                                                     class="img-responsive"/>
+                            </div>
+                            <br/><br/>
+                            <h3 id="e2">5.2 Search</h3>
+                            <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                Brief search results are presented as a table in the result page. Users can
+                                click the "Order" to view details about each entry in results from search.
+                            </p>
+                            <div align="center"><img style="width: 100% ; height: 70%"
+                                                     src="{{ url_for('static', filename='images/pict5.2-1.png') }}"
+                                                     class="img-responsive"/>
+                            </div>
+                            <br/>
+                            <div align="center"><img style="width: 100% ; height: 110%"
+                                                     src="{{ url_for('static', filename='images/pict5.2-2.png') }}"
+                                                     class="img-responsive"/>
+                            </div>
+                            <br/><br/>
+                            <div id="e3">
+                                <h3>5.3 Analysis</h3>
+                                <br/>
+                                <h4 id="#e1">5.3.1 Cloud chart</h4>
+                                <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                    This module allows users to visualize the most frequently studied radiation
+                                    response regulatory factors in one or more cancer types based on regulatory
+                                    factor-cancer associations.
+                                </p>
+                                <div align="center"><img style="width: 100% ; height: 60%"
+                                                         src="{{ url_for('static', filename='images/pict5.3.1.png') }}"
+                                                         class="img-responsive"/>
+                                </div>
+                                <br/><br/>
+                                <h4 id="#e2">5.3.2 Kaplan-Meier survival analysis</h4>
+                                <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                    This module allows users to analyze the relationship between the expression levels
+                                    of radiation response regulatory factor (miRNA, mRNA) and survival rate of cancer
+                                    patients receiving RT derived from the Cancer Genome Atlas (TCGA) database.
+                                </p>
+                                <div align="center"><img style="width: 100% ; height: 60%"
+                                                         src="{{ url_for('static', filename='images/pict5.3.2.png') }}"
+                                                         class="img-responsive"/>
+                                </div>
+                                <br/>
+                                <br/>
+                                <h4 id="#e3">5.3.3 KEGG pathway enrichment analysis</h4>
+                                <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                    This module allows users to classify radiation response regulation genes and target
+                                    genes of various cancer types according to KEGG pathway types, and to interpret the
+                                    functions of these factors and display the analysis results form of a bubble chart.
+                                </p>
+                                <div align="center"><img style="width: 100% ; height: 60%"
+                                                         src="{{ url_for('static', filename='images/pict5.3.3.png') }}"
+                                                         class="img-responsive"/>
+                                </div>
+                                <br/>
+                                <br/>
+                                <h4 id="#e4">5.3.4 Association network visualization</h4>
+                                <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                    This module enables users to visualize the corresponding protein-protein interaction
+                                    (PPI)
+                                    network based on the radiation response regulatory factor-cancer and their target
+                                    associations.
+                                </p>
+                                <div align="center"><img style="width: 100% ; height: 60%"
+                                                         src="{{ url_for('static', filename='images/pict5.3.4.png') }}"
+                                                         class="img-responsive"/>
+                                </div>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border:none;margin-top:1.5rem;">
+                        <div id="f">
+                            <h2>6. Data download and feedback</h2><br/>
+                            <p class="layui-textarea" style="line-height:1.5em">
+                                We provide the option to download the full database. If you'd like to download it,
+                                please click each
+                                link to download the data.<br/>
+                                You can freely download our data for academic researchers, but not
+                                for profit purposes.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="border:none;margin-top:2rem;">
+                        <div id="g">
+                            <h2>7. Contact us</h2><br/>
+                            <p class="layui-textarea" style="line-height:1.5em">
+                                We also hope you can help us to improve our database. If you have any suggestion to add
+                                a new comment to records in current dbCRAF or to revise wrong information in
+                                current dbCRAF, please contact Dr. Junfeng Xia (Email: jfxia@ahu.edu.cn) for
+                                details.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="border:none;margin-top:2rem;">
+                        <div id="h">
+                            <h2>8.Cite us</h2>
+                            <p class="layui-textarea" style="line-height:1.5em ;text-align:justify;">
+                                Jie Liu#, Jing Li#, Fangfang Jin, Qian Li, Lijun Wu, Xiaoyan Li*, Junfeng Xia*. dbCRAF: a comprehensive database providing regulatory factors of radiation responses in human cancer. (2022)
+                            </p>
+                        </div>
+                    </div>
+                    <div style="border:none;margin-top:2rem;">
+                        <div id="i">
+                            <h2>9. Version</h2>
+                            <p class="layui-textarea" style="line-height:1.5em">
+                                December 31, 2022: dbCRAF was publicly accessible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
