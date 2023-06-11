@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="dbCRAF: a database webpage">
+    <title>dbCRAF</title>
+    <link href="{{ url_for('static', filename='js/automatic.js') }}" rel="stylesheet">
+    <style data-jss="" data-meta="MuiCssBaseline">
+        @media (max-width: 1391px) {
+            .nav_a {
+                font-size: 15px;
+                 !important;
+                margin-left: 13px;
+                max-width: 9rem;
+
+                    {
+                    #background-color: yellow;
+                    #
+                }
+            }
+        }
+
+        @media (max-width: 1567px) {}
+
+        @media (max-width: 1255px) {}
+
+        .over {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
+        html {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        strong,
+        b {
+            font-weight: 700;
+        }
+
+        body {
+            color: rgba(0, 0, 0, 0.87);
+            margin: 0;
+            font-size: 0.875rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.43;
+            letter-spacing: 0.01071em;
+            background-color: #fafafa;
+        }
+
+        @media print {
+            body {
+                background-color: #fff;
+            }
+        }
+
+        body::backdrop {
+            background-color: #fafafa;
+        }
+
+        @font-face {
+            font-family: Momcake;
+            font-style: normal;
+            font-weight: 400;
+            src: local('Momcake'),
+                local('Momcake-Thin'),
+                url('/static/media/MomcakeThin.6e2715aa.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: Momcake;
+            font-style: normal;
+            font-weight: 700;
+            src: local('Momcake'),
+                local('Momcake-Bold'),
+                url('/static/media/MomcakeBold.659d31fe.otf') format('opentype');
+        }
+    </style>
+
+    <style data-jss="" data-meta="MuiAppBar">
+        @media print {
+            .MuiAppBar-positionFixed {
+                position: absolute;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiContainer">
+        .MuiContainer-root {
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+            /* padding-left: 16px; */
+            /* padding-right: 16px; */
+        }
+
+        @media (min-width: 600px) {
+            .MuiContainer-root {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .MuiContainer-fixed {
+                max-width: 600px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .MuiContainer-fixed {
+                max-width: 900px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .MuiContainer-fixed {
+                max-width: 1200px;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .MuiContainer-fixed {
+                max-width: 1536px;
+            }
+        }
+
+        @media (min-width: 0px) {
+            .MuiContainer-maxWidthXs {
+                max-width: 444px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .MuiContainer-maxWidthSm {
+                max-width: 600px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .MuiContainer-maxWidthMd {
+                max-width: 900px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .MuiContainer-maxWidthLg {
+                max-width: 1200px;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .MuiContainer-maxWidthXl {
+                max-width: 1536px;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiToolbar">
+        @media (min-width: 600px) {
+            .MuiToolbar-gutters {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+
+
+        @media (min-width: 0px) and (orientation: landscape) {
+            .MuiToolbar-regular {
+                min-height: 48px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .MuiToolbar-regular {
+                min-height: 64px;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTypography">
+        .MuiTypography-root {
+            margin: 0;
+        }
+
+
+        .MuiTypography-body1 {
+            font-size: 1rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.00938em;
+        }
+
+        .MuiTypography-h4 {
+            font-size: 2.125rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.235;
+            letter-spacing: 0.00735em;
+        }
+
+        .MuiTypography-subtitle2 {
+            font-size: 0.875rem;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 500;
+            line-height: 1.57;
+            letter-spacing: 0.00714em;
+        }
+
+
+        .MuiTypography-alignCenter {
+            text-align: center;
+        }
+
+
+        .MuiTypography-gutterBottom {
+            margin-bottom: 0.35em;
+        }
+
+        .MuiTypography-colorInherit {
+            color: inherit;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiLink">
+        .MuiLink-underlineHover {
+            text-decoration: none;
+        }
+
+        .MuiLink-underlineHover:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss4 {
+            min-height: 56px;
+        }
+
+        @media (min-width: 0px) and (orientation: landscape) {
+            .jss4 {
+                min-height: 48px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .jss4 {
+                min-height: 64px;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiSvgIcon">
+        .MuiSvgIcon-root {
+            fill: currentColor;
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            font-size: 1.5rem;
+            transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            flex-shrink: 0;
+            user-select: none;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss16 svg.ext-link-icon {
+            color: rgba(0, 0, 0, 0.75);
+        }
+
+        .jss16 span.ext-link-addon {
+            color: rgba(0, 0, 0, 0.75);
+            transition: .25s;
+            visibility: hidden;
+            margin-left: 2px;
+            text-decoration: inherit;
+        }
+
+        .jss16 span.ext-link-addon span {
+            font-size: 0.65rem;
+        }
+
+        .jss16:hover span.ext-link-addon,
+        .jss16:focus span.ext-link-addon {
+            visibility: visible;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss13 {
+            z-index: 100;
+            position: relative;
+            margin-top: auto;
+            background-color: #eeeeee;
+        }
+
+        .jss14 {
+            display: flex;
+            padding: 16px 32px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jss15 {
+            margin-right: 16px;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss2 {
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            position: fixed;
+            object-fit: cover;
+            /* background-image: radial-gradient(circle at 90% 50%, #b0bec5 0, #455a64 40%, #263238 100%); */
+            /* background-color: grey; */
+            /* background-image: radial-gradient(circle at 90% 50%, rgb(147,181,207) 0, rgb(52,108,156) 40%, rgb(40,63,106) 100%); */
+            background-image: radial-gradient(circle at 90% 50%, rgb(187, 210, 237) 0, rgb(131, 168, 214) 40%, rgb(60, 93, 158) 100%);
+        }
+
+        .jss3 {
+            width: 100%;
+            z-index: 10;
+            background-color: transparent;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiSnackbar">
+        @media (min-width: 600px) {
+            .MuiSnackbar-anchorOriginTopCenter {
+                top: 24px;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+        }
+
+
+        @media (min-width: 600px) {
+            .MuiSnackbar-anchorOriginBottomCenter {
+                left: 50%;
+                right: auto;
+                bottom: 24px;
+                transform: translateX(-50%);
+            }
+        }
+
+
+        @media (min-width: 600px) {
+            .MuiSnackbar-anchorOriginTopRight {
+                top: 24px;
+                left: auto;
+                right: 24px;
+            }
+        }
+
+
+        @media (min-width: 600px) {
+            .MuiSnackbar-anchorOriginBottomRight {
+                left: auto;
+                right: 24px;
+                bottom: 24px;
+            }
+        }
+
+
+        @media (min-width: 600px) {
+            .MuiSnackbar-anchorOriginTopLeft {
+                top: 24px;
+                left: 24px;
+                right: auto;
+            }
+        }
+
+        .MuiSnackbar-anchorOriginBottomLeft {
+            bottom: 8px;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 600px) {
+            .MuiSnackbar-anchorOriginBottomLeft {
+                left: 24px;
+                right: auto;
+                bottom: 24px;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTouchRipple">
+        .MuiTouchRipple-root {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+            position: absolute;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+
+        @-webkit-keyframes MuiTouchRipple-keyframes-enter {
+            0% {
+                opacity: 0.1;
+                transform: scale(0);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+        }
+
+        @-webkit-keyframes MuiTouchRipple-keyframes-exit {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes MuiTouchRipple-keyframes-pulsate {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.92);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiButtonBase">
+        .MuiButtonBase-root {
+            color: inherit;
+            border: 0;
+            cursor: pointer;
+            margin: 0;
+            display: inline-flex;
+            outline: 0;
+            padding: 0;
+            position: relative;
+            align-items: center;
+            user-select: none;
+            border-radius: 0;
+            vertical-align: middle;
+            -moz-appearance: none;
+            justify-content: center;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .MuiButtonBase-root::-moz-focus-inner {
+            border-style: none;
+        }
+
+        .MuiButtonBase-root.Mui-disabled {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        @media print {
+            .MuiButtonBase-root {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiIconButton">
+        .MuiIconButton-root {
+            flex: 0 0 auto;
+            color: rgba(0, 0, 0, 0.54);
+            padding: 12px;
+            overflow: visible;
+            font-size: 1.5rem;
+            text-align: center;
+            transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            border-radius: 50%;
+        }
+
+        .MuiIconButton-root:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        .MuiIconButton-root.Mui-disabled {
+            color: rgba(0, 0, 0, 0.26);
+            background-color: transparent;
+        }
+
+        @media (hover: none) {
+            .MuiIconButton-root:hover {
+                background-color: transparent;
+            }
+        }
+
+
+        .MuiIconButton-sizeSmall.MuiIconButton-edgeStart {
+            margin-left: -3px;
+        }
+
+        .MuiIconButton-sizeSmall.MuiIconButton-edgeEnd {
+            margin-right: -3px;
+        }
+
+        @media (hover: none) {
+            .MuiIconButton-colorPrimary:hover {
+                background-color: transparent;
+            }
+        }
+
+        @media (hover: none) {
+            .MuiIconButton-colorSecondary:hover {
+                background-color: transparent;
+            }
+        }
+
+        .MuiIconButton-sizeSmall {
+            padding: 3px;
+            font-size: 1.125rem;
+        }
+
+        .MuiIconButton-label {
+            width: 100%;
+            display: flex;
+            align-items: inherit;
+            justify-content: inherit;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiGrid">
+        .MuiGrid-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .MuiGrid-item {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .MuiGrid-spacing-xs-1>.MuiGrid-item {
+            padding: 4px;
+        }
+
+        .MuiGrid-spacing-xs-2 {
+            width: calc(100% + 16px);
+            margin: -8px;
+        }
+
+        .MuiGrid-spacing-xs-2>.MuiGrid-item {
+            padding: 8px;
+        }
+
+
+        .MuiGrid-spacing-xs-3>.MuiGrid-item {
+            padding: 12px;
+        }
+
+        .MuiGrid-spacing-xs-4>.MuiGrid-item {
+            padding: 16px;
+        }
+
+        .MuiGrid-spacing-xs-5>.MuiGrid-item {
+            padding: 20px;
+        }
+
+
+        .MuiGrid-spacing-xs-6>.MuiGrid-item {
+            padding: 24px;
+        }
+
+        .MuiGrid-spacing-xs-7 {
+            width: calc(100% + 56px);
+            margin: -28px;
+        }
+
+        .MuiGrid-spacing-xs-7>.MuiGrid-item {
+            padding: 28px;
+        }
+
+        .MuiGrid-spacing-xs-8 {
+            width: calc(100% + 64px);
+            margin: -32px;
+        }
+
+        .MuiGrid-spacing-xs-8>.MuiGrid-item {
+            padding: 32px;
+        }
+
+        .MuiGrid-spacing-xs-9 {
+            width: calc(100% + 72px);
+            margin: -36px;
+        }
+
+        .MuiGrid-spacing-xs-9>.MuiGrid-item {
+            padding: 36px;
+        }
+
+        .MuiGrid-spacing-xs-10 {
+            width: calc(100% + 80px);
+            margin: -40px;
+        }
+
+        .MuiGrid-spacing-xs-10>.MuiGrid-item {
+            padding: 40px;
+        }
+
+        .MuiGrid-grid-xs-auto {
+            flex-grow: 0;
+            max-width: none;
+            flex-basis: auto;
+        }
+
+        .MuiGrid-grid-xs-true {
+            flex-grow: 1;
+            max-width: 100%;
+            flex-basis: 0;
+        }
+
+        .MuiGrid-grid-xs-1 {
+            flex-grow: 0;
+            max-width: 8.333333%;
+            flex-basis: 8.333333%;
+        }
+
+        .MuiGrid-grid-xs-2 {
+            flex-grow: 0;
+            max-width: 16.666667%;
+            flex-basis: 16.666667%;
+        }
+
+        .MuiGrid-grid-xs-3 {
+            flex-grow: 0;
+            max-width: 25%;
+            flex-basis: 25%;
+        }
+
+        .MuiGrid-grid-xs-4 {
+            flex-grow: 0;
+            max-width: 33.333333%;
+            flex-basis: 33.333333%;
+        }
+
+        .MuiGrid-grid-xs-5 {
+            flex-grow: 0;
+            margin-left: 8%;
+            max-width: 41.666667%;
+            flex-basis: 41.666667%;
+        }
+
+        .MuiGrid-grid-xs-6 {
+            flex-grow: 0;
+            max-width: 50%;
+            flex-basis: 50%;
+        }
+
+        .MuiGrid-grid-xs-7 {
+            flex-grow: 0;
+            max-width: 58.333333%;
+            flex-basis: 58.333333%;
+        }
+
+        .MuiGrid-grid-xs-8 {
+            flex-grow: 0;
+            max-width: 66.666667%;
+            flex-basis: 66.666667%;
+        }
+
+        .MuiGrid-grid-xs-9 {
+            flex-grow: 0;
+            max-width: 75%;
+            flex-basis: 75%;
+        }
+
+        .MuiGrid-grid-xs-10 {
+            flex-grow: 0;
+            max-width: 83.333333%;
+            flex-basis: 83.333333%;
+        }
+
+        .MuiGrid-grid-xs-11 {
+            flex-grow: 0;
+            max-width: 91.666667%;
+            flex-basis: 91.666667%;
+        }
+
+        .MuiGrid-grid-xs-12 {
+            flex-grow: 0;
+            max-width: 100%;
+            flex-basis: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .MuiGrid-grid-sm-auto {
+                flex-grow: 0;
+                max-width: none;
+                flex-basis: auto;
+            }
+
+            .MuiGrid-grid-sm-true {
+                flex-grow: 1;
+                max-width: 100%;
+                flex-basis: 0;
+            }
+
+            .MuiGrid-grid-sm-1 {
+                flex-grow: 0;
+                max-width: 8.333333%;
+                flex-basis: 8.333333%;
+            }
+
+            .MuiGrid-grid-sm-2 {
+                flex-grow: 0;
+                max-width: 16.666667%;
+                flex-basis: 16.666667%;
+            }
+
+            .MuiGrid-grid-sm-3 {
+                flex-grow: 0;
+                max-width: 25%;
+                flex-basis: 25%;
+            }
+
+            .MuiGrid-grid-sm-4 {
+                flex-grow: 0;
+                max-width: 33.333333%;
+                flex-basis: 33.333333%;
+            }
+
+            .MuiGrid-grid-sm-5 {
+                flex-grow: 0;
+                max-width: 41.666667%;
+                flex-basis: 41.666667%;
+            }
+
+            .MuiGrid-grid-sm-6 {
+                flex-grow: 0;
+                max-width: 50%;
+                flex-basis: 50%;
+            }
+
+            .MuiGrid-grid-sm-7 {
+                flex-grow: 0;
+                max-width: 58.333333%;
+                flex-basis: 58.333333%;
+            }
+
+            .MuiGrid-grid-sm-8 {
+                flex-grow: 0;
+                max-width: 66.666667%;
+                flex-basis: 66.666667%;
+            }
+
+            .MuiGrid-grid-sm-9 {
+                flex-grow: 0;
+                max-width: 75%;
+                flex-basis: 75%;
+            }
+
+            .MuiGrid-grid-sm-10 {
+                flex-grow: 0;
+                max-width: 83.333333%;
+                flex-basis: 83.333333%;
+            }
+
+            .MuiGrid-grid-sm-11 {
+                flex-grow: 0;
+                max-width: 91.666667%;
+                flex-basis: 91.666667%;
+            }
+
+            .MuiGrid-grid-sm-12 {
+                flex-grow: 0;
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .MuiGrid-grid-md-auto {
+                flex-grow: 0;
+                max-width: none;
+                flex-basis: auto;
+            }
+
+            .MuiGrid-grid-md-true {
+                flex-grow: 1;
+                max-width: 100%;
+                flex-basis: 0;
+            }
+
+            .MuiGrid-grid-md-1 {
+                flex-grow: 0;
+                max-width: 8.333333%;
+                flex-basis: 8.333333%;
+            }
+
+            .MuiGrid-grid-md-2 {
+                flex-grow: 0;
+                max-width: 16.666667%;
+                flex-basis: 16.666667%;
+            }
+
+            .MuiGrid-grid-md-3 {
+                flex-grow: 0;
+                max-width: 25%;
+                flex-basis: 25%;
+            }
+
+            .MuiGrid-grid-md-4 {
+                flex-grow: 0;
+                max-width: 33.333333%;
+                flex-basis: 33.333333%;
+            }
+
+            .MuiGrid-grid-md-5 {
+                flex-grow: 0;
+                max-width: 41.666667%;
+                flex-basis: 41.666667%;
+            }
+
+            .MuiGrid-grid-md-6 {
+                flex-grow: 0;
+                max-width: 50%;
+                flex-basis: 50%;
+            }
+
+            .MuiGrid-grid-md-7 {
+                flex-grow: 0;
+                max-width: 58.333333%;
+                flex-basis: 58.333333%;
+            }
+
+            .MuiGrid-grid-md-8 {
+                flex-grow: 0;
+                max-width: 66.666667%;
+                flex-basis: 66.666667%;
+            }
+
+            .MuiGrid-grid-md-9 {
+                flex-grow: 0;
+                max-width: 75%;
+                flex-basis: 75%;
+            }
+
+            .MuiGrid-grid-md-10 {
+                flex-grow: 0;
+                max-width: 83.333333%;
+                flex-basis: 83.333333%;
+            }
+
+            .MuiGrid-grid-md-11 {
+                flex-grow: 0;
+                max-width: 91.666667%;
+                flex-basis: 91.666667%;
+            }
+
+            .MuiGrid-grid-md-12 {
+                flex-grow: 0;
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .MuiGrid-grid-lg-auto {
+                flex-grow: 0;
+                max-width: none;
+                flex-basis: auto;
+            }
+
+            .MuiGrid-grid-lg-true {
+                flex-grow: 1;
+                max-width: 100%;
+                flex-basis: 0;
+            }
+
+            .MuiGrid-grid-lg-1 {
+                flex-grow: 0;
+                max-width: 8.333333%;
+                flex-basis: 8.333333%;
+            }
+
+            .MuiGrid-grid-lg-2 {
+                flex-grow: 0;
+                max-width: 16.666667%;
+                flex-basis: 16.666667%;
+            }
+
+            .MuiGrid-grid-lg-3 {
+                flex-grow: 0;
+                max-width: 25%;
+                flex-basis: 25%;
+            }
+
+            .MuiGrid-grid-lg-4 {
+                flex-grow: 0;
+                max-width: 33.333333%;
+                flex-basis: 33.333333%;
+            }
+
+            .MuiGrid-grid-lg-5 {
+                flex-grow: 0;
+                max-width: 41.666667%;
+                flex-basis: 41.666667%;
+            }
+
+            .MuiGrid-grid-lg-6 {
+                flex-grow: 0;
+                max-width: 50%;
+                flex-basis: 50%;
+            }
+
+            .MuiGrid-grid-lg-7 {
+                flex-grow: 0;
+                max-width: 58.333333%;
+                flex-basis: 58.333333%;
+            }
+
+            .MuiGrid-grid-lg-8 {
+                flex-grow: 0;
+                max-width: 66.666667%;
+                flex-basis: 66.666667%;
+            }
+
+            .MuiGrid-grid-lg-9 {
+                flex-grow: 0;
+                max-width: 75%;
+                flex-basis: 75%;
+            }
+
+            .MuiGrid-grid-lg-10 {
+                flex-grow: 0;
+                max-width: 83.333333%;
+                flex-basis: 83.333333%;
+            }
+
+            .MuiGrid-grid-lg-11 {
+                flex-grow: 0;
+                max-width: 91.666667%;
+                flex-basis: 91.666667%;
+            }
+
+            .MuiGrid-grid-lg-12 {
+                flex-grow: 0;
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .MuiGrid-grid-xl-auto {
+                flex-grow: 0;
+                max-width: none;
+                flex-basis: auto;
+            }
+
+            .MuiGrid-grid-xl-true {
+                flex-grow: 1;
+                max-width: 100%;
+                flex-basis: 0;
+            }
+
+            .MuiGrid-grid-xl-1 {
+                flex-grow: 0;
+                max-width: 8.333333%;
+                flex-basis: 8.333333%;
+            }
+
+            .MuiGrid-grid-xl-2 {
+                flex-grow: 0;
+                max-width: 16.666667%;
+                flex-basis: 16.666667%;
+            }
+
+            .MuiGrid-grid-xl-3 {
+                flex-grow: 0;
+                max-width: 25%;
+                flex-basis: 25%;
+            }
+
+            .MuiGrid-grid-xl-4 {
+                flex-grow: 0;
+                max-width: 33.333333%;
+                flex-basis: 33.333333%;
+            }
+
+            .MuiGrid-grid-xl-5 {
+                flex-grow: 0;
+                max-width: 41.666667%;
+                flex-basis: 41.666667%;
+            }
+
+            .MuiGrid-grid-xl-6 {
+                flex-grow: 0;
+                max-width: 50%;
+                flex-basis: 50%;
+            }
+
+            .MuiGrid-grid-xl-7 {
+                flex-grow: 0;
+                max-width: 58.333333%;
+                flex-basis: 58.333333%;
+            }
+
+            .MuiGrid-grid-xl-8 {
+                flex-grow: 0;
+                max-width: 66.666667%;
+                flex-basis: 66.666667%;
+            }
+
+            .MuiGrid-grid-xl-9 {
+                flex-grow: 0;
+                max-width: 75%;
+                flex-basis: 75%;
+            }
+
+            .MuiGrid-grid-xl-10 {
+                flex-grow: 0;
+                max-width: 83.333333%;
+                flex-basis: 83.333333%;
+            }
+
+            .MuiGrid-grid-xl-11 {
+                flex-grow: 0;
+                max-width: 91.666667%;
+                flex-basis: 91.666667%;
+            }
+
+            .MuiGrid-grid-xl-12 {
+                flex-grow: 0;
+                max-width: 100%;
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <style data-jss="" data-meta="MuiInputBase">
+        @-webkit-keyframes mui-auto-fill {}
+
+        @-webkit-keyframes mui-auto-fill-cancel {}
+
+        .MuiInputBase-root {
+            color: rgba(0, 0, 0, 0.87);
+            cursor: text;
+            display: inline-flex;
+            position: relative;
+            font-size: 1rem;
+            box-sizing: border-box;
+            align-items: center;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 1.1876em;
+            letter-spacing: 0.00938em;
+        }
+
+        .MuiInputBase-root.Mui-disabled {
+            color: rgba(0, 0, 0, 0.38);
+            cursor: default;
+        }
+
+        .MuiInputBase-multiline {
+            padding: 6px 0 7px;
+        }
+
+        .MuiInputBase-multiline.MuiInputBase-marginDense {
+            padding-top: 3px;
+        }
+
+        .MuiInputBase-fullWidth {
+            width: 100%;
+        }
+
+        .MuiInputBase-input {
+            font: inherit;
+            color: currentColor;
+            width: 100%;
+            border: 0;
+            height: 1.1876em;
+            margin: 0;
+            display: block;
+            padding: 6px 0 7px;
+            min-width: 0;
+            background: none;
+            box-sizing: content-box;
+            animation-name: mui-auto-fill-cancel;
+            letter-spacing: inherit;
+            animation-duration: 10ms;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .MuiInputBase-input::-webkit-input-placeholder {
+            color: currentColor;
+            opacity: 0.42;
+            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+
+        .MuiInputBase-input::-moz-placeholder {
+            color: currentColor;
+            opacity: 0.42;
+            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+
+        .MuiInputBase-input:-ms-input-placeholder {
+            color: currentColor;
+            opacity: 0.42;
+            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+
+        .MuiInputBase-input::-ms-input-placeholder {
+            color: currentColor;
+            opacity: 0.42;
+            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+
+        .MuiInputBase-input:focus {
+            outline: 0;
+        }
+
+        .MuiInputBase-input:invalid {
+            box-shadow: none;
+        }
+
+        .MuiInputBase-input::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+        .MuiInputBase-input.Mui-disabled {
+            opacity: 1;
+        }
+
+        .MuiInputBase-input:-webkit-autofill {
+            animation-name: mui-auto-fill;
+            animation-duration: 5000s;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input::-webkit-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input::-moz-placeholder {
+            opacity: 0 !important;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:-ms-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input::-ms-input-placeholder {
+            opacity: 0 !important;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-webkit-input-placeholder {
+            opacity: 0.42;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-moz-placeholder {
+            opacity: 0.42;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus:-ms-input-placeholder {
+            opacity: 0.42;
+        }
+
+        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-ms-input-placeholder {
+            opacity: 0.42;
+        }
+
+        .MuiInputBase-inputMarginDense {
+            padding-top: 3px;
+        }
+
+        .MuiInputBase-inputMultiline {
+            height: auto;
+            resize: none;
+            padding: 0;
+        }
+
+        .MuiInputBase-inputTypeSearch {
+            -moz-appearance: textfield;
+            -webkit-appearance: textfield;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiDivider">
+        .MuiDivider-root {
+            border: none;
+            height: 1px;
+            margin: 0;
+            flex-shrink: 0;
+            background-color: rgba(0, 0, 0, 0.12);
+        }
+
+        .MuiDivider-absolute {
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .MuiDivider-inset {
+            margin-left: 72px;
+        }
+
+        .MuiDivider-light {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .MuiDivider-middle {
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+
+        .MuiDivider-vertical {
+            width: 1px;
+            height: 100%;
+        }
+
+        .MuiDivider-flexItem {
+            height: auto;
+            align-self: stretch;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss79 {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .jss80 {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .jss81 {
+            color: #afafaf;
+            cursor: pointer;
+            padding: 0;
+            transition: 200ms;
+        }
+
+        .jss81:hover {
+            color: #1f1f1f;
+        }
+
+        .jss81:active {
+            color: #1f1f1f;
+        }
+
+        .jss82 {
+            font-size: 15px;
+        }
+
+        .jss83 {
+            color: #494949;
+        }
+
+        .jss84 {
+            top: calc(50% - 70px);
+            height: 100px;
+            position: absolute;
+            background-color: transparent;
+        }
+
+        .jss84:hover .jss89 {
+            filter: brightness(120%);
+            opacity: 0.4;
+            background-color: black;
+        }
+
+        .jss85 {
+            top: 0;
+            height: 100%;
+        }
+
+        .jss87 {
+            opacity: 1;
+        }
+
+        .jss88 {
+            opacity: 0;
+        }
+
+        .jss89 {
+            top: calc(50% - 20px) !important;
+            color: white;
+            cursor: pointer;
+            margin: 0 10px;
+            position: relative;
+            font-size: 30px;
+            transition: 200ms;
+            background-color: #494949;
+        }
+
+        .jss89:hover {
+            opacity: 0.6 !important;
+        }
+
+        .jss90 {
+            right: 0;
+        }
+
+        .jss91 {
+            left: 0;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss77 {
+            color: #fff;
+            width: 100%;
+            padding: 64px 0px;
+        }
+
+        .jss78 {
+            padding: 32px;
+            text-align: center;
+            background-image: radial-gradient(ellipse at 50% 50%, #b0bec5 0, #455a64 40%, #161c24 60%, #161c24 100%);
+        }
+
+        .jss78 img {
+            border-radius: 8px;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiFormControlLabel">
+        .MuiFormControlLabel-root {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-left: -11px;
+            margin-right: 16px;
+            vertical-align: middle;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .MuiFormControlLabel-root.Mui-disabled {
+            cursor: default;
+        }
+
+        .MuiFormControlLabel-labelPlacementStart {
+            margin-left: 16px;
+            margin-right: -11px;
+            flex-direction: row-reverse;
+        }
+
+        .MuiFormControlLabel-labelPlacementTop {
+            margin-left: 16px;
+            flex-direction: column-reverse;
+        }
+
+        .MuiFormControlLabel-labelPlacementBottom {
+            margin-left: 16px;
+            flex-direction: column;
+        }
+
+        .MuiFormControlLabel-label.Mui-disabled {
+            color: rgba(0, 0, 0, 0.38);
+        }
+    </style>
+    <style data-jss="" data-meta="PrivateSwitchBase">
+        .jss71 {
+            padding: 9px;
+        }
+
+        .jss74 {
+            top: 0;
+            left: 0;
+            width: 100%;
+            cursor: inherit;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            padding: 0;
+            z-index: 1;
+            position: absolute;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiSwitch">
+        .MuiSwitch-root {
+            width: 58px;
+            height: 38px;
+            display: inline-flex;
+            padding: 12px;
+            z-index: 0;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            vertical-align: middle;
+        }
+
+        @media print {
+            .MuiSwitch-root {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        .MuiSwitch-edgeStart {
+            margin-left: -8px;
+        }
+
+        .MuiSwitch-edgeEnd {
+            margin-right: -8px;
+        }
+
+        .MuiSwitch-switchBase {
+            top: 0;
+            left: 0;
+            color: #fafafa;
+            z-index: 1;
+            position: absolute;
+            transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+
+        .MuiSwitch-switchBase.Mui-checked {
+            transform: translateX(20px);
+        }
+
+        .MuiSwitch-switchBase.Mui-disabled {
+            color: #bdbdbd;
+        }
+
+        .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+            opacity: 0.5;
+        }
+
+        .MuiSwitch-switchBase.Mui-disabled+.MuiSwitch-track {
+            opacity: 0.12;
+        }
+
+        .MuiSwitch-colorPrimary.Mui-checked {
+            /* color: #00AB55; */
+            color: rgb(156, 217, 185);
+        }
+
+        .MuiSwitch-colorPrimary.Mui-disabled {
+            color: #bdbdbd;
+        }
+
+        .MuiSwitch-colorPrimary.Mui-checked+.MuiSwitch-track {
+            /* background-color: #00AB55; */
+            background-color: rgb(156, 217, 185);
+        }
+
+        .MuiSwitch-colorPrimary.Mui-disabled+.MuiSwitch-track {
+            background-color: #000;
+        }
+
+        .MuiSwitch-colorPrimary.Mui-checked:hover {
+            background-color: rgba(0, 171, 85, 0.04);
+        }
+
+        @media (hover: none) {
+            .MuiSwitch-colorPrimary.Mui-checked:hover {
+                background-color: transparent;
+            }
+        }
+
+        .MuiSwitch-colorSecondary.Mui-checked {
+            color: #607d8b;
+        }
+
+        .MuiSwitch-colorSecondary.Mui-disabled {
+            color: #bdbdbd;
+        }
+
+        .MuiSwitch-colorSecondary.Mui-checked+.MuiSwitch-track {
+            background-color: #607d8b;
+        }
+
+        .MuiSwitch-colorSecondary.Mui-disabled+.MuiSwitch-track {
+            background-color: #000;
+        }
+
+        .MuiSwitch-colorSecondary.Mui-checked:hover {
+            background-color: rgba(96, 125, 139, 0.04);
+        }
+
+        @media (hover: none) {
+            .MuiSwitch-colorSecondary.Mui-checked:hover {
+                background-color: transparent;
+            }
+        }
+
+        .MuiSwitch-sizeSmall {
+            width: 40px;
+            height: 24px;
+            padding: 7px;
+        }
+
+        .MuiSwitch-sizeSmall .MuiSwitch-thumb {
+            width: 16px;
+            height: 16px;
+        }
+
+        .MuiSwitch-sizeSmall .MuiSwitch-switchBase {
+            padding: 4px;
+        }
+
+        .MuiSwitch-sizeSmall .MuiSwitch-switchBase.Mui-checked {
+            transform: translateX(16px);
+        }
+
+        .MuiSwitch-input {
+            left: -100%;
+            width: 300%;
+        }
+
+        .MuiSwitch-thumb {
+            width: 20px;
+            height: 20px;
+            box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+
+        .MuiSwitch-track {
+            width: 100%;
+            height: 100%;
+            opacity: 0.38;
+            z-index: -1;
+            transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            border-radius: 7px;
+            background-color: #000;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss75 {
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .jss75:before {
+            width: 100%;
+            bottom: 0;
+            height: 100%;
+            content: "";
+            display: block;
+            z-index: 0;
+            position: absolute;
+            transition: 0.2s;
+            border-radius: 1rem;
+            background-color: #d9daf1;
+        }
+
+        .jss75:hover:before {
+            bottom: -8px;
+        }
+
+        .jss75:hover .jss76 {
+            box-shadow: -12px 12px 64px 0px #bcc3d6;
+        }
+
+        .jss76 {
+            border: 1px solid #bdbdbd;
+            padding: 8px;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 6px 20px 0 #dbdbe8;
+            transition: 0.4s;
+            border-radius: 1rem;
+            background-color: #fff;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss69 {
+            /* padding: 64px 0px; */
+            text-align: center;
+            background-color: #fafafa;
+        }
+
+        .jss70 {
+            margin-top: 24px;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimeline">
+        .MuiTimeline-root {
+            display: flex;
+            padding: 6px 16px;
+            flex-grow: 1;
+            flex-direction: column;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimelineItem">
+        .MuiTimelineItem-root {
+            display: flex;
+            position: relative;
+            list-style: none;
+            min-height: 70px;
+        }
+
+        .MuiTimelineItem-alignRight {
+            flex-direction: row-reverse;
+        }
+
+        .MuiTimelineItem-alignAlternate:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .MuiTimelineItem-alignAlternate:nth-child(even) .MuiTimelineItem-content {
+            text-align: right;
+        }
+
+        .MuiTimelineItem-alignAlternate:nth-child(even) .MuiTimelineItem-oppositeContent {
+            text-align: left;
+        }
+
+        .MuiTimelineItem-missingOppositeContent:before {
+            flex: 1;
+            content: "";
+            padding: 6px 16px;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimelineOppositeContent">
+        .MuiTimelineOppositeContent-root {
+            flex: 1;
+            padding: 6px 16px;
+            text-align: right;
+            margin-right: auto;
+        }
+
+        .MuiTimelineOppositeContent-alignRight {
+            text-align: left;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimelineSeparator">
+        .MuiTimelineSeparator-root {
+            flex: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimelineDot">
+        .MuiTimelineDot-root {
+            display: flex;
+            padding: 4px;
+            align-self: baseline;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+            margin-top: 8px;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+
+        .MuiTimelineDot-defaultGrey {
+            color: #fafafa;
+            border-color: transparent;
+            background-color: #bdbdbd;
+        }
+
+        .MuiTimelineDot-outlinedGrey {
+            box-shadow: none;
+            border-color: #bdbdbd;
+            background-color: transparent;
+        }
+
+        .MuiTimelineDot-defaultPrimary {
+            color: #fff;
+            border-color: transparent;
+            /* background-color: #00AB55; */
+            background-color: rgb(156, 217, 185);
+        }
+
+        .MuiTimelineDot-outlinedPrimary {
+            box-shadow: none;
+            /* border-color: #00AB55; */
+            border-color: rgb(156, 217, 185);
+            background-color: transparent;
+        }
+
+        .MuiTimelineDot-defaultSecondary {
+            color: #fafafa;
+            border-color: transparent;
+            background-color: #607d8b;
+        }
+
+        .MuiTimelineDot-outlinedSecondary {
+            box-shadow: none;
+            border-color: #607d8b;
+            background-color: transparent;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimelineConnector">
+        .MuiTimelineConnector-root {
+            width: 2px;
+            flex-grow: 1;
+            background-color: #bdbdbd;
+        }
+    </style>
+    <style data-jss="" data-meta="MuiTimelineContent">
+        .MuiTimelineContent-root {
+            flex: 1;
+            padding: 6px 16px;
+        }
+
+        .MuiTimelineContent-alignRight {
+            text-align: right;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss93 {
+            padding: 6.4px 16px;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss92 {
+            padding: 64px 0px;
+            background-color: #fafafa;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss67 {
+            fill: #231f20;
+        }
+
+        .jss68 {
+            fill: transparent;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss55 {
+            fill: #000100;
+        }
+
+        .jss56 {
+            fill: #ed1c24;
+        }
+
+        .jss57 {
+            fill: none;
+        }
+
+        .jss58 {
+            fill: #2e3192;
+            opacity: 0.7;
+        }
+
+        .jss59 {
+            fill: #c690a9;
+        }
+
+        .jss60 {
+            fill: #2b3990;
+        }
+
+        .jss61 {
+            fill: #ec008c;
+        }
+
+        .jss62 {
+            fill: #fbb040;
+        }
+
+        .jss63 {
+            fill: #fff;
+        }
+
+        .jss64 {
+            fill: #f59698;
+        }
+
+        .jss65 {
+            fill: #be1e2d;
+        }
+
+        .jss66 {
+            fill: #808285;
+        }
+    </style>
+    <style data-jss="" data-meta="makeStyles">
+        .jss32 {
+            height: 100%;
+            position: relative;
+        }
+
+        @-webkit-keyframes jss33 {
+            from {
+                transform: scale(0.5);
+            }
+        }
+
+        .jss34 {
+            top: 20%;
+            left: 40%;
+            width: 20%;
+            /* filter: opacity(0.7); */
+            position: absolute;
+            animation: jss33 1s ease 1 forwards;
+        }
+
+        @-webkit-keyframes jss35 {
+            from {
+                filter: opacity(0.2);
+                transform: rotate(-150deg);
+            }
+
+            to {
+                filter: opacity(0.8);
+            }
+        }
+
+        .jss36 {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            animation: jss35 1s ease 1 forwards;
+            transform-origin: 100% 50%;
+        }
+
+        .jss37 {
+            top: 40%;
+            left: 80%;
+            position: absolute;
+        }
+
+        .jss38 {
+            width: 25%;
+            transform: rotate(-90deg) translate(300px) rotate(90deg);
+        }
+
+        .jss39 {
+            width: 16%;
+            transform: rotate(-120deg) translate(300px) rotate(120deg);
+        }
+
+        .jss40 {
+            width: 16%;
+            transform: rotate(-150deg) translate(300px) rotate(150deg);
+        }
+
+        .jss41 {
+            width: 20%;
+            transform: rotate(-180deg) translate(300px) rotate(180deg);
+        }
+
+        .jss42 {
+            width: 18%;
+            transform: rotate(150deg) translate(300px) rotate(80deg);
+        }
+
+        .jss43 {
+            width: 15%;
+            transform: rotate(120deg) translate(270px) rotate(-120deg);
+        }
+
+        .jss44 {
+            width: 20%;
+            transform: rotate(90deg) translate(340px) rotate(-90deg);
+        }
+
+        @-webkit-keyframes jss45 {
+            from {
+                filter: opacity(0.4);
+                transform: rotate(-150deg);
+            }
+
+            to {
+                filter: opacity(0.8);
+            }
+        }
+
+        .jss46 {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            animation: jss45 1.2s ease 1 forwards;
+            transform-origin: 100% 50%;
+        }
+
+        .jss47 {
+            top: 30%;
+            left: 40%;
+            position: absolute;
+        }
+
+        .jss47>img {
+            width: 50%;
+        }
+
+        .jss48 {
+            width: 25%;
+            transform: rotate(-150deg) translate(204px, 163px);
+        }
+
+        .jss49 {
+            width: 25%;
+            transform: rotate(-162deg) translate(240px, 4px);
+        }
+
+        .jss50 {
+            width: 25%;
+            transform: rotate(-174deg) translate(281px, -124px);
+        }
+
+        .jss51 {
+            width: 25%;
+            transform: rotate(150deg) translate(344px, -145px);
+        }
+
+        .jss52 {
+            width: 25%;
+            transform: rotate(162deg) translate(218px, -363px);
+        }
+
+        .jss53 {
+            width: 25%;
+            transform: rotate(174deg) translate(560px);
+        }
+
+        .jss54 {
+            width: 25%;
+            transform: rotate(138deg) translate(500px);
+        }
+    </style>
+
+    <style>
+        .jss18 {
+            width: 100%;
+            z-index: 20;
+            /* position: fixed; */
+            /* min-height: 100vh; */
+        }
+
+        .jss19 {
+            min-height: 56px;
+        }
+
+        @media (min-width: 0px) and (orientation: landscape) {
+            .jss19 {
+                min-height: 48px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .jss19 {
+                min-height: 64px;
+            }
+        }
+
+        .jss20 {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .jss21 {
+            /* color: #00AB55; */
+            /* color: burlywood; */
+            color: rgb(156, 217, 185);
+        }
+
+        .jss22 {
+            color: #fff;
+            padding: 8px 16px;
+            overflow: hidden;
+            font-size: 1.05rem;
+            box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 12px;
+            text-align: justify;
+            margin-right: -32px;
+            border-radius: 4px;
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .jss23 {
+            width: 100%;
+            z-index: 30;
+            position: absolute;
+        }
+
+        .jss26 {
+            margin-top: 24px;
+        }
+
+        .jss27 {
+            height: 100vh;
+            overflow: hidden;
+            padding-bottom: 64px;
+            background-color: #161c24;
+        }
+
+        .jss28 {
+            width: 100%;
+            margin: 8px 16px 4px 0px;
+            display: flex;
+            position: relative;
+            align-items: center;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .jss28:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .jss29 {
+            padding: 0px 8px;
+        }
+
+        .jss30 {
+            color: inherit;
+            flex-grow: 1;
+        }
+
+        .jss31 {
+            width: 100%;
+            height: calc(100% - 16px);
+            padding: 8px 8px 8px 0px;
+            transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            padding-left: calc(1em + 8px);
+        }
+
+        @media (min-width: 900px) {
+            .jss31 {
+                width: 20ch;
+            }
+        }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+    <style>
+        .col-xs-1-5,
+        .col-sm-1-5,
+        .col-md-1-5,
+        .col-lg-1-5 {
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+            position: relative;
+        }
+
+        .col-xs-1-5 {
+            width: 20%;
+            float: left;
+        }
+
+        @media (min-width: 768px) {
+            .col-sm-1-5 {
+                width: 20%;
+                float: left;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .col-md-1-5 {
+                width: 20%;
+                float: left;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .col-lg-1-5 {
+                width: 20%;
+                float: left;
+            }
+        }
+
+        .example {
+            margin-top: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .example {
+            transition: transform 0.25s ease;
+            opacity: 1;
+        }
+
+        .example:hover {
+            transform: scale(1.15, 1.15);
+            opacity: 1;
+        }
+
+        .example p,
+        .example label {
+            position: absolute;
+            color: white;
+            text-align: center;
+            top: 9%;
+            font-size: 18px;
+            /*vertical-align: middle;*/
+        }
+
+        .example img {
+            /*position: absolute;*/
+            width: 75%;
+            /*left: 10%;*/
+        }
+
+        .brain {
+            position: relative;
+        }
+
+        .brain p {
+            position: absolute;
+            transition: transform 0.25s ease;
+            font-size: 23px;
+            color: #035da5;
+            /*color: #036eb8;*/
+        }
+
+        .brain p:hover {
+            transform: scale(1.15, 1.15);
+            color: #033e6e;
+        }
+    </style>
+    {# nav#}
+    <style>
+        * {
+            margin: 0 auto
+        }
+
+        .nav_a {
+                {
+                #text-decoration: none;
+                #
+            }
+
+                {
+                #font-size: 1.4rem;
+                #
+            }
+
+                {
+                #padding-left: 2.3%;
+                #
+            }
+
+                {
+                #color: white;
+                #
+            }
+
+                {
+                #line-height: 100%;
+                #
+            }
+
+                {
+                #float: left;
+                #
+            }
+
+                {
+                #margin: 0 auto;
+                #
+            }
+
+                {
+                #display: block;
+                #
+            }
+
+                {
+                #padding-top: 2.7rem;
+                #
+            }
+
+                {
+                #width: 10%;
+                #
+            }
+
+                {
+                #text-decoration: none;
+                #
+            }
+
+                {
+                # font-size: 23px;
+                #
+            }
+
+                {
+                # color: white;
+                #
+            }
+
+                {
+                # white-space: nowrap;
+                #
+            }
+
+                {
+                # text-overflow: ellipsis;
+                #
+            }
+
+                {
+                # word-break: break-all;
+                #
+            }
+
+                {
+                # overflow: hidden;
+                #
+            }
+
+                {
+                # margin-left: 16px;
+                #
+            }
+
+                {
+                #float: right;
+                #
+            }
+
+                {
+                # display: inline-block;
+                #
+            }
+
+                {
+                # max-width: 15rem;
+                #
+            }
+
+            text-decoration: none;
+            font-size: 23px;
+            color: white;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+            margin-left: 35px;
+            display: inline-block;
+            /*max-width: 300px;*/
+        }
+
+        .nav_a:hover {
+            color: rgb(156, 217, 185);
+
+        }
+
+        .nav {
+            flex-wrap: nowrap;
+            float: right;
+        }
+    </style>
+
+
+ 
+    <style>
+        .tab_img {
+            margin: 5%;
+            padding: 2%;
+            width: 75%;
+            height: 75%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .tab_img:hover {
+            transform: scale(1.15, 1.15);
+            transition: all 2s;
+        }
+    </style>
+
+   
+    <style>
+        .bottom {
+            width: 100%;
+            z-index: 30;
+            position: relative;
+            margin-top: 10px;
+            background-color: white;
+            
+        }
+    </style>
+    
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+    <!-- <div id="root" style="background-color: grey;"> -->
+    <div class="container" style="margin: 0 auto">
+        <!-- <div class="jss1"> -->
+        <!-- <div class="jss1"> -->
+        <div class="jss2"></div>
+        
+        <div style="width:100%;height: 12rem;line-height: 12rem; position: absolute;">
+            <div style="float: left;width: 30%;height:100%;line-height: 100%;margin: 0 auto;">
+                <h1
+                    style="color: rgb(156, 217, 185);margin-left: 10%;font-size: 4rem;padding-top: 4rem;vertical-align: middle;">
+                    dbMRNP</h1>
+            </div>
+            <div class="over"
+                style="float: left;text-align: center;vertical-align: middle;line-height: 110px;height: 110px;width: 70%">
+                <nav class=".nav justify-content-end over" style="width: 100%">
+                    <a class="nav_a over" style="text-decoration: none;" href="/">Home</a>
+                    <a class="nav_a over" style="text-decoration: none;" href="/search">Phenotype risk factor</a>
+                    <a class="nav_a over" style="text-decoration: none;" href="/search">Brain imaging risk factor</a>
+                    <a class="nav_a over" style="text-decoration: none;" href="/analysis">Bulk-tissue biomarker</a>
+                    <a class="nav_a over" style="text-decoration: none;" href="/download">Cell-specific biomarker</a>
+                    <a class="nav_a over" style="text-decoration: none;" href="/statistics">Online MR analysis</a>
+                    <!-- <a class="nav_a over" style="text-decoration: none;" href="/submission">Submission</a> -->
+                    <!-- <a class="nav_a over" style="text-decoration: none;" href="/help">Help</a>
+                    <a class="nav_a over" style="text-decoration: none;" href="http://www.xialab.info/">About us</a> -->
+                </nav>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+       
+
+        <div class="jss4"></div>
+
+        <main class="jss3">
+
+            <section class="jss18" style="margin-top: 4.2%;">
+                <div class="MuiContainer-root MuiContainer-maxWidthXl">
+                    <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2">
+                        <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6"
+                            style="z-index: 60; ">
+                            <h4 class="MuiTypography-root jss20 MuiTypography-h4 MuiTypography-gutterBottom"
+                                style="color: rgb(156,217,185);font-size: 40px;"><b>Welcome to
+                            dbMRNP</b></h4>
+                            <h4 class="MuiTypography-root jss20 jss21 MuiTypography-h4 MuiTypography-gutterBottom"
+                                style="color: white;font-size: 25px;">Mendelian randomization for risk factors of neuropsychiatric disorders
+                                DataBase</h4>
+                            
+                            <div class="jss28">
+                                <div class="MuiInputBase-root jss30"><input id="content" type="text"
+                                                                        class="MuiInputBase-input jss31"
+                                                                        value="">
+                                </div>
+                                <hr class="MuiDivider-root MuiDivider-vertical" style="height: 26px; margin: 3px;">
+                                <button id="search"
+                                    class="MuiButtonBase-root MuiIconButton-root jss29 MuiIconButton-sizeSmall"
+                                    tabindex="0"
+                                    type="button" aria-label="quick-search"><span class="MuiIconButton-label"><svg
+                                    class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                          <path
+                                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                          </path>
+                        </svg> Search</span><span class="MuiTouchRipple-root"></span></button>
+                            </div>
+                            <!-- Example -->
+                            <p class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
+                                style="color: rgb(255, 255, 255); font-style: italic;">Examples: &nbsp;
+                                <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit example"
+                                    href="#" name="Lung Neoplasms">Lung Neoplasms</a>,&nbsp;<a
+                                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit example"
+                                    href="#" name="Glioma">Glioma</a>,&nbsp;<a
+                                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit example"
+                                    href="#" name="Protein-coding gene">Protein-coding gene</a>,&nbsp;<a
+                                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit example"
+                                    href="#" name="miRNA">miRNA</a>,&nbsp;<a
+                                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit example"
+                                    href="#" name="Radiosensitizer">Radiosensitizer</a>&nbsp;
+                            </p>
+                          
+
+                            <h6 class="MuiTypography-root jss22 MuiTypography-subtitle2"
+                                style="transform: none; transition: transform 500ms cubic-bezier(0, 0, 0.2, 1) 0ms;color: white;">
+                                <div style="height: 10px;"></div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancer is a complex disease and a leading cause of death,
+                                decreasing human life expectancy in worldwide. Radiotherapy (RT) is a primary treatment
+                                modality for cancer patients and is used for almost all solid tumors and palliative
+                                care. Therefore, it is crucial to investigate the radiation response mechanism that
+                                enhances tumor killing while reducing toxicity to surrounding normal tissues and cells,
+                                which could ensure better RT utilization and overcome the adverse side effects. Many
+                                researchers have focused on screening and mechanistic study of human tumor radiation
+                                response regulatory factors, but these resources are hidden in the vast amount of
+                                relevant literatures.
+                                <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here we describe a comprehensive database dbCRAF with human cancer radiation response regulation factors derived from the literatures in PubMed. dbCRAF is an informative and functional resource of various factors related to the regulatory mechanisms of radiation response, including radiosensitivity, radioresistance and RT prognosis of cancer patients. Based on manual curation of 2,670 published articles, we extracted 4,448 associations for 30 types of human cancer. In general, dbCRAF offers a user-friendly web interface for data browsing, searching, analysis and visualization, with the aim to provide useful information and a one-stop service for researchers studying radiation response mechanism.
+                            A brief tutorial is available <a href="/help"
+                                    style="text-decoration: none;color: rgb(156, 217, 185);"><em><strong>here</strong></em></a>.
+                                <div style="height: 20px;"></div>
+                            </h6>
+                        </div>
+
+                        
+                        <div class="MuiGrid-grid-xs-5" style="z-index: 40;">
+                            <table style="text-align: center; width: 100%; height:100%; border: 2px solid whitesmoke;">
+                                <th style="line-height: 50px;">
+                                    <h4 style="font-size: 25px; color:white; ">Statistics</h4>
+                                </th>
+
+                                <tr>
+                                    <td style=" border: 1px solid whitesmoke; width: 33.3%; height: 45%;"
+                                        class="tab_img">
+                                        <h7 style="color: white;font-size: 20px; padding: 2%;">71 Phenotype risk factors</h7>
+                                        <img src="{{ url_for('static', filename='images/home_picture_2.svg') }}" alt="Studies">
+                                    </td>
+
+                                    <td style=" border: 1px solid whitesmoke;width: 33.3%; height: 45%;"
+                                        class="tab_img">
+                                        <h7 style="color: white;font-size: 20px; padding: 2%;">3935 Brain imaging risk factors</h7>
+                                        <img src="{{ url_for('static', filename='images/home_picture_2.svg') }}" alt="Loci">
+                                    </td>
+
+                                    <td style=" border: 1px solid whitesmoke; width: 33.3%; height: 45%;"
+                                        class="tab_img">
+                                        <h7 style="color: white;font-size: 20px; padding: 2%;">xQTL Datasets</h7>
+                                        <img src="{{ url_for('static', filename='images/home_picture_2.svg') }}" alt="xQTL Datasets">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style=" border: 1px solid whitesmoke; width: 33.3%; height: 50%; "
+                                        class="tab_img">
+                                        <h7 style="color: white;font-size: 20px; padding: 2%;">30 Bulk-tissue xQTL</h7>
+                                        <img src="{{ url_for('static', filename='images/home_picture_2.svg') }}" alt="xQTL Types">
+                                    </td>
+
+                                    <td style=" border: 1px solid whitesmoke; width: 33.3%; height: 50%;"
+                                        class="tab_img">
+                                        <h7 style="color: white;font-size: 20px; padding: 2%;">22 Bulk-tissue xQTL</h7>
+                                        <img src="{{ url_for('static', filename='images/home_picture_2.svg') }}" alt="Analysis Methods">
+                                    </td>
+
+                                    <td style=" border: 1px solid whitesmoke; width: 33.3%; height: 50%;"
+                                        class="tab_img">
+                                        <h7 style="color: white;font-size: 20px; padding: 2%;">Cell Types</h7>
+                                        <img src="{{ url_for('static', filename='images/home_picture_2.svg') }}" alt="Cell Types">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            
+            <div class="col-md-12 jss23" style="height: 600px;width:100%; padding-top: 100px;">
+                <h4 class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter" style="text-align: center;">What dbMRNP contains?
+                </h4>
+
+                <div class="col-md-3" style="width: 27%;line-height: 100%;float: left;padding-left: 3%;">
+                    <div style="margin:10px">
+                        <h3 style="text-align: center;font-size: 25px;">Association</h3>
+                    </div>
+
+
+                    <!-- <div class="example over">
+                        <a href="/search?flag=true&page=All&type=All*All" target="_blank" class="over">
+                            <img src="img/2.png" height="90"></a>
+                        <p style="left: 51%;padding-top: 30px;" class="over">Factor Source</p>
+
+                    </div> -->
+
+                    <div class="example">
+                        <a href="/search?flag=true&page=experiment&type=all_li*all_li" target="_blank" class="over">
+                            <img style="margin-top: 30px; width: 100%;" src="{{ url_for('static', filename='images/1.png') }}" height="90" >
+                            <p style="left: 47%;padding-top: 60px">Home</p>
+                        </a>
+                    </div>
+
+                    <div class="example ">
+                        <a href="/search?flag=true&page=experiment&type=all_li*all_li" target="_blank" class="over">
+                            <img style="margin-top: 30px; width: 100%;" src="{{ url_for('static', filename='images/3.png') }}" height="90">
+                            <p style="left: 47%;padding-top: 60px">Phenotype risk factor</p>
+                        </a>
+                    </div>
+
+                    <div class="example">
+                        <a href='/search?flag=true&page=signature&type=all_li*all_li' target="_blank" class="over">
+                            <img style="margin-top: 30px; width: 100%;" src="{{ url_for('static', filename='images/4.png') }}" height="90">
+                            <p style="left: 47%;padding-top: 60px">Brain imaging risk factor</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 brain"
+                    style="text-align:center; width:40%; line-height:100%; float:left; padding-left:5%;">
+                    <img style="width: 90%; height: 500px; padding: 3%;" src="{{ url_for('static', filename='images/brain.jpeg') }}">
+                </div>
+
+                <div class="col-md-3" style="padding-left: 0; width: 27%; line-height: 100%; float: left; padding-left: 3%;">
+                    <div style="margin:10px">
+                        <h3 style="text-align: center;font-size: 25px;">Analysis</h3>
+                    </div>
+
+                    <!-- <div class="example">
+                        <a href="/cloudChart" target="_blank" class="over">
+                            <img src="img/5.png" height="90">
+                            <p style="left: 25%;padding-top: 30px">CloudChart</p>
+                        </a>
+                    </div> -->
+
+                    <div class="example">
+                        <a href="/survival" target="_blank" class="over">
+                            <img style="margin-top: 30px; width:100%;" src="{{ url_for('static', filename='images/6.png') }}" height="90">
+                            <p style="left: 7%;padding-top: 60px">Bulk-tissue biomarker</p>
+                        </a>
+                    </div>
+
+                    <div class="example">
+                        <a href="/enrichment" target="_blank" class="over">
+                            <img style="margin-top: 30px; width:100%;" src="{{ url_for('static', filename='images/8.png') }}" height="90">
+                            <p style="left: 7%;padding-top: 60px">Cell-specific biomarker</p>
+                        </a>
+                    </div>
+
+                    <div class="example">
+                        <a href="/association" target="_blank" class="over">
+                            <img style="margin-top: 30px; width:100%;" src="{{ url_for('static', filename='images/7.png') }}" height="90">
+                            <p style="left: 7%;padding-top: 60px">Online MR analysis</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+        </main>
+
+       
+       <div class="col-md-12 jss23" style="height: 50px;width:100%;background-color: white; margin-top: 700px;">
+            
+        <div style=" flex-grow: 1; font-size: 1.05rem;">
+            <address style="text-align:center; line-height: 50px;">Institutes of Physical Science and Information Technology, Anhui University, Hefei, China. Copyright &copy AnHui University &copy All Rights Reserved.</address>
+
+            </div>
+
+        </div>
+    </div>
+    
+    
+
+    <script>
+        $(function () {
+        $(".example").click(function () {
+            var ct = $(this).attr("name");
+            $("#content").val(ct);
+        })
+
+        $("#search").click(function () {
+            var data1 = $("#content").val();
+            if (data1 == '') {
+                data1 = 'All';
+            }
+            data1 = data1.replaceAll(' ', '_');
+            if (data1 != "") {
+                window.open("/search?flag=true&page=All&type=" + data1 + "&type2=AQ", 'newwindow');
+            }
+
+        })
+    })
+    </script>
+
+    {#}([])</script>#}
+    <i title="Web Colour Picker" style="display: none;"></i>
+    <div class="jvectormap-tip"></div>
+
+    <div id="night-mask"
+        style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 2147483647;pointer-events: none;mix-blend-mode: multiply;transition: opacity 0.1s ease 0s;opacity:0.3;display:none;background: #000000;">
+    </div>
+
+
+    <script type="text/javascript">
+        function windowResize() {
+        s = window.screen.width / 1873;
+        document.body.style.zoom = s;
+    }
+    windowResize()
+    window.addEventListener('resize', windowResize);
+    </script>
+
+
+</body>
+
+</html>

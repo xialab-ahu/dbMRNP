@@ -1,0 +1,110 @@
+
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>RadiationDB</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class='panel panel-default'>
+    <div class='panel-body  panel-table'>
+        <h3 align='center'>Network Association Visualization</h3>
+        <hr/>
+        <div id='echarts_img' style='height:830px'></div>
+    </div>
+</div>
+<script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+<script type='text/javascript' src='https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js'></script>
+<script>
+var msg=[[["CCND1","CDH1"],["CCND1","MMP9"],["CCND1","HSP90AA1"],["CCND1","SOX2"],["CCND1","JUN"],["CCND1","CREB1"],["CCND1","MTOR"],["CCND1","HRAS"],["CCND1","TP53"],["CCND1","EGFR"],["CCND1","VEGFA"],["CCND1","PTEN"],["CCND1","FOS"],["CCND1","CDC42"],["CCND1","IGF1"],["CCND1","RHOA"],["CCND1","NOTCH1"],["CCND1","IL6"],["CCND1","HIF1A"],["CCND1","STAT3"],["CCND1","MYC"],["CCND1","ESR1"],["CCND1","FN1"],["CCND1","CASP3"],["CCND1","KRAS"],["CCND1","PPARG"],["CCND1","AKT1"],["CCND1","ERBB2"],["CCND1","SRC"],["KRAS","SRC"],["KRAS","ERBB2"],["KRAS","PPARG"],["KRAS","AKT1"],["KRAS","CASP3"],["KRAS","FN1"],["KRAS","ESR1"],["KRAS","MYC"],["KRAS","STAT3"],["KRAS","HIF1A"],["KRAS","NOTCH1"],["KRAS","IL6"],["KRAS","RHOA"],["KRAS","IGF1"],["KRAS","CDC42"],["KRAS","FOS"],["KRAS","VEGFA"],["KRAS","PTEN"],["KRAS","EGFR"],["KRAS","TP53"],["KRAS","HRAS"],["KRAS","MTOR"],["KRAS","CREB1"],["KRAS","JUN"],["KRAS","MMP9"],["KRAS","SOX2"],["KRAS","HSP90AA1"],["KRAS","CDH1"],["CDH1","JUN"],["CDH1","MMP9"],["CDH1","HSP90AA1"],["CDH1","SOX2"],["CDH1","TP53"],["CDH1","EGFR"],["CDH1","HRAS"],["CDH1","MTOR"],["CDH1","CREB1"],["CDH1","FOS"],["CDH1","VEGFA"],["CDH1","PTEN"],["CDH1","IGF1"],["CDH1","CDC42"],["CDH1","RHOA"],["CDH1","MYC"],["CDH1","STAT3"],["CDH1","HIF1A"],["CDH1","NOTCH1"],["CDH1","IL6"],["CDH1","CASP3"],["CDH1","FN1"],["CDH1","ESR1"],["CDH1","SRC"],["CDH1","ERBB2"],["CDH1","PPARG"],["CDH1","AKT1"],["STAT3","SRC"],["STAT3","ERBB2"],["STAT3","AKT1"],["STAT3","PPARG"],["STAT3","CASP3"],["STAT3","FN1"],["STAT3","ESR1"],["STAT3","MYC"],["STAT3","HIF1A"],["STAT3","NOTCH1"],["STAT3","IL6"],["STAT3","RHOA"],["STAT3","IGF1"],["STAT3","CDC42"],["STAT3","FOS"],["STAT3","VEGFA"],["STAT3","PTEN"],["STAT3","EGFR"],["STAT3","TP53"],["STAT3","HRAS"],["STAT3","MTOR"],["STAT3","CREB1"],["STAT3","JUN"],["STAT3","MMP9"],["STAT3","SOX2"],["STAT3","HSP90AA1"],["TP53","CASP3"],["TP53","ESR1"],["TP53","FN1"],["TP53","SRC"],["TP53","AKT1"],["TP53","PPARG"],["TP53","ERBB2"],["TP53","RHOA"],["TP53","MYC"],["TP53","NOTCH1"],["TP53","IL6"],["TP53","HIF1A"],["TP53","FOS"],["TP53","PTEN"],["TP53","VEGFA"],["TP53","IGF1"],["TP53","CDC42"],["TP53","JUN"],["TP53","MMP9"],["TP53","HSP90AA1"],["TP53","SOX2"],["TP53","EGFR"],["TP53","MTOR"],["TP53","HRAS"],["TP53","CREB1"],["ERBB2","JUN"],["ERBB2","SOX2"],["ERBB2","HSP90AA1"],["ERBB2","MMP9"],["ERBB2","HRAS"],["ERBB2","MTOR"],["ERBB2","CREB1"],["ERBB2","EGFR"],["ERBB2","PTEN"],["ERBB2","VEGFA"],["ERBB2","FOS"],["ERBB2","CDC42"],["ERBB2","IGF1"],["ERBB2","RHOA"],["ERBB2","HIF1A"],["ERBB2","IL6"],["ERBB2","NOTCH1"],["ERBB2","MYC"],["ERBB2","FN1"],["ERBB2","ESR1"],["ERBB2","CASP3"],["ERBB2","SRC"],["ERBB2","PPARG"],["ERBB2","AKT1"],["EGFR","ESR1"],["EGFR","FN1"],["EGFR","CASP3"],["EGFR","SRC"],["EGFR","PPARG"],["EGFR","AKT1"],["EGFR","RHOA"],["EGFR","NOTCH1"],["EGFR","IL6"],["EGFR","HIF1A"],["EGFR","MYC"],["EGFR","VEGFA"],["EGFR","PTEN"],["EGFR","FOS"],["EGFR","CDC42"],["EGFR","IGF1"],["EGFR","JUN"],["EGFR","MMP9"],["EGFR","HSP90AA1"],["EGFR","SOX2"],["EGFR","MTOR"],["EGFR","HRAS"],["EGFR","CREB1"],["NOTCH1","AKT1"],["NOTCH1","PPARG"],["NOTCH1","SRC"],["NOTCH1","FN1"],["NOTCH1","ESR1"],["NOTCH1","CASP3"],["NOTCH1","HIF1A"],["NOTCH1","IL6"],["NOTCH1","MYC"],["NOTCH1","RHOA"],["NOTCH1","CDC42"],["NOTCH1","IGF1"],["NOTCH1","PTEN"],["NOTCH1","VEGFA"],["NOTCH1","FOS"],["NOTCH1","CREB1"],["NOTCH1","HRAS"],["NOTCH1","MTOR"],["NOTCH1","MMP9"],["NOTCH1","SOX2"],["NOTCH1","HSP90AA1"],["NOTCH1","JUN"],["PPARG","MMP9"],["PPARG","HSP90AA1"],["PPARG","SOX2"],["PPARG","JUN"],["PPARG","CREB1"],["PPARG","MTOR"],["PPARG","HRAS"],["PPARG","VEGFA"],["PPARG","PTEN"],["PPARG","FOS"],["PPARG","CDC42"],["PPARG","IGF1"],["PPARG","RHOA"],["PPARG","IL6"],["PPARG","HIF1A"],["PPARG","MYC"],["PPARG","ESR1"],["PPARG","FN1"],["PPARG","CASP3"],["PPARG","AKT1"],["PPARG","SRC"],["IGF1","MYC"],["IGF1","IL6"],["IGF1","HIF1A"],["IGF1","RHOA"],["IGF1","AKT1"],["IGF1","SRC"],["IGF1","CASP3"],["IGF1","ESR1"],["IGF1","FN1"],["IGF1","CREB1"],["IGF1","MTOR"],["IGF1","HRAS"],["IGF1","MMP9"],["IGF1","HSP90AA1"],["IGF1","SOX2"],["IGF1","JUN"],["IGF1","CDC42"],["IGF1","FOS"],["IGF1","VEGFA"],["IGF1","PTEN"],["FOS","CREB1"],["FOS","HRAS"],["FOS","MTOR"],["FOS","SOX2"],["FOS","HSP90AA1"],["FOS","MMP9"],["FOS","JUN"],["FOS","CDC42"],["FOS","VEGFA"],["FOS","PTEN"],["FOS","MYC"],["FOS","HIF1A"],["FOS","IL6"],["FOS","RHOA"],["FOS","AKT1"],["FOS","SRC"],["FOS","CASP3"],["FOS","FN1"],["FOS","ESR1"],["CASP3","CDC42"],["CASP3","PTEN"],["CASP3","VEGFA"],["CASP3","CREB1"],["CASP3","HRAS"],["CASP3","MTOR"],["CASP3","HSP90AA1"],["CASP3","SOX2"],["CASP3","MMP9"],["CASP3","JUN"],["CASP3","AKT1"],["CASP3","SRC"],["CASP3","FN1"],["CASP3","ESR1"],["CASP3","HIF1A"],["CASP3","IL6"],["CASP3","MYC"],["CASP3","RHOA"],["SOX2","CREB1"],["SOX2","HRAS"],["SOX2","MTOR"],["SOX2","HSP90AA1"],["SOX2","MMP9"],["SOX2","JUN"],["SOX2","CDC42"],["SOX2","PTEN"],["SOX2","VEGFA"],["SOX2","HIF1A"],["SOX2","IL6"],["SOX2","MYC"],["SOX2","RHOA"],["SOX2","AKT1"],["SOX2","SRC"],["SOX2","FN1"],["SOX2","ESR1"],["HSP90AA1","CREB1"],["HSP90AA1","MTOR"],["HSP90AA1","HRAS"],["HSP90AA1","MMP9"],["HSP90AA1","JUN"],["HSP90AA1","CDC42"],["HSP90AA1","PTEN"],["HSP90AA1","VEGFA"],["HSP90AA1","MYC"],["HSP90AA1","IL6"],["HSP90AA1","HIF1A"],["HSP90AA1","RHOA"],["HSP90AA1","AKT1"],["HSP90AA1","SRC"],["HSP90AA1","ESR1"],["HSP90AA1","FN1"],["FN1","CDC42"],["FN1","VEGFA"],["FN1","PTEN"],["FN1","CREB1"],["FN1","MTOR"],["FN1","HRAS"],["FN1","MMP9"],["FN1","JUN"],["FN1","AKT1"],["FN1","SRC"],["FN1","ESR1"],["FN1","MYC"],["FN1","IL6"],["FN1","HIF1A"],["FN1","RHOA"],["MTOR","MYC"],["MTOR","HIF1A"],["MTOR","IL6"],["MTOR","RHOA"],["MTOR","AKT1"],["MTOR","SRC"],["MTOR","ESR1"],["MTOR","CREB1"],["MTOR","HRAS"],["MTOR","MMP9"],["MTOR","JUN"],["MTOR","CDC42"],["MTOR","VEGFA"],["MTOR","PTEN"],["JUN","MMP9"],["JUN","HRAS"],["JUN","CREB1"],["JUN","PTEN"],["JUN","VEGFA"],["JUN","CDC42"],["JUN","RHOA"],["JUN","MYC"],["JUN","IL6"],["JUN","HIF1A"],["JUN","ESR1"],["JUN","SRC"],["JUN","AKT1"],["PTEN","ESR1"],["PTEN","SRC"],["PTEN","AKT1"],["PTEN","RHOA"],["PTEN","MYC"],["PTEN","HIF1A"],["PTEN","IL6"],["PTEN","VEGFA"],["PTEN","CDC42"],["PTEN","MMP9"],["PTEN","HRAS"],["PTEN","CREB1"],["MMP9","AKT1"],["MMP9","SRC"],["MMP9","CDC42"],["MMP9","ESR1"],["MMP9","VEGFA"],["MMP9","MYC"],["MMP9","CREB1"],["MMP9","HIF1A"],["MMP9","HRAS"],["MMP9","IL6"],["MMP9","RHOA"],["SRC","VEGFA"],["SRC","CDC42"],["SRC","CREB1"],["SRC","HRAS"],["SRC","ESR1"],["SRC","AKT1"],["SRC","RHOA"],["SRC","MYC"],["SRC","IL6"],["SRC","HIF1A"],["CDC42","ESR1"],["CDC42","AKT1"],["CDC42","RHOA"],["CDC42","HIF1A"],["CDC42","IL6"],["CDC42","MYC"],["CDC42","VEGFA"],["CDC42","CREB1"],["CDC42","HRAS"],["IL6","VEGFA"],["IL6","HRAS"],["IL6","CREB1"],["IL6","AKT1"],["IL6","ESR1"],["IL6","MYC"],["IL6","HIF1A"],["IL6","RHOA"],["CREB1","VEGFA"],["CREB1","HRAS"],["CREB1","AKT1"],["CREB1","ESR1"],["CREB1","MYC"],["CREB1","HIF1A"],["CREB1","RHOA"],["RHOA","ESR1"],["RHOA","AKT1"],["RHOA","HIF1A"],["RHOA","MYC"],["RHOA","VEGFA"],["RHOA","HRAS"],["ESR1","AKT1"],["ESR1","MYC"],["ESR1","HIF1A"],["ESR1","VEGFA"],["ESR1","HRAS"],["HRAS","AKT1"],["HRAS","MYC"],["HRAS","HIF1A"],["HRAS","VEGFA"],["HIF1A","MYC"],["HIF1A","AKT1"],["HIF1A","VEGFA"],["AKT1","VEGFA"],["AKT1","MYC"],["VEGFA","MYC"],["hsa-miR-129-5p","NOTCH1"],["hsa-miR-129-5p","IGF1"],["hsa-miR-129-5p","CDH1"],["hsa-miR-139-5p","FOS"],["hsa-miR-139-5p","JUN"],["hsa-miR-139-5p","NOTCH1"],["hsa-miR-139-5p","HRAS"],["hsa-miR-144-3p","NOTCH1"],["hsa-miR-144-3p","MTOR"],["hsa-miR-144-3p","PTEN"],["hsa-miR-145-5p","SOX2"],["hsa-miR-145-5p","EGFR"],["hsa-miR-145-5p","MYC"],["hsa-miR-145-5p","VEGFA"],["hsa-miR-145-5p","ESR1"],["hsa-miR-148b-3p","HSP90AA1"],["hsa-miR-155-5p","RHOA"],["hsa-miR-155-5p","JUN"],["hsa-miR-155-5p","CCND1"],["hsa-miR-155-5p","FOS"],["hsa-miR-155-5p","MYC"],["hsa-miR-155-5p","HIF1A"],["hsa-miR-155-5p","CASP3"],["hsa-miR-155-5p","PTEN"],["hsa-miR-15a-5p","CCND1"],["hsa-miR-15a-5p","VEGFA"],["hsa-miR-15a-5p","TP53"],["hsa-miR-185-5p","RHOA"],["hsa-miR-185-5p","CDC42"],["hsa-miR-185-5p","VEGFA"],["hsa-miR-185-5p","MYC"],["hsa-miR-195-5p","CCND1"],["hsa-miR-195-5p","VEGFA"],["hsa-miR-195-5p","CDC42"],["hsa-miR-200c-3p","FN1"],["hsa-miR-200c-3p","VEGFA"],["hsa-miR-200c-3p","RHOA"],["hsa-miR-200c-3p","KRAS"],["hsa-miR-200c-3p","NOTCH1"],["hsa-miR-200c-3p","PTEN"],["hsa-miR-205-5p","VEGFA"],["hsa-miR-205-5p","ERBB2"],["hsa-miR-205-5p","SRC"],["hsa-miR-205-5p","PTEN"],["hsa-miR-21-5p","PTEN"],["hsa-miR-21-5p","ERBB2"],["hsa-miR-21-5p","EGFR"],["hsa-miR-21-5p","SOX2"],["hsa-miR-21-5p","VEGFA"],["hsa-miR-21-5p","STAT3"],["hsa-miR-218-5p","EGFR"],["hsa-miR-222-3p","FOS"],["hsa-miR-222-3p","ESR1"],["hsa-miR-222-3p","PTEN"],["hsa-miR-223-3p","IL6"],["hsa-miR-223-3p","STAT3"],["hsa-miR-22-3p","ESR1"],["hsa-miR-22-3p","PTEN"],["hsa-miR-22-3p","HIF1A"],["hsa-miR-22-3p","AKT1"],["hsa-miR-22-3p","ERBB2"],["hsa-miR-27a-3p","IGF1"],["hsa-miR-27a-3p","EGFR"],["hsa-miR-27a-3p","TP53"],["hsa-miR-27a-3p","CCND1"],["hsa-miR-27a-3p","PPARG"],["hsa-miR-27a-3p","KRAS"],["hsa-miR-27a-3p","HIF1A"],["hsa-miR-29b-3p","VEGFA"],["hsa-miR-29b-3p","ESR1"],["hsa-miR-29b-3p","PTEN"],["hsa-miR-29b-3p","CDC42"],["hsa-miR-29b-3p","FOS"],["hsa-miR-29b-3p","MMP9"],["hsa-miR-29b-3p","STAT3"],["hsa-miR-29b-3p","MYC"],["hsa-miR-486-5p","PTEN"],["hsa-miR-582-5p","CASP3"],["hsa-miR-582-5p","CREB1"],["hsa-miR-744-5p","MYC"],["hsa-miR-7-5p","EGFR"],["hsa-miR-7-5p","FOS"],["hsa-miR-93-5p","VEGFA"],["hsa-miR-93-5p","PTEN"],],[["ESR1",58,15],["ERBB2",58,15],["CDC42",58,15],["HSP90AA1",58,15],["HRAS",58,15],["MYC",58,15],["NOTCH1",58,15],["IGF1",58,15],["KRAS",58,15],["JUN",58,15],["FOS",58,15],["STAT3",58,15],["SRC",58,15],["AKT1",58,15],["IL6",58,15],["PPARG",58,15],["FN1",58,15],["HIF1A",58,15],["VEGFA",58,15],["CREB1",58,15],["RHOA",58,15],["CASP3",58,15],["MMP9",58,15],["SOX2",58,15],["TP53",58,15],["PTEN",58,15],["EGFR",58,15],["CCND1",58,15],["CDH1",58,15],["MTOR",58,15],["hsa-miR-129-5p",27,15],["hsa-miR-139-5p",25,15],["hsa-miR-144-3p",23,15],["hsa-miR-145-5p",135,15],["hsa-miR-148b-3p",18,15],["hsa-miR-155-5p",173,15],["hsa-miR-15a-5p",42,15],["hsa-miR-185-5p",39,15],["hsa-miR-195-5p",44,15],["hsa-miR-200c-3p",89,15],["hsa-miR-205-5p",45,15],["hsa-miR-21-5p",132,15],["hsa-miR-218-5p",40,15],["hsa-miR-222-3p",43,15],["hsa-miR-223-3p",48,15],["hsa-miR-22-3p",57,15],["hsa-miR-27a-3p",66,15],["hsa-miR-29b-3p",92,15],["hsa-miR-486-5p",14,15],["hsa-miR-582-5p",6,15],["hsa-miR-744-5p",7,15],["hsa-miR-7-5p",46,15],["hsa-miR-93-5p",31,15],]];
+    var categories = [];
+    for (var i = 0; i < msg[0].length; i++) {
+        categories[i] = {
+            name: 'score' + i
+        }
+    }
+    var myChart = echarts.init(document.getElementById('echarts_img'));
+    myChart.setOption({
+        tooltip: {},
+        toolbox: {
+            show: true,
+            feature: {
+                restore: {show: true},
+                saveAsImage: {show: true}
+            },
+        },
+        animationDuration: 1000,
+        animationEasingUpdate: 'quinticInOut',
+        series: [
+            {
+                type: 'graph',
+                name: 'Gene',
+                layout: 'force',
+                data: function () {
+                    var arr = [];
+                    for (var j = 0; j < msg[1].length; j++) {
+                        arr.push({
+                            itemStyle: null,
+                            category: msg[1][j][1],
+                            name: msg[1][j][0],
+                            value: msg[1][j][1],
+                            symbolSize: msg[1][j][2],
+                            x: null,
+                            y: null,
+                            label: {
+                                show: true,
+                                fontSize: msg[1][j][2],
+                            }
+
+                        });
+                    }
+                    return arr;
+                }(),
+                links: function () {
+                    var arr = [];
+                    for (var i = 0; i < msg[0].length; i++) {
+                        arr.push({
+                            source: msg[0][i][0],
+                            target: msg[0][i][1]
+                        });
+                    }
+                    return arr;
+                }(),
+                categories: categories,
+                roam: true,
+                draggable: true,
+                focusNodeAdjacency: true,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 1,
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.3)'
+                    }
+                },
+                label: {
+                    position: 'inside',
+                    fontWeight: 'bold',
+                    fontSize: 20
+                },
+                lineStyle: {
+                    color: 'source',
+                    curveness: 0,
+                    width: 2
+                },
+                emphasis: {
+                    lineStyle: {
+                        width: 10
+                    }
+                },
+                force: {
+                    repulsion: 700
+                }
+            }
+        ]
+    });
+    window.onresize = myChart.resize;
+</script>
+</body>
+</html>
+    

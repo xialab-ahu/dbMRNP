@@ -1,0 +1,268 @@
+/*html {*/
+/*    font-size: 10px;*/
+/*}*/
+
+body {
+    margin: 0 auto;
+    font-size: 1.8rem;
+}
+#show_table{
+    font-size: 1.5rem;
+}
+/*#second_table{*/
+/*    border-bottom-color:rgb(156, 217, 185) ;*/
+/*    !*border:1px solid rgb(156, 217, 185);*!*/
+/*}*/
+/*.color{*/
+/*    color:rgb(156, 217, 185);*/
+/*    font-size: 2.2rem;*/
+/*    font-weight: bold;*/
+/*}*/
+#categories,#type {
+    /* 删除无序列表的项目符号 */
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+#categories li,#type li {
+    /* 横向排序 */
+    /*display: inline;*/
+    /*padding-left: 1rem;*/
+    /*padding-right: 1rem;*/
+    font-weight: normal;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    float: left;
+    /* text-align: center; */
+    width: 16%;
+    /*border:1px solid red;*/
+    /*text-align: center;*/
+    color: black;
+}
+
+ul li:hover {
+    /* color: red; */
+    font-weight: bolder;
+}
+
+.active {
+    /*background-color: rgb(156, 217, 185);*/
+    color: rgb(6, 160, 79) !important;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+}
+
+/*** 奇数行颜色设置 ***/
+/*table.dataTable.stripe tbody tr.odd,*/
+/*table.dataTable.display tbody tr.odd {*/
+/*    background-color: white;*/
+/*}*/
+
+/*#second_table tbody tr.odd {*/
+/*    background-color: white;*/
+/*}*/
+
+/*** 偶数行颜色设置 ***/
+/*table.dataTable.stripe tbody tr.even,*/
+/*table.dataTable.display tbody tr.even {*/
+/*    !*background-color: rgb(156, 217, 185);*!*/
+/*    background-color: lightgrey;*/
+/*}*/
+
+
+/** 分页按钮样式 **/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 5px;
+    border: none;
+}
+
+/** 分页按钮鼠标移入时的样式 **/
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    /*border: 1px solid #1822ad;*/
+    border: none;
+    background: rgb(156, 217, 185);
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6a72ea),*/
+    /* color-stop(100%, #1822ad));*/
+    /*!* Chrome,Safari4+ *!*/
+    /*background: -webkit-linear-gradient(top, #6a72ea 0%, #1822ad 100%);*/
+    /*!* Chrome10+,Safari5.1+ *!*/
+    /*background: -moz-linear-gradient(top, #6a72ea 0%, #1822ad 100%);*/
+    /*!* FF3.6+ *!*/
+    /*background: -ms-linear-gradient(top, #6a72ea 0%, #1822ad 100%);*/
+    /*!* IE10+ *!*/
+    /*background: -o-linear-gradient(top, #6a72ea 0%, #1822ad 100%);*/
+    /*!* Opera 11.10+ *!*/
+    /*background: linear-gradient(to bottom, #6a72ea 0%, #1822ad 100%);*/
+    /* W3C */
+}
+
+/** 当前激活的分页按钮样式 **/
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    outline: none;
+    background: rgb(156, 217, 185);
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e2bda),*/
+    /* color-stop(100%, #1720a4));*/
+    /*!* Chrome,Safari4+ *!*/
+    /*background: -webkit-linear-gradient(top, #1e2bda 0%, #1720a4 100%);*/
+    /*!* Chrome10+,Safari5.1+ *!*/
+    /*background: -moz-linear-gradient(top, #1e2bda 0%, #1720a4 100%);*/
+    /*!* FF3.6+ *!*/
+    /*background: -ms-linear-gradient(top, #1e2bda 0%, #1720a4 100%);*/
+    /*!* IE10+ *!*/
+    /*background: -o-linear-gradient(top, #1e2bda 0%, #1720a4 100%);*/
+    /*!* Opera 11.10+ *!*/
+    /*background: linear-gradient(to bottom, #1e2bda 0%, #1720a4 100%);*/
+    /*!* W3C *!*/
+    /*box-shadow: inset 0 0 3px #111;*/
+}
+
+.download {
+    border-radius: 5px;
+    /*background-color: red;*/
+    color: yellow;
+}
+
+button.dt-button, div.dt-button, a.dt-button {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    /*margin-right: 0.333em;*/
+    padding: 0.2em 0.5em;
+    border: 1px solid #999;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.88em;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #e9e9e9;
+    background-image: -webkit-linear-gradient(top, white 0%, #e9e9e9 100%);
+    background-image: -moz-linear-gradient(top, white 0%, #e9e9e9 100%);
+    background-image: -ms-linear-gradient(top, white 0%, #e9e9e9 100%);
+    background-image: -o-linear-gradient(top, white 0%, #e9e9e9 100%);
+    background-image: linear-gradient(to bottom, white 0%, #e9e9e9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='white', EndColorStr='#e9e9e9');
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    outline: none;
+}
+
+div.dt-buttons {
+    /*position: relative;*/
+    float: right;
+    /*width: 2rem;*/
+    /*height: 1rem;*/
+    /*margin-top: 0.5rem;*/
+    /*margin-left: 1.5rem;*/
+}
+/*搜索框*/
+.dataTables_wrapper .dataTables_filter {
+    text-align: right;
+    /*padding-left: 30%;*/
+    padding-left: 5%;
+    float: left;
+}
+
+/*multiSearch*/
+#total {
+    width: 98%;
+    margin-top: 3rem;
+    /*20221101添加*/
+    margin-left: 1%;
+    /*position: relative;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+}
+
+#left {
+    margin-left: 2%;
+    width: 10%;
+    height: 40rem;
+    float: left;
+    /*padding-left: 2%;*/
+    position: relative;
+    /*border: 1px solid rgb(156, 217, 185);*/
+    /*border-right-color: cyan;*/
+    border-right: 1px solid lightgrey;
+    font-size: 1.6rem;
+    font-weight: bold;
+    /*阴影*/
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+    -moz-box-shadow: 2px 2px 10px #909090;
+    -webkit-box-shadow: 2px 2px 10px #909090;
+    box-shadow: 2px 2px 10px #909090;
+}
+
+.left_div {
+    margin: 0 auto;
+    width: 90%;
+    height: 5rem;
+    line-height: 5rem;
+    background-color: rgb(222, 241, 231);
+    text-align: center;
+    /*border: 1px solid rgb(156, 217, 185);*/
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+    /*阴影*/
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+    -moz-box-shadow: 2px 2px 10px #909090;
+    -webkit-box-shadow: 2px 2px 10px #909090;
+    box-shadow: 2px 2px 10px #909090;
+}
+.left_div:hover{
+    cursor: pointer;
+}
+
+.left_div_active {
+    margin: 0 auto;
+    width: 90%;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    /*border: 1px solid rgb(156, 217, 185);*/
+    margin-top: 1.5rem;
+    /*background-color: rgb(156, 217, 185);*/
+    background-color: rgb(156, 217, 185);
+    border-radius: 1rem;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+    -moz-box-shadow: 2px 2px 10px #909090;
+    -webkit-box-shadow: 2px 2px 10px #909090;
+    box-shadow: 2px 2px 10px #909090;
+
+}
+.left_div_active{
+    cursor: pointer;
+}
+
+#right {
+    /* margin: 0 auto; */
+    float: left;
+    width: 85%;
+    /*margin-top: 10px;*/
+    margin-left: 1%;
+    /*padding-left: 1%;*/
+    /*padding-right: 1%;*/
+    padding: 1% 1% 1% 1%;
+    /* background-color: cyan; */
+    /*阴影*/
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+    -moz-box-shadow: 2px 2px 10px #909090;
+    -webkit-box-shadow: 2px 2px 10px #909090;
+    box-shadow: 2px 2px 10px #909090;
+    /*filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);*/
+    /*-moz-box-shadow: 2px 10px 10px #909090;*/
+    /*-webkit-box-shadow: 2px 10px 10px #909090;*/
+    /*box-shadow: 2px 10px 10px #909090;*/
+}
+
+.right_div {
+    display: none;
+}
+
+.right_div_active {
+    display: block;
+}

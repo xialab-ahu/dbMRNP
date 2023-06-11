@@ -1,0 +1,418 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="{{ url_for('static',filename='js/echarts5.min.js') }}"></script>
+    <style>
+        .total {
+            margin: 0 auto;
+            width: 90%;
+            height: 80rem;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+            margin-top: 10px;
+        }
+
+        .left {
+            margin-left: 2%;
+            margin-top: 1rem;
+            width: 24%;
+            float: left;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+        }
+
+        .right {
+            width: 70%;
+            float: left;
+            margin-left: 2%;
+            margin-top: 1rem;
+            height: 95%;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            -webkit-box-shadow: 0.2rem 0.2rem 1rem #909090;
+            box-shadow: 0.2rem 0.2rem 1rem #909090;
+        }
+
+        #forms {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .two {
+            border-radius: 5px;
+            margin-top: 2rem;
+            position: relative;
+            height: 5rem;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+        .two_center {
+            width: 93%;
+            padding-top: 1rem;
+            margin: 0 auto;
+        }
+
+        label {
+            width: 32%;
+            float: left;
+            height: 3rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 0.7rem;
+        }
+
+        select {
+            padding-left: 1%;
+            width: 68%;
+            float: left;
+            height: 3rem;
+            font-size: 1.5rem;
+        }
+
+        input {
+            padding-left: 1%;
+            width: 65.5%;
+            float: left;
+            height: 2.6rem;
+            font-size: 1.5rem;
+
+        }
+
+        .title_center {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 2.5rem;
+        }
+
+        .button_center {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .button_origin {
+            width: 45%;
+            height: 4rem;
+            font-size: 2rem;
+            border-radius: 0.5rem;
+            border: none;
+            color: white;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .button_origin1 {
+            height: 3rem;
+            font-size:1.5rem ;
+            border-radius: 0.5rem;
+            border: none;
+            color: white;
+            text-align: center;
+        }
+
+        .bg_submit {
+            background-color: rgb(8, 129, 204);
+            float: left;
+        }
+
+        .bg_submit:hover {
+            background-color: rgb(4, 73, 116);
+        }
+
+        .bg_reset {
+            background-color: rgb(6, 156, 6);
+            float: right;
+        }
+
+        .bg_reset:hover {
+            background-color: rgb(3, 107, 3);
+        }
+
+        input::-webkit-input-placeholder {
+         color: black;
+        }
+
+        input::-moz-placeholder { color: black;
+        }
+
+        　　
+        input:-moz-placeholder { color: black;
+        }
+
+        input:-ms-input-placeholder {color: black;
+        }
+
+    </style>
+
+{% endblock %}
+
+<!-- 各页面主体内容 -->
+{% block body_part %}
+    <div style="height: 3rem"></div>
+    <div class="total">
+        <div style="height: 1rem"></div>
+        <div class="left">
+            <div id="forms">
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Cancer Type:</label>
+                        <select class="cancer_type" id="cancer_list" required>
+                            <option value="all" selected disabled>Select cancer type</option>
+                            <option value="Adenoid_cystic_carcinoma">Adenoid cystic carcinoma</option>
+                            <option value="Breast_Neoplasms">Breast Neoplasms</option>
+                            <option value="Cholangiocarcinoma">Cholangiocarcinoma</option>
+                            <option value="Chordoma">Chordoma</option>
+                            <option value="Craniopharyngioma">Craniopharyngioma</option>
+                            <option value="Glioma">Glioma</option>
+                            <option value="Head_and_Neck_Neoplasms">Head and Neck Neoplasms</option>
+                            <option value="Intestinal_Neoplasms">Intestinal Neoplasms</option>
+                            <option value="Kidney_Neoplasms">Kidney Neoplasms</option>
+                            <option value="Leukemia">Leukemia</option>
+                            <option value="Liver_Neoplasms">Liver Neoplasms</option>
+                            <option value="Lung_Neoplasms">Lung Neoplasms</option>
+                            <option value="Lymphoma">Lymphoma</option>
+                            <option value="Melanoma">Melanoma</option>
+                            <option value="Meningeal_Neoplasms">Meningeal Neoplasms</option>
+                            <option value="Mesothelioma">Mesothelioma</option>
+                            <option value="Multiple_Myeloma">Multiple Myeloma</option>
+                            <option value="Neuroblastoma">Neuroblastoma</option>
+                            <option value="Neuroendocrine_Tumors">Neuroendocrine Tumors</option>
+                            <option value="Ovarian_Neoplasms">Ovarian Neoplasms</option>
+                            <option value="Pancreatic_Neoplasms">Pancreatic Neoplasms</option>
+                            <option value="Prostatic_Neoplasms">Prostatic Neoplasms</option>
+                            <option value="Sarcoma">Sarcoma</option>
+                            <option value="Skin_Neoplasms">Skin Neoplasms</option>
+                            <option value="Stomach_Neoplasms">Stomach Neoplasms</option>
+                            <option value="Thymus_Neoplasms">Thymus Neoplasms</option>
+                            <option value="Urinary_Bladder_Neoplasms">Urinary Bladder Neoplasms</option>
+                            <option value="Uterine_Neoplasms">Uterine Neoplasms</option>
+                            <option value="Vulvar_Neoplasms">Vulvar Neoplasms</option>
+                            <option value="Pancancer">Pancancer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="two">
+                    <div class="two_center">
+                        <label class="over">Visualization:</label>
+                        <select class="target" id="target_list">
+                            <option value="all" selected disabled>Select target</option>
+                            <option value="Protein-coding gene">Protein-coding gene</option>
+                            <option value="Protein">Protein</option>
+                            <option value="miRNA-target gene">miRNA-target gene</option>
+                            <option value="LncRNA-target gene">LncRNA-target gene</option>
+                            <option value="CircRNA-target gene">CircRNA-target gene</option>
+                            <option value="Radiosensitizer-target gene">Radiosensitizer-target gene</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button_center">
+                    <button type="button" onclick="getvalue()" class="button_origin bg_submit over">Submit</button>
+                    <button type="reset" onclick="clearAll()" class="button_origin bg_reset over">Reset</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="title_center over">
+                <div style="float: left;padding-left: 30%">Network Association Visualization</div>
+            <div style="float: right">
+
+                <button style="width: 120px;float: right;margin-right: 1rem;font-size: 1rem" type="reset" onclick="getHtml()"
+                        class="button_origin1 bg_reset">Download html file
+                </button>
+                <button style="width: 50px;float: right;margin-right: 1rem;font-size:1rem" type="button" onclick="refresh()"
+                        class="button_origin1 bg_submit">Refresh
+                </button>
+
+            </div>
+            </div>
+            <img id="load_img" src="{{ url_for('static',filename='images/loading1.gif') }}"
+                 style="position: absolute;width: 500px;height: 400px;top:30%;left: 50%">
+            <div id="echarts_img" style="width: 100%;height: 100%;">
+
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#load_img").hide();
+            var all_msg = [];
+
+        })
+        var all_msg = [];
+
+        function refresh() {
+            draw(all_msg);
+        }
+
+        function getHtml() {
+            if(all_msg.length==0){
+                alert("No relevant data can be drawn");
+                return;
+            }
+            $.ajax({
+                url: "/downloading",
+                type: "POST",
+                data: {node: JSON.stringify(all_msg[0]), value: JSON.stringify(all_msg[1])},
+                success: function (res) {
+                    var url = "{{ url_for('static', filename='css/') }}"+res.name;
+                    let domA = document.createElement('a');
+                    domA.setAttribute('download', '');
+                    domA.setAttribute('href', url);
+                    domA.click();
+                }
+            })
+        }
+
+        function clearAll() {
+            $("#cancer_list option").removeAttr("selected");
+            $("#target_list option").removeAttr("selected");
+            $("#cancer_list").find("option[value='all']").attr("selected", true);
+            $("#target_list").find("option[value='all']").attr("selected", true);
+
+        }
+
+        function getvalue() {
+            var value1 = $("#cancer_list option:selected").val();
+            var value2 = $("#target_list option:selected").val();
+            if (value1 == "all") {
+                alert("plesase select cancer type");
+                return;
+            }
+            if (value2 == "all") {
+                alert("plesase select target");
+                return;
+            }
+            var data = {ct: value1, tt: value2};
+            $.ajax({
+                url: "/association_data1",
+                type: "POST",
+                data: data,
+                beforeSend: function () {
+                    $("#echarts_img").hide();
+                    $("#load_img").show();
+                },
+                success: function (res) {
+                    if (res.error) {
+                        $("#load_img").hide();
+                        alert(res.error);
+                    } else {
+                        $("#load_img").hide();
+                        $("#echarts_img").show();
+                        all_msg = res.data;
+                        draw(all_msg);
+                    }
+
+                }
+            })
+        }
+    </script>
+
+    <script type="text/javascript">
+
+
+        function draw(msg) {
+            var msg = msg;
+            var categories = [];
+            for (var i = 0; i < msg[0].length; i++) {
+                categories[i] = {
+                    name: 'score' + i
+                }
+            }
+
+            var myChart = echarts.init(document.getElementById('echarts_img'), null, {renderer: 'svg'});
+            myChart.setOption({
+                tooltip: {},
+                animationDuration: 1000,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        type: 'graph',
+                        name: "Gene",
+                        layout: 'force',
+                        data: function () {
+                            var arr = [];
+                            for (var j = 0; j < msg[1].length; j++) {
+                                arr.push({
+                                    itemStyle: null,
+                                    category: msg[1][j][1],
+                                    name: msg[1][j][0],
+                                    value: msg[1][j][1],
+                                    symbolSize: msg[1][j][2],
+                                    x: null,
+                                    y: null,
+                                    label: {
+                                        show: true, //msg[1][j][2] > 30,
+                                        {#fontSize: msg[1][j][2] / 2,#}
+                                        fontSize: msg[1][j][2],
+                                    }
+
+                                });
+                            }
+                            return arr;
+                        }(),
+                        links: function () {
+                            var arr = [];
+                            for (var i = 0; i < msg[0].length; i++) {
+                                arr.push({
+                                    source: msg[0][i][0],
+                                    target: msg[0][i][1]
+                                });
+                            }
+                            return arr;
+                        }(),
+                        categories: categories,
+                        roam: true,
+                        draggable: true,
+                        focusNodeAdjacency: true,
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 1,
+                                shadowBlur: 10,
+                                shadowColor: 'rgba(0, 0, 0, 0.3)'
+                            }
+                        },
+                        label: {
+                            position: 'inside',
+                            fontWeight: "bold",
+                            fontSize: 20
+                        },
+                        lineStyle: {
+                            color: 'source',
+                            curveness: 0,
+                            width: 2
+                        },
+                        emphasis: {
+                            lineStyle: {
+                                width: 10
+                            }
+                        },
+                        force: {
+                            repulsion: 700,
+                        }
+                    }
+                ]
+            });
+            //
+            window.onresize = myChart.resize;
+        }
+
+    </script>
+
+
+
+{% endblock %}

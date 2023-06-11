@@ -1,0 +1,220 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    {#    <link href="./layui.css" rel="stylesheet">#}
+    {#    <script src="./position.js"></script>#}
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static',filename='js/position.js') }}"></script>
+    <style>
+        * {
+            margin: 0 auto
+        }
+
+        html {
+            font-size: 62.5%;
+        !important;
+            /* font-size: 62.5%; */
+        }
+
+        img {
+            max-width: 100%;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        .nav_a {
+            text-decoration: none;
+            font-size: 1.8rem;
+            padding-left: 2%;
+            color: white;
+            line-height: 100%;
+            float: left;
+            margin: 0 auto;
+            display: block;
+            margin-top: 4rem;
+        }
+
+        .nav_a:hover {
+            color: rgb(156, 217, 185);
+        }
+
+
+        .total_div {
+            width: 100%;
+            height: 12rem;
+            line-height: 12rem;
+            background: url("{{url_for('static',filename='images/RadiationDB_header_2.png')}}");
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .total_div_1 {
+            float: left;
+            width: 40%;
+            height: 100%;
+            line-height: 40%;
+            margin: 0 auto
+        }
+
+        #container {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 1.6rem;
+        }
+
+        #container .article {
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #container .article .articlebox {
+            overflow: hidden;
+            position: relative;
+        }
+
+        #container .article .articlebox .articlelist {
+            width: 25%;
+        / / background: #8A2BE2;
+            border: none;
+            float: left;
+            padding-bottom: 2rem;
+        }
+
+        #container .article .articlebox .articledetail {
+            width: 70%;
+        / / background: #FFB6C1;
+            float: right;
+        }
+
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+{% endblock %}
+
+{% block body_part %}
+
+
+    <div id="container" >
+        <div class="article">
+                <div class="articledetail">
+                    <div style="border:none;margin-top:6rem">
+                        <div id="a">
+                            <p style="font-size: 36px;"><strong>Summary statistics of significant bulk-tissue biomarkers in MR analysis</strong></p><br/>
+                            <table class="myble1"; style = "width : 60%"; border="1">
+                                <tr bgcolor = "#CAE1FF">
+                                    <th width = "30%"; height = "70"><p style="font-size: 28px;" align = "middle">Psychiatric disorder</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">eQTL</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">sQTL</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">mQTL</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">pQTL</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">caQTL</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">haQTL</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">ADHD</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">ASD</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">BP</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">DEP</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">SCZ</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">ANX</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">ALZ</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">ED</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">PTSD</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                                <tr>
+                                    <th width="30%"; height = "70"><p style="font-size: 28px;" align = "middle">OCD</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                    <th><p style="font-size: 28px;" align = "middle">1</p></th>
+                                </tr>
+                            </table>
+                            </div>
+                            <p style="font-size: 36px; border:none; margin-top:6rem"><strong>Corresponding heatmap</strong></p><br/>
+                            <div id="b"; align="right" ; width="40%";>
+                                  <iframe id="my-frame" src="1.html" frameborder="0" scrolling="no" style="border:0px; width: 100%" onLoad="setIframeHeight(this.id)">                                   </iframe>
+                                  <div id="tester" style="width:90%;height:250px;"></div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div style="height:2rem"></div>
+
+{% endblock %}

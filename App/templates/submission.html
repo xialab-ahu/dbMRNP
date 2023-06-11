@@ -1,0 +1,115 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='css/submit_form.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{#主体部分#}
+{% block body_part %}
+    <div class="before_form">
+        <h1><em>Welcome to submit new entries to the database.</em></h1>
+        <div style="height:1rem"></div>
+        <form action="submission" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <div>
+                <fieldset style="border: 0.1rem solid darkslategrey;border-radius:0.5rem;">
+                    <legend class="fieldset_title">Data Information</legend>
+                    <div class="form_block">
+                        {{ form.title.label(class="form_label") }}
+                        <div class="form_context">
+                            {{ form.title(class="form_full") }}
+
+                        </div>
+                        {% for error in form.title.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form_block">
+                        {{ form.journal.label(class="form_label") }}
+                        <div class="form_context">
+                            {{ form.journal(class="form_full") }}
+                        </div>
+                        {% for error in form.journal.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form_block">
+                        {{ form.cancer_type.label(class="form_label") }}
+                        <div class="form_context">
+                            {{ form.cancer_type(class="form_full") }}
+                        </div>
+                        {% for error in form.cancer_type.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form_block">
+                        {{ form.regulatory_factor.label(class="form_label") }}
+                        <div class="form_context">
+                            {{ form.regulatory_factor(class="form_full") }}
+                        </div>
+                        {% for error in form.regulatory_factor.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form_block">
+                        {{ form.introductions.label(class="form_label") }}
+                        <div class="form_context big_full1">
+                            {{ form.introductions(class="form_full big_full1") }}
+                        </div>
+                        {% for error in form.introductions.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+
+                </fieldset>
+                <div style="height:2rem"></div>
+                <fieldset style="border: 0.1rem solid darkslategrey;border-radius:0.5rem;">
+                    <legend class="fieldset_title">Submitter Information</legend>
+                    <div class="form_block">
+                        {{ form.name.label(class="form_label") }}
+                        <div class="form_context">
+                            {{ form.name(class="form_full") }}
+                        </div>
+                        {% for error in form.name.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form_block">
+                        {{ form.email.label(class="form_label") }}
+                        <div class="form_context">
+                            {{ form.email(class="form_full") }}
+                        </div>
+                        {% for error in form.email.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form_block">
+                        {{ form.institution.label(class="form_label") }}
+                        <div class="form_context big_full2">
+                            {{ form.institution(class="form_full big_full2") }}
+                        </div>
+                        {% for error in form.institution.errors %}
+                            <div style="color: red;padding-left: 15%">[{{ error }}]</div>
+                        {% endfor %}
+                    </div>
+
+                </fieldset>
+                <div style="height:2rem"></div>
+                <div style="float: right;">
+                    {% block button %}
+                        {{ form.submit(class="button_origin bg_submit") }}
+                        {{ form.reset(class="button_origin bg_reset") }}
+                    {% endblock %}
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
+
+

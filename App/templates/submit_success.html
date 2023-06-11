@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>dbCRAF</title>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div style="text-align: center;margin-top: 200px">
+    <h1>data successfully submitted! Thank you.<span id="Time">5</span>s...</h1>
+<a href="submission" style="text-decoration: none;">It will jump automatically after 5 seconds, or you can click here to jump immediately.</a>
+
+</div>
+<script>
+    $(function () {
+         function Time() {
+        var time = $("#Time").text();
+        if (time == 1) {
+            location.href = '/submission';
+        } else {
+            time = time - 1;
+            $("#Time").text(time);
+        }
+    }
+    setInterval(Time, 1000);
+    })
+
+</script>
+</body>
+</html>

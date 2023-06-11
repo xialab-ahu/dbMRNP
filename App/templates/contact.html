@@ -1,0 +1,61 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <style>
+        .total {
+            width: 50%;
+            height: 70rem;
+            margin-top: 2%;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+    </style>
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.css') }}" rel="stylesheet">
+{% endblock %}
+
+<!-- 各页面主体内容 -->
+{% block body_part %}
+    <div class="total">
+    <div class="layui-row" id="bodyer">
+				<!--主体部分-->
+				<div class="layui-row" id="bodyer1">
+					<div class="layui-col-xs10 layui-col-sm10 layui-col-md10 layui-col-lg10 layui-col-sm-offset1 layui-col-md-offset1 layui-col-lg-offset1" id="overview">
+						<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12" style="margin-bottom:100px;">
+
+							<fieldset class="layui-elem-field layui-field-title">
+								<legend>General announcement</legend>
+								<div class="layui-field-box">
+									<div class="layui-text">
+										All the file are free to academic researchers world wide. Not for profit purposes.</div>
+									<div class="layui-text">
+										All the downloadable files are Tab Seperated text files. The headline of each file gives out the information for each column.</div>
+								</div>
+							</fieldset>
+
+							<fieldset class="layui-elem-field layui-field-title">
+								<legend>Dataset were update on 2018-01-01</legend>
+								<div class="layui-field-box">
+									<div class="layui-text">
+										<ul class="layui-col-md11 layui-col-md-offset1">
+											<li>Data information</li>
+											<li>Potential miRNA list</li>
+											<li>Potential drug</li>
+										</ul>
+										<a class="layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg2 layui-col-xs-offset10 layui-col-sm-offset10 layui-col-md-offset10 layui-col-lg-offset10" style="cursor:pointer" href="download?fileName=dbCRS_v1.0_20180101.zip">Click here to download</a>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--主体到这-->
+		</div>
+
+    </div>
+{% endblock %}

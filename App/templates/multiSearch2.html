@@ -1,0 +1,749 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block style %}
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/api/fnReloadAjax.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"></script>
+    <script src="https://cdn.datatables.net/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.js"></script>
+    <link href="{{ url_for('static', filename='css/search.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/head.css') }}" rel="stylesheet">
+    <style>
+        #all_table1 tbody tr td {
+            text-align: left;
+        }
+        .left_div_active,.left_div{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body_part %}
+    <div id="total">
+        <div style="height: 1rem"></div>
+        <div id="left">
+            <div class="left_div_active over" id="by_all">By All</div>
+            <div class="left_div over" id="by_prediction">By Prediction</div>
+            <div class="left_div over" id="by_experiment">By Experiment</div>
+        </div>
+        <div id="right">
+            <div class="sw right_div_active">
+                
+                <div style="height: 3rem;"></div>
+                <table id="all_table2" class="display" cellspacing="0" style="width:100%;text-align: center;">
+                    <thead>
+                    <tr>
+                        <th class="color" width="8%" class="Order">trait</th>
+                        <th class="color" width="8%">rsid</th>
+                        <th class="color" width="13%">chr_exposure</th>
+                        <th class="color" width="13%">pos_exposure</th>
+                        <th class="color" width="12%">effect_allele</th>
+                        <th class="color" width="12%">other_allele</th>
+                        <th class="color" width="7%">beta</th>
+                        <th class="color" width="7%">se</th>
+                        <th class="color" width="7%">pval</th>
+                        <th class="color" width="13%">samplesize</th>
+                    </tr>
+                    </thead>
+                    <tbody id="show_table">
+                    </tbody>
+                </table>
+            </div>
+            <div class="sw right_div">
+                <table id="first_table" class="display" cellspacing="0" style="width:100%;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 15rem;text-align: center;"><strong>Categories:</strong></td>
+                        <td>
+                            <ul id="categories" style="margin-bottom: 0;" class="dm_c2">
+                                <li class="all_li active" name="categories" title="All">All</li>
+                                <li name="categories" title="Adenoid cystic carcinoma" class="Adenoid_cystic_carcinoma">
+                                    Adenoid cystic carcinoma
+                                </li>
+                                <li name="categories" title="Breast Neoplasms" class="Breast_Neoplasms">Breast
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Cholangiocarcinoma" class="Cholangiocarcinoma">
+                                    Cholangiocarcinoma
+                                </li>
+                                <li name="categories" title="Chordoma" class="Chordoma">Chordoma</li>
+                                <li name="categories" title="Craniopharyngioma" class="Craniopharyngioma">
+                                    Craniopharyngioma
+                                </li>
+                                <li name="categories" title="Glioma" class="Glioma">Glioma</li>
+                                <li name="categories" title="Head and Neck Neoplasms" class="Head_and_Neck_Neoplasms">
+                                    Head and Neck Neoplasms
+                                </li>
+                                <li name="categories" title="Intestinal Neoplasms" class="Intestinal_Neoplasms">
+                                    Intestinal Neoplasms
+                                </li>
+                                <li name="categories" title="Kidney Neoplasms" class="Kidney_Neoplasms">Kidney
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Leukemia" class="Leukemia">Leukemia</li>
+                                <li name="categories" title="Liver Neoplasms" class="Liver_Neoplasms">Liver Neoplasms
+                                </li>
+                                <li name="categories" title="Lung Neoplasms" class="Lung_Neoplasms">Lung Neoplasms</li>
+                                <li name="categories" title="Lymphoma" class="Lymphoma">Lymphoma</li>
+                                <li name="categories" title="Melanoma" class="Melanoma">Melanoma</li>
+                                <li name="categories" title="Meningeal Neoplasms" class="Meningeal_Neoplasms">Meningeal
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Mesothelioma" class="Mesothelioma">Mesothelioma</li>
+                                <li name="categories" title="Multiple Myeloma" class="Multiple_Myeloma">Multiple
+                                    Myeloma
+                                </li>
+                                <li name="categories" title="Neuroblastoma" class="Neuroblastoma">Neuroblastoma</li>
+                                <li name="categories" title="Neuroendocrine Tumors" class="Neuroendocrine_Tumors">
+                                    Neuroendocrine Tumors
+                                </li>
+                                <li name="categories" title="Ovarian Neoplasms" class="Ovarian_Neoplasms">Ovarian
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Pancreatic Neoplasms" class="Pancreatic_Neoplasms">
+                                    Pancreatic Neoplasms
+                                </li>
+                                <li name="categories" title="Prostatic Neoplasms" class="Prostatic_Neoplasms">Prostatic
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Sarcoma" class="Sarcoma">Sarcoma</li>
+                                <li name="categories" title="Skin Neoplasms" class="Skin_Neoplasms">Skin Neoplasms</li>
+                                <li name="categories" title="Stomach Neoplasms" class="Stomach_Neoplasms">Stomach
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Thymus Neoplasms" class="Thymus_Neoplasms">Thymus
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Urinary Bladder Neoplasms"
+                                    class="Urinary_Bladder_Neoplasms">Urinary Bladder Neoplasms
+                                </li>
+                                <li name="categories" title="Uterine Neoplasms" class="Uterine_Neoplasms">Uterine
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Vulvar Neoplasms" class="Vulvar_Neoplasms">Vulvar
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Pancancer" class="Pancancer">Pancancer</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15rem;text-align: center;"><strong>Factor type:</strong></td>
+                        <td style="padding-top: 1.5rem">
+                            <ul id="type" style="margin-bottom: 0" class="dm_t2">
+                                <li class="all_li active" name="type" title="All">All</li>
+                                <li name="type" title="Protein-coding gene" class="Protein-coding_gene">Protein-coding
+                                    gene
+                                </li>
+                                <li name="type" title="miRNA" class="miRNA">miRNA</li>
+                                <li name="type" title="LncRNA" class="LncRNA">LncRNA</li>
+                                <li name="type" title="CircRNA" class="CircRNA">CircRNA</li>
+                                <li name="type" title="Pseudogene" class="Pseudogene">Pseudogene</li>
+                                <li name="type" title="Protein" class="Protein">Protein</li>
+                                <li name="type" title="Radiosensitizer" class="Radiosensitizer">Radiosensitizer</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                <div style="height: 3rem;"></div>
+                <table id="second_table" class="display" cellspacing="0" style="width:100%;text-align: center;">
+                    <thead>
+                    <tr>
+                        <th class="color" width="8%" class="Order">trait</th>
+                        <th class="color" width="8%">rsid</th>
+                        <th class="color" width="13%">chr_exposure</th>
+                        <th class="color" width="13%">pos_exposure</th>
+                        <th class="color" width="12%">effect_allele</th>
+                        <th class="color" width="12%">other_allele</th>
+                        <th class="color" width="7%">beta</th>
+                        <th class="color" width="7%">se</th>
+                        <th class="color" width="7%">pval</th>
+                        <th class="color" width="7%">samplesize</th>
+                    </tr>
+                    </thead>
+                    <tbody id="show_table">
+                    </tbody>
+                </table>
+            </div>
+            <div class="sw right_div">
+                <table id="three_table" class="display" cellspacing="0" style="width:100%;">
+                    <tbody>
+                    <tr>
+                        <td style="width: 15rem;text-align: center;"><strong>Categories:</strong></td>
+                        <td>
+                            <ul id="categories" style="margin-bottom: 0;" class="dm_c3">
+                                <li class="all_li active" name="categories" title="All">All</li>
+                                <li name="categories" title="Adenoid cystic carcinoma" class="Adenoid_cystic_carcinoma">
+                                    Adenoid cystic carcinoma
+                                </li>
+                                <li name="categories" title="Breast Neoplasms" class="Breast_Neoplasms">Breast
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Cholangiocarcinoma" class="Cholangiocarcinoma">
+                                    Cholangiocarcinoma
+                                </li>
+                                <li name="categories" title="Chordoma" class="Chordoma">Chordoma</li>
+                                <li name="categories" title="Craniopharyngioma" class="Craniopharyngioma">
+                                    Craniopharyngioma
+                                </li>
+                                <li name="categories" title="Glioma" class="Glioma">Glioma</li>
+                                <li name="categories" title="Head and Neck Neoplasms" class="Head_and_Neck_Neoplasms">
+                                    Head and Neck Neoplasms
+                                </li>
+                                <li name="categories" title="Intestinal Neoplasms" class="Intestinal_Neoplasms">
+                                    Intestinal Neoplasms
+                                </li>
+                                <li name="categories" title="Kidney Neoplasms" class="Kidney_Neoplasms">Kidney
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Leukemia" class="Leukemia">Leukemia</li>
+                                <li name="categories" title="Liver Neoplasms" class="Liver_Neoplasms">Liver Neoplasms
+                                </li>
+                                <li name="categories" title="Lung Neoplasms" class="Lung_Neoplasms">Lung Neoplasms</li>
+                                <li name="categories" title="Lymphoma" class="Lymphoma">Lymphoma</li>
+                                <li name="categories" title="Melanoma" class="Melanoma">Melanoma</li>
+                                <li name="categories" title="Meningeal Neoplasms" class="Meningeal_Neoplasms">Meningeal
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Mesothelioma" class="Mesothelioma">Mesothelioma</li>
+                                <li name="categories" title="Multiple Myeloma" class="Multiple_Myeloma">Multiple
+                                    Myeloma
+                                </li>
+                                <li name="categories" title="Neuroblastoma" class="Neuroblastoma">Neuroblastoma</li>
+                                <li name="categories" title="Neuroendocrine Tumors" class="Neuroendocrine_Tumors">
+                                    Neuroendocrine Tumors
+                                </li>
+                                <li name="categories" title="Ovarian Neoplasms" class="Ovarian_Neoplasms">Ovarian
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Pancreatic Neoplasms" class="Pancreatic_Neoplasms">
+                                    Pancreatic Neoplasms
+                                </li>
+                                <li name="categories" title="Prostatic Neoplasms" class="Prostatic_Neoplasms">Prostatic
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Sarcoma" class="Sarcoma">Sarcoma</li>
+                                <li name="categories" title="Skin Neoplasms" class="Skin_Neoplasms">Skin Neoplasms</li>
+                                <li name="categories" title="Stomach Neoplasms" class="Stomach_Neoplasms">Stomach
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Thymus Neoplasms" class="Thymus_Neoplasms">Thymus
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Urinary Bladder Neoplasms"
+                                    class="Urinary_Bladder_Neoplasms">Urinary Bladder Neoplasms
+                                </li>
+                                <li name="categories" title="Uterine Neoplasms" class="Uterine_Neoplasms">Uterine
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Vulvar Neoplasms" class="Vulvar_Neoplasms">Vulvar
+                                    Neoplasms
+                                </li>
+                                <li name="categories" title="Pancancer" class="Pancancer">Pancancer</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15rem;text-align: center;"><strong>Factor type:</strong></td>
+                        <td style="padding-top: 1.5rem">
+                            <ul id="type" style="margin-bottom: 0" class="dm_t3">
+                                <li class="all_li active" name="type" title="All">All</li>
+                                <li name="type" title="Protein-coding gene" class="Protein-coding_gene">Protein-coding
+                                    gene
+                                </li>
+                                <li name="type" title="miRNA" class="miRNA">miRNA</li>
+                                <li name="type" title="LncRNA" class="LncRNA">LncRNA</li>
+                                <li name="type" title="CircRNA" class="CircRNA">CircRNA</li>
+                                <li name="type" title="Pseudogene" class="Pseudogene">Pseudogene</li>
+                                <li name="type" title="Protein" class="Protein">Protein</li>
+                                <li name="type" title="Radiosensitizer" class="Radiosensitizer">Radiosensitizer</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                <div style="height: 3rem;"></div>
+                <table id="four_table" class="display" cellspacing="0" style="width:100%;text-align: center;">
+                    <thead>
+                    <tr>
+                        <th class="color" width="8%" class="Order">trait</th>
+                        <th class="color" width="8%">rsid</th>
+                        <th class="color" width="13%">chr_exposure</th>
+                        <th class="color" width="13%">pos_exposure</th>
+                        <th class="color" width="12%">effect_allele</th>
+                        <th class="color" width="12%">other_allele</th>
+                        <th class="color" width="7%">beta</th>
+                        <th class="color" width="7%">se</th>
+                        <th class="color" width="7%">pval</th>
+                        <th class="color" width="7%">samplesize</th>
+                    </tr>
+                    </thead>
+                    <tbody id="show_table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!--data table-->
+    <script type="text/javascript">
+        var left_fiv = document.getElementById("left").getElementsByTagName("div");
+        var right_div = document.getElementById("right").getElementsByClassName("sw");
+
+        for (var i = 0; i < left_fiv.length; i++) {
+            left_fiv[i].index = i;
+            left_fiv[i].onclick = function () {
+                for (var j = 0; j < left_fiv.length; j++) {
+                    left_fiv[j].className = "left_div";
+                    right_div[j].style.display = "none";
+                }
+                this.className = "left_div_active";
+                right_div[this.index].style.display = "block";
+                if (this.index == 0) {
+                    $("ul li").removeClass("active");
+                    var send_data = {'categories': ["All"], 'type': ["All"],};
+                    $("#categories .all_li").siblings().css("color", 'black');
+                    $("#type .all_li").siblings().css("color", 'black');
+                    $(".all_li").addClass("active");
+                    $("#all_table2").dataTable().fnDestroy();
+                    $("#all_table2").DataTable(getCharData(send_data, "#all_table2", '/searchAll', all_ct));
+                } else if (this.index == 1) {
+                    $("ul li").removeClass("active");
+                    var send_data = {'categories': ["All"], 'type': ["All"],};
+                    $("#categories .all_li").siblings().css("color", 'black');
+                    $("#type .all_li").siblings().css("color", 'black');
+                    $(".all_li").addClass("active");
+                    $("#second_table").dataTable().fnDestroy();
+                    $("#second_table").DataTable(getCharData(send_data, "#second_table", '/searchCategory', ct));
+                } else {
+                    $("ul li").removeClass("active");
+                    $(".all_li").addClass("active");
+                    var send_data = {'categories': ["All"], 'type': ["All"],};
+                    $("#categories .all_li").siblings().css("color", 'black');
+                    $("#type .all_li").siblings().css("color", 'black');
+                    $("#four_table").dataTable().fnDestroy();
+                    $("#four_table").DataTable(getCharData(send_data, "#four_table", '/searchExperiment', ct1));
+                }
+
+            }
+        }
+    </script>
+    
+    <!--left botton-->
+    <script>
+        var isloaded = false;
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            } else {
+                return null;
+            }
+        }
+
+        var all_ct = [
+            {
+                "data": "trait", defaultContent: "-", render: function (data,) {
+                    const link = "/order_search/" + data;
+                    return "<p style='text-align: center;'><a style='color:blue' target='_blank' href=" + link + ">" + data + "</a></p>"
+                }
+            },
+            {
+                "data": "rsid", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "chr_exposure", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "pos_exposure", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "effect_allele", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "other_allele", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "beta", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "se", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "pval", defaultContent: "-", render: function (data,) {
+                    return "<p style='text-align: center;'>" + data + "</p>"
+                }
+            },
+            {
+                "data": "samplesize", defaultContent: "-", render: function (data,) {
+                    const link = 'https://pubmed.ncbi.nlm.nih.gov/' + data + '/';
+                    return "<a style='color:blue' target='_blank' href=" + link + ">" + data + "</a>"
+                }
+            },
+        ];
+        var ct = [
+            {
+                "data": "Order", defaultContent: "-", render: function (data,) {
+                    const link = "/order_search/" + data;
+                    return "<a style='color:blue' target='_blank' href=" + link + ">" + data + "</a>"
+                }
+            },
+            {"data": "Factor", defaultContent: "-"},
+            {"data": "Factor_type", defaultContent: "-"},
+            {"data": "Cancer_type", defaultContent: "-"},
+            {"data": "Radiation_type", defaultContent: "-"},
+            {"data": "Potential_type", defaultContent: "-"},
+            {
+                "data": "PMID", defaultContent: "-", render: function (data,) {
+                    const link = 'https://pubmed.ncbi.nlm.nih.gov/' + data + '/';
+                    return "<a style='color:blue' target='_blank' href=" + link + ">" + data + "</a>"
+                }
+            },
+        ];
+        var ct1 = [
+            {
+                "data": "Order", defaultContent: "-", render: function (data,) {
+                    const link = "/order_search/" + data;
+                    return "<a style='color:blue' target='_blank' href=" + link + ">" + data + "</a>"
+                }
+            },
+            {"data": "Factor", defaultContent: "-"},
+            {"data": "Factor_type", defaultContent: "-"},
+            {"data": "Sensitivity", defaultContent: "-"},
+            {"data": "Resistance", defaultContent: "-"},
+            {"data": "Cancer_type", defaultContent: "-"},
+            {"data": "Radiation_type", defaultContent: "-"},
+            {
+                "data": "PMID", defaultContent: "-", render: function (data,) {
+                    const link = 'https://pubmed.ncbi.nlm.nih.gov/' + data + '/';
+                    return "<a style='color:blue' target='_blank' href=" + link + ">" + data + "</a>"
+                }
+            },
+        ];
+
+        function getCharData(send_data, table_id, url_view, columns) {
+            $(table_id).DataTable({
+                "scrollY": "50vh",
+                "scrollCollapse": true,
+                "aLengthMenu": [5, 10, 15, 20],
+                "iDisplayLength": 10,
+                "aoColumnDefs": [{
+                    "bSortable": false,
+                }],
+                ajax: {
+                    type: "POST",
+                    url: url_view,
+                    async: false,
+                    data: send_data,
+                    error: function (error) {
+                        alert("error");
+                    },
+                    dataSrc: function (json) {
+                        json.draw = json.data.draw;
+                        json.recordsTotal = json.data.recordsTotal;
+                        json.recordsFiltered = json.data.recordsFiltered;
+                        return json.data;
+                    }
+                },
+                "columns": columns,
+                dom: 'lfBrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                ],
+            })
+        }
+
+        $("#all_table1 ul li").click(function () {
+            $("ul li").css("color", "black");
+            if ($(this).hasClass("active")) {
+                if ($(this).attr("title") != "All") {
+                    $(this).removeClass("active");
+                }
+            } else {
+                if ($(this).attr("title") == "All") {
+                    $(this).addClass("active").siblings().removeClass("active");
+                } else {
+                    if ($(this).attr("name") == "categories") {
+                        $("#categories .all_li").removeClass("active");
+                    } else {
+                        $("#type .all_li").removeClass("active");
+                    }
+                    $(this).addClass("active");
+                }
+            }
+            var categories = new Array();
+            var categories1 = $("#categories .active").toArray();
+            for (i = 0; i < categories1.length; i++) {
+                categories.push(categories1[i].getAttribute("title"));
+            }
+            categories = $.unique(categories);
+            if (categories.length == 0) {
+                $("#categories .all_li").addClass("active");
+            }
+            var type = new Array();
+            var type1 = $("#type .active").toArray();
+            for (i = 0; i < type1.length; i++) {
+                type.push(type1[i].getAttribute("title"));
+            }
+            if (type.length == 0) {
+                $("#type .all_li").addClass("active");
+            }
+            var send_data = {'categories': categories, 'type': type,}
+            $("#all_table2").dataTable().fnDestroy();
+            getCharData(send_data, "#all_table2", '/searchAll', all_ct);
+        });
+        $("#first_table ul li").click(function () {
+            $("ul li").css("color", "black");
+            if ($(this).hasClass("active")) {
+                if ($(this).attr("title") != "All") {
+                    $(this).removeClass("active");
+                }
+            } else {
+                if ($(this).attr("title") == "All") {
+                    $(this).addClass("active").siblings().removeClass("active");
+                } else {
+                    if ($(this).attr("name") == "categories") {
+                        $("#categories .all_li").removeClass("active");
+                    } else {
+                        $("#type .all_li").removeClass("active");
+                    }
+                    $(this).addClass("active");
+                }
+            }
+            var categories = new Array();
+            var categories1 = $("#categories .active").toArray();
+            for (i = 0; i < categories1.length; i++) {
+                categories.push(categories1[i].getAttribute("title"));
+            }
+            if (categories.length == 0) {
+                $("#categories .all_li").addClass("active");
+            }
+            var type = new Array();
+            var type1 = $("#type .active").toArray();
+            for (i = 0; i < type1.length; i++) {
+                type.push(type1[i].getAttribute("title"));
+            }
+            if (type.length == 0) {
+                $("#type .all_li").addClass("active");
+            }
+            var send_data = {'categories': categories, 'type': type,}
+            $("#second_table").dataTable().fnDestroy();
+            getCharData(send_data, "#second_table", '/searchCategory', ct);
+        });
+        $("#three_table ul li").click(function () {
+            $("ul li").css("color", "black");
+            if ($(this).hasClass("active")) {
+                if ($(this).attr("title") != "All") {
+                    $(this).removeClass("active");
+                }
+            } else {
+                if ($(this).attr("title") == "All") {
+                    $(this).addClass("active").siblings().removeClass("active");
+                } else {
+                    if ($(this).attr("name") == "categories") {
+                        $("#categories .all_li").removeClass("active");
+                    } else {
+                        $("#type .all_li").removeClass("active");
+                    }
+                    $(this).addClass("active");
+                }
+            }
+            var categories = [];
+            var categories1 = $("#categories .active").toArray();
+            for (i = 0; i < categories1.length; i++) {
+                categories.push(categories1[i].getAttribute("title"));
+            }
+            if (categories.length == 0) {
+                $("#categories .all_li").addClass("active");
+            }
+            var type = [];
+            var type1 = $("#type .active").toArray();
+            for (i = 0; i < type1.length; i++) {
+                type.push(type1[i].getAttribute("title"));
+            }
+            if (type.length == 0) {
+                $("#type .all_li").addClass("active");
+            }
+            var send_data = {'categories': categories, 'type': type,}
+            $("#four_table").dataTable().fnDestroy();
+            $("#four_table").DataTable(getCharData(send_data, "#four_table", '/searchExperiment', ct1));
+        });
+        $(document).ready(function () {
+            $("ul li").addClass("over");
+            $(".left_div").addClass("over");
+            $(".left_div_active").addClass("over");
+            var url = window.location.href;
+            index = url.indexOf("flag");
+            if (index != -1) {
+                var page = "";
+                var type_new = "";
+                var dm = 0;
+                page = getUrlParam("page").toString();
+                type_new = getUrlParam("type").toString();
+                if (page == "All") {
+                    if (type_new.indexOf("*") >= 0) {
+                        $("ul li").removeClass("active");
+                        type_new = type_new.split("*");
+                        var cncn = type_new[0];
+                        $("." + cncn).css("color", "rgb(6, 160, 79)");
+                        cncn = cncn.replaceAll("_", " ");
+                        var fnfn = type_new[1];
+                        $("." + fnfn).css("color", "rgb(6, 160, 79)");
+                        fnfn = fnfn.replaceAll("_", " ");
+                        dm = 1;
+                        var send_data = {'categories': [cncn], 'type': [fnfn]};
+                    } else if (type_new != 'All') {
+                        if ($("ul li").hasClass(type_new)) {
+                            var nn = type_new;
+                            type_new = $("." + type_new).attr("title");
+                        } else {
+                            var not_exist = 1;
+                            type_new = "All";
+                        }
+                    } else {
+                        var send_data = {'categories': ["All"], 'type': ["All"],};
+                    }
+                    if (dm == 0) {
+                        $("ul li").removeClass("active");
+                        if (type_new == 'Protein-coding gene' || type_new == 'miRNA' || type_new == 'LncRNA' || type_new == 'CircRNA' || type_new == 'Pseudogene' || type_new == 'Protein' || type_new == 'Radiosensitizer') {
+                            var send_data = {'categories': ["All"], 'type': [type_new],};
+                            $("#type ." + nn).css("color", "rgb(6, 160, 79)");
+                            $("#categories .all_li").css("color", "rgb(6, 160, 79)");
+                        } else {
+                            var send_data = {'categories': [type_new], 'type': ["All"],};
+                            $("#categories ." + nn).css("color", "rgb(6, 160, 79)");
+                            $("#type .all_li").css("color", "rgb(6, 160, 79)");
+
+                        }
+                    }
+                    left_fiv[0].className = "left_div_active";
+                    left_fiv[1].className = "left_div";
+                    left_fiv[2].className = "left_div";
+                    right_div[0].style.display = "block";
+                    right_div[1].style.display = "none";
+                    right_div[2].style.display = "none";
+                    $("#all_table2").DataTable(getCharData(send_data, "#all_table2", '/searchAll', all_ct));
+                    if (not_exist == 1) {
+                        alert("No such Cancer type or Factor!");
+                    }
+                } else if (page == "signature") {
+                    left_fiv[0].className = "left_div";
+                    left_fiv[1].className = "left_div_active";
+                    left_fiv[2].className = "left_div";
+                    right_div[0].style.display = "none";
+                    right_div[1].style.display = "block";
+                    right_div[2].style.display = "none";
+                    if (index != -1) {
+                        $("ul li").removeClass("active");
+                        type_new = type_new.split("*");
+                        var cncn = type_new[0];
+
+                        $("." + cncn).css("color", "rgb(6, 160, 79)");
+                        if (cncn == "all_li") {
+                            cncn = "All";
+                        }
+                        cncn = cncn.replaceAll("_", " ");
+
+                        var fnfn = type_new[1];
+
+                        $("." + fnfn).css("color", "rgb(6, 160, 79)");
+                        if (fnfn == "all_li") {
+                            fnfn = "All";
+                        }
+                        fnfn = fnfn.replaceAll("_", " ");
+
+                        dm = 1;
+                        var send_data = {'categories': [cncn], 'type': [fnfn]};
+                    } else {
+                        var send_data = {'categories': ["All"], 'type': ["All"],};
+                    }
+                    $("#second_table").dataTable().fnDestroy();
+                    $("#second_table").DataTable(getCharData(send_data, "#second_table", '/searchCategory', ct));
+                } else {
+                    var send_data = {'categories': ["All"], 'type': ["All"],};
+                    left_fiv[0].className = "left_div";
+                    left_fiv[1].className = "left_div";
+                    left_fiv[2].className = "left_div_active";
+                    right_div[0].style.display = "none";
+                    right_div[1].style.display = "none";
+                    right_div[2].style.display = "block";
+                    if (index != -1) {
+                        $("ul li").removeClass("active");
+                        type_new = type_new.split("*");
+                        var cncn = type_new[0];
+                        $("." + cncn).css("color", "rgb(6, 160, 79)");
+                        if (cncn == "all_li") {
+                            cncn = "All";
+                        }
+                        cncn = cncn.replaceAll("_", " ");
+                        var fnfn = type_new[1];
+                        $("." + fnfn).css("color", "rgb(6, 160, 79)");
+                        if (fnfn == "all_li") {
+                            fnfn = "All";
+                        }
+                        fnfn = fnfn.replaceAll("_", " ");
+                        dm = 1;
+                        var send_data = {'categories': [cncn], 'type': [fnfn]};
+                    } else {
+                        var send_data = {'categories': ["All"], 'type': ["All"],};
+                    }
+                    $("#four_table").dataTable().fnDestroy();
+                    $("#four_table").DataTable(getCharData(send_data, "#four_table", '/searchExperiment', ct1));
+                }
+                //
+            } else {
+                var send_data = {'categories': ["All"], 'type': ["All"],};
+                left_fiv[0].className = "left_div_active";
+                left_fiv[1].className = "left_div";
+                left_fiv[2].className = "left_div";
+                right_div[0].style.display = "block";
+                right_div[1].style.display = "none";
+                right_div[2].style.display = "none";
+                $("#all_table2").dataTable().fnDestroy();
+                $("#all_table2").DataTable(getCharData(send_data, "#all_table2", '/searchAll', all_ct));
+            }
+        })
+
+    </script>
+
+{% endblock %}

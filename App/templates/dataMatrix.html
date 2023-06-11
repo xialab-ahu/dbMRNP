@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dbCRAF</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="{{ url_for('static', filename='css/layui.css') }}" rel="stylesheet">
+    <style>
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .over {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
+        .nav_div {
+            width: 100%;
+            height: 12rem;
+            line-height: 12rem;
+            background: url("{{url_for('static',filename='images/RadiationDB_header_2.png')}}");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            vertical-align: center;
+            margin-top: 0;
+
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 2.3rem;
+            color: white;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow: hidden;
+            margin-left: 1rem;
+            display: inline-block;
+            max-width: 20rem;
+
+        }
+
+        .nav-link:hover {
+            color: rgb(156, 217, 185);
+        }
+    </style>
+
+    <style>
+
+        body {
+            margin: 0 auto;
+            font-size: 1.8rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        #total {
+            width: 99%;
+            height: 85%;
+            margin: 0 auto;
+
+        }
+
+        #left {
+            width: 10%;
+            height: 40rem;
+            float: left;
+            margin-left: 2%;
+            position: relative;
+            border-right: 1px solid lightgrey;
+            font-size: 1.6rem;
+            font-weight: bold;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+        .left_div {
+            margin: 0 auto;
+            width: 90%;
+            height: 5rem;
+            line-height: 5rem;
+            background-color: rgb(222, 241, 231);
+            text-align: center;
+            margin-top: 1.5rem;
+            border-radius: 1rem;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+        .left_div:hover {
+            cursor: pointer;
+        }
+
+        .left_div_active {
+            margin: 0 auto;
+            width: 90%;
+            height: 5rem;
+            line-height: 5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            background-color: rgb(156, 217, 185);
+            border-radius: 1rem;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+
+        }
+
+        .left_div_active {
+            cursor: pointer;
+        }
+
+        #right {
+            float: left;
+            width: 85%;
+            height: 85%;
+            margin-left: 1%;
+            padding: 1% 1% 1% 1%;
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow: 2px 2px 10px #909090;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<div class="nav_div">
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/dataMatrix">Data-Matrix</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/search">Search</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/analysis">Analysis</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/download">Download</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/statistics">Statistic</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/submission">Submission</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/help">Help</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://www.xialab.info/">About us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="visibility:hidden">.............</a>
+        </li>
+    </ul>
+</div>
+<div style="clear: both;"></div>
+<!-- 各页面主体内容 -->
+<div id="total">
+    <div style="height: 5%;"></div>
+    <div id="left">
+        <div class="left_div_active over">By All</div>
+        <div class="left_div over">By Prediction</div>
+        <div class="left_div over">By Experiment</div>
+    </div>
+    <div id="right">
+        <h3 align="center">Data Matrix</h3>
+        <br>
+        <div id="container" style="height: 100%"></div>
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+
+<script type="text/javascript">
+    function fontSize(res) {
+        let clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (!clientWidth) return;
+        let fontSize = 10 * (clientWidth / 1920);
+        return parseInt(res * fontSize);
+    }
+
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+    const data1 =
+        [[0, 0, 0], [0, 1, 95], [0, 2, 3], [0, 3, 1], [0, 4, 0], [0, 5, 113], [0, 6, 245], [0, 7, 86], [0, 8, 3], [0, 9, 6], [0, 10, 57], [0, 11, 198], [0, 12, 3], [0, 13, 13], [0, 14, 2], [0, 15, 0], [0, 16, 3], [0, 17, 0], [0, 18, 3], [0, 19, 11], [0, 20, 37], [0, 21, 76], [0, 22, 23], [0, 23, 3], [0, 24, 14], [0, 25, 0], [0, 26, 8], [0, 27, 68], [0, 28, 1], [0, 29, 6], [1, 0, 0], [1, 1, 2], [1, 2, 0], [1, 3, 0], [1, 4, 0], [1, 5, 0], [1, 6, 20], [1, 7, 11], [1, 8, 1], [1, 9, 0], [1, 10, 0], [1, 11, 9], [1, 12, 0], [1, 13, 0], [1, 14, 0], [1, 15, 0], [1, 16, 0], [1, 17, 0], [1, 18, 0], [1, 19, 0], [1, 20, 2], [1, 21, 6], [1, 22, 0], [1, 23, 0], [1, 24, 0], [1, 25, 0], [1, 26, 2], [1, 27, 8], [1, 28, 0], [1, 29, 0], [2, 0, 0], [2, 1, 0], [2, 2, 0], [2, 3, 0], [2, 4, 0], [2, 5, 2], [2, 6, 3], [2, 7, 0], [2, 8, 0], [2, 9, 0], [2, 10, 1], [2, 11, 1], [2, 12, 0], [2, 13, 0], [2, 14, 0], [2, 15, 0], [2, 16, 0], [2, 17, 0], [2, 18, 0], [2, 19, 0], [2, 20, 0], [2, 21, 0], [2, 22, 0], [2, 23, 0], [2, 24, 0], [2, 25, 0], [2, 26, 0], [2, 27, 0], [2, 28, 0], [2, 29, 0], [3, 0, 0], [3, 1, 2], [3, 2, 0], [3, 3, 0], [3, 4, 0], [3, 5, 2], [3, 6, 9], [3, 7, 7], [3, 8, 0], [3, 9, 0], [3, 10, 0], [3, 11, 5], [3, 12, 0], [3, 13, 0], [3, 14, 0], [3, 15, 0], [3, 16, 0], [3, 17, 0], [3, 18, 0], [3, 19, 0], [3, 20, 0], [3, 21, 3], [3, 22, 0], [3, 23, 0], [3, 24, 1], [3, 25, 0], [3, 26, 0], [3, 27, 2], [3, 28, 0], [3, 29, 0], [4, 0, 0], [4, 1, 13], [4, 2, 0], [4, 3, 0], [4, 4, 0], [4, 5, 12], [4, 6, 34], [4, 7, 16], [4, 8, 2], [4, 9, 0], [4, 10, 12], [4, 11, 23], [4, 12, 0], [4, 13, 2], [4, 14, 0], [4, 15, 0], [4, 16, 0], [4, 17, 2], [4, 18, 0], [4, 19, 0], [4, 20, 1], [4, 21, 7], [4, 22, 1], [4, 23, 0], [4, 24, 4], [4, 25, 0], [4, 26, 0], [4, 27, 10], [4, 28, 0], [4, 29, 0], [5, 0, 0], [5, 1, 39], [5, 2, 0], [5, 3, 0], [5, 4, 0], [5, 5, 34], [5, 6, 146], [5, 7, 38], [5, 8, 1], [5, 9, 0], [5, 10, 22], [5, 11, 104], [5, 12, 2], [5, 13, 4], [5, 14, 2], [5, 15, 0], [5, 16, 0], [5, 17, 0], [5, 18, 0], [5, 19, 2], [5, 20, 9], [5, 21, 26], [5, 22, 3], [5, 23, 0], [5, 24, 8], [5, 25, 0], [5, 26, 0], [5, 27, 34], [5, 28, 0], [5, 29, 0], [6, 0, 2], [6, 1, 368], [6, 2, 2], [6, 3, 2], [6, 4, 1], [6, 5, 272], [6, 6, 821], [6, 7, 211], [6, 8, 9], [6, 9, 2], [6, 10, 52], [6, 11, 340], [6, 12, 1], [6, 13, 13], [6, 14, 1], [6, 15, 1], [6, 16, 1], [6, 17, 2], [6, 18, 5], [6, 19, 31], [6, 20, 52], [6, 21, 164], [6, 22, 22], [6, 23, 3], [6, 24, 31], [6, 25, 1], [6, 26, 14], [6, 27, 198], [6, 28, 0], [6, 29, 36]]
+            .map(function (item) {
+                return [item[1], item[0], item[2] || '-'];
+            });
+    const data2 =
+        [[0, 0, 0], [0, 1, 0], [0, 2, 0], [0, 3, 0], [0, 4, 0], [0, 5, 0], [0, 6, 0], [0, 7, 0], [0, 8, 0], [0, 9, 0], [0, 10, 0], [0, 11, 0], [0, 12, 0], [0, 13, 0], [0, 14, 0], [0, 15, 0], [0, 16, 0], [0, 17, 0], [0, 18, 0], [0, 19, 0], [0, 20, 0], [0, 21, 0], [0, 22, 0], [0, 23, 0], [0, 24, 0], [0, 25, 0], [0, 26, 0], [0, 27, 0], [0, 28, 0], [0, 29, 0], [1, 0, 0], [1, 1, 2], [1, 2, 0], [1, 3, 0], [1, 4, 0], [1, 5, 0], [1, 6, 10], [1, 7, 10], [1, 8, 0], [1, 9, 0], [1, 10, 0], [1, 11, 1], [1, 12, 0], [1, 13, 0], [1, 14, 0], [1, 15, 0], [1, 16, 0], [1, 17, 0], [1, 18, 0], [1, 19, 0], [1, 20, 1], [1, 21, 2], [1, 22, 0], [1, 23, 0], [1, 24, 0], [1, 25, 0], [1, 26, 2], [1, 27, 4], [1, 28, 0], [1, 29, 0], [2, 0, 0], [2, 1, 0], [2, 2, 0], [2, 3, 0], [2, 4, 0], [2, 5, 1], [2, 6, 2], [2, 7, 0], [2, 8, 0], [2, 9, 0], [2, 10, 0], [2, 11, 1], [2, 12, 0], [2, 13, 0], [2, 14, 0], [2, 15, 0], [2, 16, 0], [2, 17, 0], [2, 18, 0], [2, 19, 0], [2, 20, 0], [2, 21, 0], [2, 22, 0], [2, 23, 0], [2, 24, 0], [2, 25, 0], [2, 26, 0], [2, 27, 0], [2, 28, 0], [2, 29, 0], [3, 0, 0], [3, 1, 0], [3, 2, 0], [3, 3, 0], [3, 4, 0], [3, 5, 0], [3, 6, 1], [3, 7, 0], [3, 8, 0], [3, 9, 0], [3, 10, 0], [3, 11, 0], [3, 12, 0], [3, 13, 0], [3, 14, 0], [3, 15, 0], [3, 16, 0], [3, 17, 0], [3, 18, 0], [3, 19, 0], [3, 20, 0], [3, 21, 0], [3, 22, 0], [3, 23, 0], [3, 24, 0], [3, 25, 0], [3, 26, 0], [3, 27, 0], [3, 28, 0], [3, 29, 0], [4, 0, 0], [4, 1, 2], [4, 2, 0], [4, 3, 0], [4, 4, 0], [4, 5, 3], [4, 6, 0], [4, 7, 1], [4, 8, 0], [4, 9, 0], [4, 10, 0], [4, 11, 3], [4, 12, 0], [4, 13, 0], [4, 14, 0], [4, 15, 0], [4, 16, 0], [4, 17, 0], [4, 18, 0], [4, 19, 0], [4, 20, 0], [4, 21, 1], [4, 22, 0], [4, 23, 0], [4, 24, 0], [4, 25, 0], [4, 26, 0], [4, 27, 0], [4, 28, 0], [4, 29, 0], [5, 0, 0], [5, 1, 7], [5, 2, 0], [5, 3, 0], [5, 4, 0], [5, 5, 0], [5, 6, 26], [5, 7, 0], [5, 8, 0], [5, 9, 0], [5, 10, 0], [5, 11, 11], [5, 12, 0], [5, 13, 0], [5, 14, 0], [5, 15, 0], [5, 16, 0], [5, 17, 0], [5, 18, 0], [5, 19, 0], [5, 20, 0], [5, 21, 0], [5, 22, 0], [5, 23, 0], [5, 24, 0], [5, 25, 0], [5, 26, 0], [5, 27, 3], [5, 28, 0], [5, 29, 0], [6, 0, 0], [6, 1, 215], [6, 2, 0], [6, 3, 0], [6, 4, 0], [6, 5, 105], [6, 6, 340], [6, 7, 76], [6, 8, 0], [6, 9, 0], [6, 10, 0], [6, 11, 53], [6, 12, 0], [6, 13, 1], [6, 14, 1], [6, 15, 0], [6, 16, 0], [6, 17, 0], [6, 18, 5], [6, 19, 18], [6, 20, 1], [6, 21, 47], [6, 22, 1], [6, 23, 0], [6, 24, 17], [6, 25, 0], [6, 26, 3], [6, 27, 81], [6, 28, 0], [6, 29, 31]]
+            .map(function (item) {
+                return [item[1], item[0], item[2] || '-'];
+            });
+    const data3 =
+        [[0, 0, 0], [0, 1, 95], [0, 2, 3], [0, 3, 1], [0, 4, 0], [0, 5, 113], [0, 6, 245], [0, 7, 86], [0, 8, 3], [0, 9, 6], [0, 10, 57], [0, 11, 198], [0, 12, 3], [0, 13, 13], [0, 14, 2], [0, 15, 0], [0, 16, 3], [0, 17, 0], [0, 18, 3], [0, 19, 11], [0, 20, 37], [0, 21, 76], [0, 22, 23], [0, 23, 3], [0, 24, 14], [0, 25, 0], [0, 26, 8], [0, 27, 68], [0, 28, 1], [0, 29, 6], [1, 0, 0], [1, 1, 0], [1, 2, 0], [1, 3, 0], [1, 4, 0], [1, 5, 0], [1, 6, 10], [1, 7, 1], [1, 8, 1], [1, 9, 0], [1, 10, 0], [1, 11, 8], [1, 12, 0], [1, 13, 0], [1, 14, 0], [1, 15, 0], [1, 16, 0], [1, 17, 0], [1, 18, 0], [1, 19, 0], [1, 20, 1], [1, 21, 4], [1, 22, 0], [1, 23, 0], [1, 24, 0], [1, 25, 0], [1, 26, 0], [1, 27, 4], [1, 28, 0], [1, 29, 0], [2, 0, 0], [2, 1, 0], [2, 2, 0], [2, 3, 0], [2, 4, 0], [2, 5, 1], [2, 6, 1], [2, 7, 0], [2, 8, 0], [2, 9, 0], [2, 10, 1], [2, 11, 0], [2, 12, 0], [2, 13, 0], [2, 14, 0], [2, 15, 0], [2, 16, 0], [2, 17, 0], [2, 18, 0], [2, 19, 0], [2, 20, 0], [2, 21, 0], [2, 22, 0], [2, 23, 0], [2, 24, 0], [2, 25, 0], [2, 26, 0], [2, 27, 0], [2, 28, 0], [2, 29, 0], [3, 0, 0], [3, 1, 2], [3, 2, 0], [3, 3, 0], [3, 4, 0], [3, 5, 2], [3, 6, 8], [3, 7, 7], [3, 8, 0], [3, 9, 0], [3, 10, 0], [3, 11, 5], [3, 12, 0], [3, 13, 0], [3, 14, 0], [3, 15, 0], [3, 16, 0], [3, 17, 0], [3, 18, 0], [3, 19, 0], [3, 20, 0], [3, 21, 3], [3, 22, 0], [3, 23, 0], [3, 24, 1], [3, 25, 0], [3, 26, 0], [3, 27, 2], [3, 28, 0], [3, 29, 0], [4, 0, 0], [4, 1, 11], [4, 2, 0], [4, 3, 0], [4, 4, 0], [4, 5, 9], [4, 6, 34], [4, 7, 15], [4, 8, 2], [4, 9, 0], [4, 10, 12], [4, 11, 20], [4, 12, 0], [4, 13, 2], [4, 14, 0], [4, 15, 0], [4, 16, 0], [4, 17, 2], [4, 18, 0], [4, 19, 0], [4, 20, 1], [4, 21, 6], [4, 22, 1], [4, 23, 0], [4, 24, 4], [4, 25, 0], [4, 26, 0], [4, 27, 10], [4, 28, 0], [4, 29, 0], [5, 0, 0], [5, 1, 32], [5, 2, 0], [5, 3, 0], [5, 4, 0], [5, 5, 34], [5, 6, 120], [5, 7, 38], [5, 8, 1], [5, 9, 0], [5, 10, 22], [5, 11, 93], [5, 12, 2], [5, 13, 4], [5, 14, 2], [5, 15, 0], [5, 16, 0], [5, 17, 0], [5, 18, 0], [5, 19, 2], [5, 20, 9], [5, 21, 26], [5, 22, 3], [5, 23, 0], [5, 24, 8], [5, 25, 0], [5, 26, 0], [5, 27, 31], [5, 28, 0], [5, 29, 0], [6, 0, 2], [6, 1, 153], [6, 2, 2], [6, 3, 2], [6, 4, 1], [6, 5, 167], [6, 6, 481], [6, 7, 135], [6, 8, 9], [6, 9, 2], [6, 10, 52], [6, 11, 287], [6, 12, 1], [6, 13, 12], [6, 14, 0], [6, 15, 1], [6, 16, 1], [6, 17, 2], [6, 18, 0], [6, 19, 13], [6, 20, 51], [6, 21, 117], [6, 22, 21], [6, 23, 3], [6, 24, 14], [6, 25, 1], [6, 26, 11], [6, 27, 117], [6, 28, 0], [6, 29, 5]]
+            .map(function (item) {
+                return [item[1], item[0], item[2] || '-'];
+            });
+    // prettier-ignore
+    const hours = ['Adenoid cystic carcinoma', 'Breast Neoplasms', 'Cholangiocarcinoma', 'Chordoma', 'Craniopharyngioma', 'Glioma', 'Head and Neck Neoplasms', 'Intestinal Neoplasms',
+        'Kidney Neoplasms', 'Leukemia', 'Liver Neoplasms', 'Lung Neoplasms', 'Lymphoma',
+        'Melanoma', 'Meningeal Neoplasms', 'Mesothelioma', 'Multiple Myeloma', 'Neuroblastoma', 'Neuroendocrine Tumors', 'Ovarian Neoplasms',
+        'Pancreatic Neoplasms', 'Prostatic Neoplasms', 'Sarcoma', 'Skin Neoplasms', 'Stomach Neoplasms', 'Thymus Neoplasms',
+        'Urinary Bladder Neoplasms', 'Uterine Neoplasms', 'Vulvar Neoplasms', 'Pancancer'];
+    // prettier-ignore
+    const days = ['Radiosensitizer', 'Protein', 'Pseudogene', 'CircRNA', 'LncRNA', 'miRNA', 'Protein-coding gene'];
+
+    function option1(data) {
+        option = {
+            tooltip: {
+                position: 'top'
+            },
+            grid: {
+                height: '65%',
+                Width: '85%',
+                top: '1%',
+                right: '2%',
+                left: '11%',
+                bottom: '10%'
+
+            },
+            xAxis: {
+                type: 'category',
+                data: hours,
+                splitArea: {
+                    show: true
+                },
+                axisLabel: {
+                    interval: 0,
+                    rotate: 30,//x轴数据的倾斜程度
+                    color: 'black',
+                    fontSize: fontSize(1.5),
+                },
+            },
+            yAxis: {
+                type: 'category',
+                data: days,
+                splitArea: {
+                    show: true
+                },
+                axisLabel: {
+                    interval: 0,
+                    color: 'black',
+                    fontSize: fontSize(1.5),
+                },
+            },
+            visualMap: {
+                min: 0,
+                max: 50,
+                calculable: true,
+                orient: 'horizontal',
+                left: 'center',
+                bottom: '4%',
+                inRange: {
+                    color: ['WhiteSmoke', 'darkcyan']
+                }
+            },
+            series: [
+                {
+                    name: 'Cancer Name',
+                    type: 'heatmap',
+                    data: data,
+                    label: {
+                        show: true,
+                        fontSize:fontSize(1.5),
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        return option;
+    }
+
+    var page_num = 0;
+    //获取左边模块
+    var left_fiv = document.getElementById("left").getElementsByTagName("div");
+    //循环实现模块切换
+    for (var i = 0; i < left_fiv.length; i++) {
+        left_fiv[i].index = i;
+        left_fiv[i].onclick = function () {
+            myChart.clear();
+            for (var j = 0; j < left_fiv.length; j++) {
+                left_fiv[j].className = "left_div";
+            }
+            this.className = "left_div_active";
+
+            page_num = this.index;
+            if (this.index == 0) {
+                var option = option1(data1);
+            } else if (this.index == 1) {
+                var option = option1(data2);
+            } else {
+                var option = option1(data3);
+            }
+            myChart.clear();
+            myChart.setOption(option, true);
+            window.onresize = myChart.resize({
+                width: this.width,
+                height: this.height
+            });
+        }
+    }
+
+
+    option = option1(data1);
+    if (option && typeof option === 'object') {
+        myChart.clear();
+        myChart.setOption(option);
+    }
+
+    var docEl = document.documentElement;
+
+    function setRemUnit() {
+        var rem = docEl.clientWidth / 1920;
+        var s = window.screen.width / 1873;
+        var font;
+        if (s > 1) {
+        } else {
+            font = rem * s;
+            docEl.style.fontSize = font + 'rem';
+            document.getElementsByTagName("html")[0].style['font-size'] = font + 'rem';
+        }
+
+    }
+
+    setRemUnit()
+
+    window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+            setRemUnit()
+        }
+    })
+
+
+    window.addEventListener('resize', function () {
+        myChart.clear();
+        myChart.resize;
+        setRemUnit;
+    });
+
+    myChart.on('click', function (params) {
+        var cancer = params.name;
+        cancer = cancer.replaceAll(' ', '_');
+        cancer = cancer.replaceAll(',', '-');
+        var factor = days[params.value[1]];
+        factor = factor.replaceAll(' ', '_');
+        factor = factor.replaceAll(',', '-');
+        var send = cancer + "*" + factor;
+        if (page_num == 0) {
+            window.open("/search?flag=true&page=All&type=" + send, 'newwindow');
+        } else if (page_num == 1) {
+            window.open("/search?flag=true&page=signature&type=" + send, 'newwindow');
+        } else {
+            window.open("/search?flag=true&page=experiment&type=" + send, 'newwindow');
+        }
+    });
+</script>
+
+
+<script>
+
+</script>
+
+
+</body>
+
+</html>
